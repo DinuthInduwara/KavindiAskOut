@@ -139,12 +139,12 @@ const SnowyLoveEffects = () => (
 );
 
 export default function SnowyTransition() {
-	const router  = useRouter()
-	const handleEnterApp = ()=>{
+	const router = useRouter();
+	const handleEnterApp = () => {
 		setTimeout(() => {
 			router.push("/lovely-quiz");
 		}, 1200);
-	}
+	};
 	const winterElements = [
 		"❄️",
 		"❅",
@@ -261,73 +261,74 @@ export default function SnowyTransition() {
 						hand in mine.
 					</p>
 
-					<button
-						onClick={handleEnterApp}
-						className="relative overflow-hidden group"
-						style={{
-							background:
-								"linear-gradient(135deg, #ff7675 0%, #fd79a8 50%, #e84393 100%)",
-							border: "none",
-							borderRadius: "25px",
-							padding: "18px 40px",
-							fontSize: "18px",
-							fontWeight: "600",
-							color: "white",
-							marginTop: "20px",
-							marginBottom: "20px",
-							cursor: "pointer",
-							boxShadow:
-								"0 15px 35px rgba(255, 118, 117, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1)",
-							transition:
-								"all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-							animation:
-								"buttonGlow 3s ease-in-out infinite alternate",
-							zIndex: 20,
-							position: "relative",
-						}}
-						onMouseEnter={(e) => {
-							e.currentTarget.style.transform =
-								"translateY(-3px) scale(1.05)";
-							e.currentTarget.style.boxShadow =
-								"0 20px 40px rgba(255, 118, 117, 0.6), 0 8px 20px rgba(0, 0, 0, 0.15)";
-						}}
-						onMouseLeave={(e) => {
-							e.currentTarget.style.transform =
-								"translateY(0) scale(1)";
-							e.currentTarget.style.boxShadow =
-								"0 15px 35px rgba(255, 118, 117, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1)";
-						}}
-						onMouseDown={(e) => {
-							e.currentTarget.style.transform =
-								"translateY(1px) scale(0.98)";
-						}}
-						onMouseUp={(e) => {
-							e.currentTarget.style.transform =
-								"translateY(-3px) scale(1.05)";
-						}}
-					>
-						<div className="flex items-center justify-center space-x-2">
-							<Snowflake className="w-5 h-5 fill-current" />
-							<span>Enter Love's Garden</span>
-							<Sparkles className="w-5 h-5" />
-						</div>
-
-						{/* Button shine effect */}
-						<div
+					<div className="transition-all duration-500 transform cursor-pointer magical-scroll-container hover:scale-110 group animate-bounce">
+						<button
+							onClick={handleEnterApp}
+							className="relative overflow-hidden group"
 							style={{
-								position: "absolute",
-								top: "0",
-								left: "-100%",
-								width: "100%",
-								height: "100%",
 								background:
-									"linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)",
+									"linear-gradient(135deg, #ff7675 0%, #fd79a8 50%, #e84393 100%)",
+								border: "none",
+								borderRadius: "25px",
+								padding: "18px 40px",
+								fontSize: "18px",
+								fontWeight: "600",
+								color: "white",
+								marginTop: "20px",
+								marginBottom: "20px",
+								cursor: "pointer",
+								boxShadow:
+									"0 15px 35px rgba(255, 118, 117, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1)",
+								transition:
+									"all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
 								animation:
-									"buttonShine 3s ease-in-out infinite",
+									"buttonGlow 3s ease-in-out infinite alternate",
+								zIndex: 20,
+								position: "relative",
 							}}
-						/>
-					</button>
+							onMouseEnter={(e) => {
+								e.currentTarget.style.transform =
+									"translateY(-3px) scale(1.05)";
+								e.currentTarget.style.boxShadow =
+									"0 20px 40px rgba(255, 118, 117, 0.6), 0 8px 20px rgba(0, 0, 0, 0.15)";
+							}}
+							onMouseLeave={(e) => {
+								e.currentTarget.style.transform =
+									"translateY(0) scale(1)";
+								e.currentTarget.style.boxShadow =
+									"0 15px 35px rgba(255, 118, 117, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1)";
+							}}
+							onMouseDown={(e) => {
+								e.currentTarget.style.transform =
+									"translateY(1px) scale(0.98)";
+							}}
+							onMouseUp={(e) => {
+								e.currentTarget.style.transform =
+									"translateY(-3px) scale(1.05)";
+							}}
+						>
+							<div className="flex items-center justify-center space-x-2 ">
+								<Snowflake className="w-5 h-5 fill-current" />
+								<span>Enter Love's Garden</span>
+								<Sparkles className="w-5 h-5" />
+							</div>
 
+							{/* Button shine effect */}
+							<div
+								style={{
+									position: "absolute",
+									top: "0",
+									left: "-100%",
+									width: "100%",
+									height: "100%",
+									background:
+										"linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)",
+									animation:
+										"buttonShine 3s ease-in-out infinite",
+								}}
+							/>
+						</button>
+					</div>
 					<div
 						style={{
 							fontSize: "20px",

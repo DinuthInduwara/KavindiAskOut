@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import QuestionBox from "./question-box";
-
+import { useRouter } from "next/navigation";
 function MainComponent() {
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [showTransition, setShowTransition] = React.useState(false);
 	const [isComplete, setIsComplete] = React.useState(false);
 	const [weatherState, setWeatherState] = React.useState("sunny"); // Add weather state
+	const router = useRouter();
 
 	React.useEffect(() => {
 		const timer = setTimeout(() => {
@@ -23,7 +24,7 @@ function MainComponent() {
 		const weatherTimer = setInterval(() => {
 			currentIndex = (currentIndex + 1) % weatherCycle.length;
 			setWeatherState(weatherCycle[currentIndex]);
-		}, 5000); // Change weather every 5 seconds
+		}, 8000); // Change weather every 5 seconds
 
 		return () => clearInterval(weatherTimer);
 	}, []);
@@ -174,7 +175,7 @@ function MainComponent() {
 	
 
 	const handleBackToLoveStory = () => {
-		window.location.href = "/rain";
+		router.push("/rain-speech")
 	};
 
 	if (isLoading) {

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import RainText from "../../components/text-write-animation";
+import { useRouter } from "next/navigation";
 
 const RainyEffects = () => (
 	<div
@@ -114,8 +115,16 @@ const RainyEffects = () => (
 );
 
 function RainTransition() {
-	const fullText = `Kavindi, 🌧️\nDo you know how I see the rain?\n\nThe rain… it doesn’t fall from the sky.\nIt falls from hearts. 💧\n\nWhen you’re hurting, it rains.\nWhen I’m hurting… it rains too.\nAnd the worst storms… come when I’m hurt because of you.\n\nThis rain is heavy. ☁️\nIt hides the world, clouds my thoughts, and sometimes… I forget who I am in it.\n\nBut then— I see you smile. 🌈\nAnd just like that… the storm fades.\nThe clouds pull back.\nThe world softens.\n\nYour smile breaks through the rain like sunlight tearing open the sky. ☀️\n\nFor a moment, I forget every wound. Every scar.\nEvery reason I was hurting.\n\nWhen I feel your presence, even my name disappears.\nI don’t exist in that moment. Only you do.\n\nI’ve walked through every storm, not because I loved the rain—\nbut because I was waiting for you.\n\nI exist to stop this rain.\n\nBut the truth is… only you can.\nYour voice. Your hand. Your smile.\n\nEven if the whole world becomes rain—\nI’ll keep walking through it, just to see you shine again. ✨`;
-
+	const fullText = `Kavindi, 🌧️💙\nDo you know how I see the rain? 🤔\n\nThe rain… it doesn’t fall from the sky. ☁️\nIt falls from hearts. 💧💔\n\nWhen you’re hurting, it rains. 😔\nWhen I’m hurting… it rains too. 😞\nAnd the worst storms… come when I’m hurt because of you. 🌪️\n\nThis rain is heavy. 🕳️\nIt hides the world, clouds my thoughts, and sometimes… I forget who I am in it. 🫥🌫️\n\nBut then— I see you smile. 🌈😊\nAnd just like that… the storm fades. 🌤️\nThe clouds pull back. ☁️➡️☀️\nThe world softens. 🌍💫\n\nYour smile breaks through the rain like sunlight tearing open the sky. ☀️🌤️💖\n\nFor a moment, I forget every wound. 🩹\nEvery scar. ⚡\nEvery reason I was hurting. 💔\n\nWhen I feel your presence, even my name disappears. 🫶\nI don’t exist in that moment. Only you do. 👁️‍🗨️💗\n\nI’ve walked through every storm, not because I loved the rain— 🌧️👣\nbut because I was waiting for you. 🕰️💘\n\nI exist to stop this rain. 🌫️\n\nBut the truth is… only you can. 🌷\nYour voice. 🎶 Your hand. 🤝 Your smile. 😊\n\nEven if the whole world becomes rain— 🌍🌧️\nI’ll keep walking through it, just to see you shine again. ✨🌟💞`;
+	const [showContinue, setShowContinue] = React.useState(false);
+	const router = useRouter();
+	React.useEffect(() => {
+		// Show the continue element after 15 seconds
+		const timer = setTimeout(() => {
+			setShowContinue(true);
+		}, fullText.length * 70 + 1000);
+		return () => clearTimeout(timer);
+	}, []);
 	return (
 		<>
 			<div
@@ -212,6 +221,68 @@ function RainTransition() {
 						☂️ ⛈️ 🌧️ ⚡ 💧
 					</div>
 				</div>
+				{showContinue && (
+					<div
+						style={{
+							position: "fixed",
+							bottom: "40px",
+							right: "40px",
+							zIndex: 20,
+							cursor: "pointer",
+							pointerEvents: "auto",
+							display: "flex",
+							alignItems: "center",
+							gap: "12px",
+							background: "rgba(255, 255, 255, 0.15)",
+							backdropFilter: "blur(10px)",
+							borderRadius: "50px",
+							padding: "16px 24px",
+							border: "2px solid rgba(255, 255, 255, 0.3)",
+							boxShadow: "0 8px 25px rgba(0, 0, 0, 0.2)",
+							animation:
+								"gentleGlow 3s ease-in-out infinite alternate, craneFloat 4s ease-in-out infinite",
+							transition: "all 0.3s ease",
+						}}
+						onClick={() => {
+							router.push("/night/love-speech");
+						}}
+						onMouseEnter={(e) => {
+							e.target.style.transform = "scale(1.05)";
+							e.target.style.background =
+								"rgba(255, 255, 255, 0.25)";
+							e.target.style.boxShadow =
+								"0 12px 35px rgba(0, 0, 0, 0.3)";
+						}}
+						onMouseLeave={(e) => {
+							e.target.style.transform = "scale(1)";
+							e.target.style.background =
+								"rgba(255, 255, 255, 0.15)";
+							e.target.style.boxShadow =
+								"0 8px 25px rgba(0, 0, 0, 0.2)";
+						}}
+					>
+						<div
+							style={{
+								fontSize: "24px",
+								filter: "drop-shadow(0 0 12px rgba(255, 255, 255, 0.8))",
+							}}
+						>
+							🕊️
+						</div>
+						<span
+							style={{
+								color: "#ffffff",
+								fontSize: "16px",
+								fontWeight: "500",
+								fontFamily: "system-ui, sans-serif",
+								textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
+								letterSpacing: "0.5px",
+							}}
+						>
+							Ready for Night Journey? 🌙
+						</span>
+					</div>
+				)}
 
 				<style jsx global>{`
 					@keyframes stormCloudMove {

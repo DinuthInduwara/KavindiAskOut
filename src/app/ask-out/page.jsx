@@ -204,32 +204,13 @@ function MainComponent() {
 	const [yesButtonSize, setYesButtonSize] = React.useState(120);
 
 	const questions = [
-		"Will you be my Valentine? 💕",
-		"Are you sure you don't want to be my Valentine? 🥺",
-		"Pretty please? I promise I'm nice! 🙏",
-		"Come on, just say yes! The cat is getting sad... 😿",
-		"Look how sad the cat is! Please say yes! 😭",
-		"I'll give you virtual cookies! 🍪",
-		"The cat might cry if you say no again... 💔",
-	];
-
-	const noTexts = [
-		"No 💔",
-		"Still no? 😢",
-		"Really? 🥺",
-		"But why? 😿",
-		"Cat sad 😭",
-		"Cookies? 🍪",
-		"Please? 🙏",
-	];
-
-	const catGifs = [
-		"https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif",
-		"https://media.giphy.com/media/L95W4wv8nnb9K/giphy.gif",
-		"https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif",
-		"https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif",
-		"https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
-		"https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
+		"කාවින්දි මේ.! ඔයා කැමති නේද මන් එක්ක ඉන්න ? 💕",
+		"බොරු නේද කිව්වේ ඔයාට මගේ Valentine වෙන්න ඕන නැ කියල ??? 🥺",
+		"Pretty please? මම promise වෙනවා මම හොද ළමයෙක් වෙනවා කියල ! 🙏",
+		"දැන් ඇති නේද ආඩම්බර උනා, Come on, just say yes! , ඩුක  හිතෙනවනෙ ... 😿",
+		"කැමති නේහ් ! 😭",
+		"තව චෝකොලොට් එකක් ඩුන්නොත් කැමති නේ 🍫",
+		"අනේ දැන් ඉතින් මොනවද කියන්නෙ.. ඤෑ කියලද ? 💘",
 	];
 
 	const loveMessages = [
@@ -269,6 +250,28 @@ function MainComponent() {
 			"Please don't let the magic fade away... 🌙💔",
 		],
 	];
+
+
+	const noTexts = [
+		"No 💔",
+		"Still no? 😢",
+		"Really? 🥺",
+		"But why? 😿",
+		"ඤෑ 😭",
+		"EwW! ඤෑ 🍫",
+		"Please? 🙏",
+	];
+
+	const catGifs = [
+		"https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif",
+		"https://media.giphy.com/media/L95W4wv8nnb9K/giphy.gif",
+		"https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif",
+		"https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif",
+		"https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
+		"https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
+	];
+
+	
 
 	const currentQuestion =
 		questions[Math.min(noClickCount, questions.length - 1)];
