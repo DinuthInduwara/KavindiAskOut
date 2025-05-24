@@ -294,7 +294,7 @@ function MainComponent() {
 							(e.target.style.transform = "scale(1)")
 						}
 					>
-						💕 Ready for the end? 💕
+						💕 Ready for the surprise 💕
 					</button>
 				</div>
 			</div>

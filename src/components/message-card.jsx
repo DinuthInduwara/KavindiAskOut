@@ -3,7 +3,24 @@ import React from "react";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
 export default function MessageBox({
 	title = "You Looks Amazing Today 💕🤗!",
-	message = 'Heyyy ❤️…<br><br>Just a gentle reminder: මෙතන තියන <b>කිසිම දෙයක් AI Generated දේවල් <span style="color:red">නෙවෙයි</span></b> — except a few tiny CSS styles and some English grammar quirks 🥴.<br><br>මේ හැමදේම හදන එක අමාරු වුණා,මම තනියම හැමදේම කරපු නිසා  but I poured my heart into every bit… just for you 🌸✨.<br><br>මෙතන තියන හැමදේම click කරලා බලන්න හරිද , because every little part carries a piece of me 💖.<br><br><span style="color:#ff69b4"><b>Note:</b> හැමදේම හරියටම බලන්න බැරිවෙයි phone එකෙන් 😔. Try to use a laptop or a bigger display for the full experience! 💻🌈</span><br><br><i>"I may not be cute… but I poured my heart into this little web app 💻💞 I hope it feels a little cute to Youuuu 🥺🌷"</i><br><br>Stay magical, keep shining bright<b> like you always do! ✨🌟</b>',
+	// message = 'Heyyy ❤️…<br><br>Just a gentle reminder: මෙතන තියන <b>කිසිම දෙයක් AI Generated දේවල් <span style="color:red">නෙවෙයි</span></b> — except a few tiny CSS styles and some English grammar quirks 🥴.<br><br>මේ හැමදේම හදන එක අමාරු වුණා,මම තනියම හැමදේම කරපු නිසා  but I poured my heart into every bit… just for you 🌸✨.<br><br>මෙතන තියන හැමදේම click කරලා බලන්න හරිද , because every little part carries a piece of me 💖.<br><br><span style="color:#ff69b4"><b>Note:</b> හැමදේම හරියටම බලන්න බැරිවෙයි phone එකෙන් 😔. Try to use a laptop or a bigger display for the full experience! 💻🌈</span><br><br><i>"I may not be cute… but I poured my heart into this little web app 💻💞 I hope it feels a little cute to Youuuu 🥺🌷"</i><br><br>Stay magical, keep shining bright<b> like you always do! ✨🌟</b>',
+	message = `Heyyy ❤️…<br><br>
+Just a gentle reminder: මෙතන තියන <b>කිසිම දෙයක් AI Generated දේවල් <span style="color:red">නෙවෙයි</span></b> — except a few tiny CSS styles and some English grammar quirks 🥴.<br><br>
+මේ හැමදේම හදන එක අමාරු වුණා, මම තනියම හැමදේම කරපු නිසා — but I poured my heart into every bit… just for you 🌸✨.<br><br>
+මෙතන තියන හැමදේම click කරලා බලන්න හරිද, because every little part carries a piece of me 💖.<br><br>
+
+🌙 මට මේක තනියම හදල ඉවරකරන්න <b>මාස 6ක්</b> විතර ගියා <br>
+🕰️ ඒනිසා කිසිම කලබලක් නැතුව බලන්න <br>
+⏳ කිසිම rush එකක් නැහැ <br>
+👀 පලවෙනි සැරේ බලනවා තරම් <br>
+😌 කිසිම ගතියක් නැහැ කිසිම දෙයක දෙවනි පාර  <br>
+💫 <b>ඔයාගේ දිහා බලනවා ඇරෙන්න</b> හැබැයි...<br><br>
+
+<span style="color:#ff69b4"><b>Note:</b> හැමදේම හරියටම බලන්න බැරිවෙයි phone එකෙන් 😔. Try to use a laptop or a bigger display for the full experience! 💻🌈 , නැති උනොත් මගේ මහන්සියෙන් වැඩක් වෙන්නෙත් නැ 🥺 </span><br><br>
+
+<i>"I may not be cute… but I poured my heart into this little web app 💻💞 I hope it feels a little cute to Youuuu 🥺🌷"</i><br><br>
+
+Stay magical, keep shining bright <b>like you always do! ✨🌟</b>`,
 }) {
 	const [showFlashCard, setShowFlashCard] = React.useState(true);
 	const { setIsPlaying, audioRef } = useMusicPlayer();

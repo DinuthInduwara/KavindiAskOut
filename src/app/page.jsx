@@ -520,8 +520,7 @@ function MainComponent() {
 							Enchanted Secret Garden
 						</h2>
 						<p className="mb-4 text-lg leading-relaxed text-white/90">
-							Where dreams take flight and two hearts become one
-							💕
+							මෙතන හැම මලක්ම පිපෙන්නේ ඔයාටම විතරයි 💕
 						</p>
 						<p className="mb-6 italic text-md text-pink-100/80">
 							A sanctuary crafted with love, where every petal

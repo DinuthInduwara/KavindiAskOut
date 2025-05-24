@@ -5,15 +5,6 @@ import { useRouter } from "next/navigation";
 function MainComponent() {
 	
 	const router = useRouter();
-	React.useEffect(() => {
-		const timer = setTimeout(() => {
-			router.push("/night"); // replace with your target route
-		}, 65000); 
-
-		// Cleanup timeout if component unmounts early
-		return () => clearTimeout(timer);
-	}, []);
-
 	
 	const transitionDuration = 60; // seconds - easily adjustable
 	const poeticLines = [

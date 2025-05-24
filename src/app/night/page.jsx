@@ -332,7 +332,7 @@ function MainComponent() {
 					{hiddenButton && (
 						<button
 							onClick={() =>
-								(router.push("/love-speech"))
+								(router.push("/night/love-speech"))
 							}
 							style={{
 								marginTop: "30px",

@@ -244,7 +244,7 @@ function RainTransition() {
 							transition: "all 0.3s ease",
 						}}
 						onClick={() => {
-							router.push("/night/love-speech");
+							router.push("/about");
 						}}
 						onMouseEnter={(e) => {
 							e.target.style.transform = "scale(1.05)";
@@ -279,7 +279,7 @@ function RainTransition() {
 								letterSpacing: "0.5px",
 							}}
 						>
-							Ready for Night Journey? 🌙
+							Ready for See Some Stufff? 🌙
 						</span>
 					</div>
 				)}
