@@ -15,7 +15,7 @@ export function MusicPlayerProvider({ children }) {
 
 	useEffect(() => {
 		if (audioRef.current) {
-			audioRef.current.volume = 0.3;
+			audioRef.current.volume = 1.0; // set to max
 			if (isPlaying) {
 				audioRef.current.play().catch(() => {});
 			} else {
