@@ -3,8 +3,7 @@ import React from "react";
 
 
 
-export default function Index() {
-  return (function MainComponent({ text, fontSize, color, marginBottom, fontFamily }) {
+function MainComponent({ text, fontSize, color, marginBottom, fontFamily }) {
   return (
     <h1
       style={{
@@ -19,12 +18,11 @@ export default function Index() {
   );
 }
 
-function StoryComponent() {
+export default function StoryComponent() {
   return (
     <div>
       <MainComponent />
       <MainComponent text="Custom Text Example" fontSize="28px" color="#333" />
     </div>
   );
-});
 }

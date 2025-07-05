@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 function MainComponent() {
@@ -7,6 +8,7 @@ function MainComponent() {
   const [isComplete, setIsComplete] = React.useState(false);
   const [showTransition, setShowTransition] = React.useState(false);
 
+  const router = useRouter();
   // Rainy Blurry Butterfly Transition Component
   const RainyButterflyTransition = () => (
     <div
