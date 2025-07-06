@@ -1,7 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
-
+import GardenTransition from "../../components/garden-transition"; // Import the transition component
+import WelcomeGarden from "../../components/welcome-garden"; // Import the welcome garden component
 
 function MainComponent() {
 	const [password, setPassword] = React.useState("");
@@ -201,13 +202,14 @@ function MainComponent() {
 			localStorage.setItem("gardenLoginTime", currentTime.toString());
 
 			// Start transition effect
-			setIsTransitioning(true);
+			setShowSuccess(true);
 			setTimeout(() => {
-				setShowSuccess(true);
-			}, 1500);
+			setIsTransitioning(true);
+
+			}, 7000);
 			setTimeout(() => {
 				router.push("/");
-			}, 4500);
+			}, 11000);
 		} else {
 			// Wrong password
 			setIsWrong(true);
@@ -243,167 +245,11 @@ function MainComponent() {
 
 	// Transition state - cloudy with butterflies and flowers
 	if (isTransitioning) {
-		return (
-			<>
-				<div
-					style={{
-						minHeight: "100vh",
-						background:
-							"linear-gradient(135deg, #87CEEB 0%, #98D8E8 25%, #B0E0E6 50%, #E0F6FF 75%, #F0F8FF 100%)",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						position: "relative",
-						overflow: "hidden",
-						transition: "background 2s ease",
-					}}
-				>
-					<CloudyTransition />
-
-					<div
-						style={{
-							textAlign: "center",
-							background: "rgba(255, 255, 255, 0.9)",
-							borderRadius: "30px",
-							padding: "50px",
-							boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
-							border: "3px solid rgba(135, 206, 235, 0.5)",
-							zIndex: 10,
-							animation:
-								"transitionGlow 2s ease-in-out infinite alternate",
-						}}
-					>
-						<div
-							style={{
-								fontSize: "80px",
-								marginBottom: "20px",
-								animation: "bounce 1s ease-in-out infinite",
-							}}
-						>
-							☁️🦋☁️
-						</div>
-						<h1
-							style={{
-								fontSize: "36px",
-								background:
-									"linear-gradient(45deg, #87CEEB, #4682B4, #5F9EA0)",
-								backgroundClip: "text",
-								WebkitBackgroundClip: "text",
-								color: "transparent",
-								marginBottom: "20px",
-								fontWeight: "bold",
-							}}
-						>
-							The garden is transforming... 🌸
-						</h1>
-						<p
-							style={{
-								fontSize: "18px",
-								color: "#666",
-								marginBottom: "20px",
-							}}
-						>
-							Clouds are gathering, butterflies are dancing...
-							☁️🦋
-						</p>
-						<div style={{ fontSize: "24px" }}>🌸 ☁️ 🦋 🌺 ☁️</div>
-					</div>
-				</div>
-			</>
-		);
+		return <GardenTransition/>
 	}
 
 	if (showSuccess) {
-		return (
-			<>
-				<div
-					style={{
-						minHeight: "100vh",
-						background:
-							"linear-gradient(135deg, #a8e6cf 0%, #dcedc1 25%, #ffd3a5 50%, #ffeaa7 75%, #fab1a0 100%)",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						position: "relative",
-						overflow: "hidden",
-					}}
-				>
-					{/* Success celebration elements */}
-					{[...Array.from({ length: 20 })].map((_, i) => (
-						<div
-							key={i}
-							style={{
-								position: "absolute",
-								left: `${Math.random() * 100}%`,
-								top: `${Math.random() * 100}%`,
-								fontSize: `${Math.random() * 30 + 20}px`,
-								animation: `celebration ${
-									2 + Math.random() * 2
-								}s ease-in-out infinite`,
-								animationDelay: `${Math.random() * 2}s`,
-								zIndex: 1,
-							}}
-						>
-							{
-								gardenElements[
-									Math.floor(
-										Math.random() * gardenElements.length
-									)
-								]
-							}
-						</div>
-					))}
-
-					<div
-						style={{
-							textAlign: "center",
-							background: "rgba(255, 255, 255, 0.9)",
-							borderRadius: "30px",
-							padding: "50px",
-							boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
-							border: "3px solid rgba(168, 230, 207, 0.5)",
-							zIndex: 10,
-							animation:
-								"successGlow 1.5s ease-in-out infinite alternate",
-						}}
-					>
-						<div
-							style={{
-								fontSize: "80px",
-								marginBottom: "20px",
-								animation: "bounce 1s ease-in-out infinite",
-							}}
-						>
-							🌺✨
-						</div>
-						<h1
-							style={{
-								fontSize: "36px",
-								background:
-									"linear-gradient(45deg, #00b894, #00cec9, #74b9ff)",
-								backgroundClip: "text",
-								WebkitBackgroundClip: "text",
-								color: "transparent",
-								marginBottom: "20px",
-								fontWeight: "bold",
-							}}
-						>
-							Welcome to the Garden, Kavindi! 🌸
-						</h1>
-						<p
-							style={{
-								fontSize: "18px",
-								color: "#666",
-								marginBottom: "20px",
-							}}
-						>
-							The garden gates are opening for you... 🦋
-						</p>
-						<div style={{ fontSize: "24px" }}>🌿 🌺 🦋 🌻 🌿</div>
-					</div>
-				</div>
-			</>
-		);
+		return <WelcomeGarden />;
 	}
 
 	return (

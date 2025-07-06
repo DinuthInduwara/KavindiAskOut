@@ -149,6 +149,81 @@ export default function GardenTransition() {
 					</p>
 					<div style={{ fontSize: "24px" }}>🌸 ☁️ 🦋 🌺 ☁️</div>
 				</div>
+				<style jsx global>{`
+					@keyframes cloudMove {
+						0% {
+							transform: translateX(-20%);
+						}
+						100% {
+							transform: translateX(120vw);
+						}
+					}
+
+					@keyframes butterflyTrail {
+						0%,
+						100% {
+							transform: translate(0, 0) rotate(0deg);
+						}
+						25% {
+							transform: translate(30px, -20px) rotate(10deg);
+						}
+						50% {
+							transform: translate(-20px, -40px) rotate(-5deg);
+						}
+						75% {
+							transform: translate(40px, -10px) rotate(15deg);
+						}
+					}
+
+					@keyframes glitterTrail {
+						0%,
+						100% {
+							opacity: 0;
+							transform: translate(-50%, -50%) scale(0.5);
+						}
+						50% {
+							opacity: 1;
+							transform: translate(-50%, -50%) scale(1);
+						}
+					}
+
+					@keyframes petalFloat {
+						0%,
+						100% {
+							transform: translateY(0px) rotate(0deg);
+						}
+						25% {
+							transform: translateY(-20px) rotate(90deg);
+						}
+						50% {
+							transform: translateY(-10px) rotate(180deg);
+						}
+						75% {
+							transform: translateY(-30px) rotate(270deg);
+						}
+					}
+
+					@keyframes transitionGlow {
+						0% {
+							box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+								0 0 20px rgba(135, 206, 235, 0.3);
+						}
+						100% {
+							box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
+								0 0 30px rgba(135, 206, 235, 0.5);
+						}
+					}
+
+					@keyframes bounce {
+						0%,
+						100% {
+							transform: translateY(0);
+						}
+						50% {
+							transform: translateY(-10px);
+						}
+					}
+				`}</style>
 			</div>
 		</>
 	);
