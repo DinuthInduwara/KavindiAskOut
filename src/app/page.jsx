@@ -2,6 +2,8 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import GentleRain from "../components/gental-rain";
+import { useMusicPlayer } from "../context/MusicPlayerContext";
+import MessageBox from "../components/message-card";
 
 function MainComponent() {
 	const [isLoaded, setIsLoaded] = React.useState(false);
@@ -9,9 +11,25 @@ function MainComponent() {
 	const [isAuthorized, setIsAuthorized] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(true);
 	const router = useRouter();
-	// Gentle Rain Effect Component
 
-	// Check authorization on component mount
+	const { isPlaying, setIsPlaying, audioRef } = useMusicPlayer();
+	const handlePlayMusic = () => {
+		if (audioRef.current) {
+			audioRef.current
+				.play()
+				.then(() => {
+					setIsPlaying(true);
+				})
+				.catch((error) => {
+					console.error("Error playing audio:", error);
+				});
+		}
+	};
+	React.useEffect(() => {
+		handlePlayMusic()
+	}, [isPlaying, audioRef]);
+
+
 	React.useEffect(() => {
 		const gardenAccess = localStorage.getItem("gardenAccess");
 		const loginTime = localStorage.getItem("gardenLoginTime");
@@ -206,6 +224,7 @@ function MainComponent() {
 				</>
 			)}
 
+	
 			{/* Main Content */}
 			<div
 				style={{

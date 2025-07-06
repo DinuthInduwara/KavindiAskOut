@@ -10,7 +10,7 @@ import React, {
 const MusicPlayerContext = createContext();
 
 export function MusicPlayerProvider({ children }) {
-	const [isPlaying, setIsPlaying] = useState(true); // default to true
+	const [isPlaying, setIsPlaying] = useState(false); 
 	const audioRef = useRef(null);
 
 	useEffect(() => {
