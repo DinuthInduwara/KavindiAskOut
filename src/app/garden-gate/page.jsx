@@ -1,7 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
-import GardenTransition from "../../components/garden-transition"; // Import the transition component
 import WelcomeGarden from "../../components/welcome-garden"; // Import the welcome garden component
 
 function MainComponent() {
@@ -10,7 +9,6 @@ function MainComponent() {
 	const [wrongAttempts, setWrongAttempts] = React.useState(0);
 	const [isShaking, setIsShaking] = React.useState(false);
 	const [showSuccess, setShowSuccess] = React.useState(false);
-	const [isTransitioning, setIsTransitioning] = React.useState(false);
 
 	const router = useRouter(); // Use Next.js router for navigation
 	const correctPassword = "kavindi123"; // Secret password only Kavindi knows
@@ -177,7 +175,6 @@ function MainComponent() {
 
 			if (timeDiff < tenMinutes) {
 				// Still within 10 minutes, start transition then redirect
-				setIsTransitioning(true);
 				setTimeout(() => {
 					setShowSuccess(true);
 				}, 1000);
@@ -201,15 +198,9 @@ function MainComponent() {
 			localStorage.setItem("gardenAccess", "true");
 			localStorage.setItem("gardenLoginTime", currentTime.toString());
 
-			// Start transition effect
-			setShowSuccess(true);
 			setTimeout(() => {
-			setIsTransitioning(true);
-
-			}, 7000);
-			setTimeout(() => {
-				router.push("/");
-			}, 11000);
+				setShowSuccess(true);
+			}, 500);
 		} else {
 			// Wrong password
 			setIsWrong(true);
@@ -243,10 +234,7 @@ function MainComponent() {
 	];
 	const sadElements = ["🥀", "😢", "💔", "😭", "🌧️", "⛈️"];
 
-	// Transition state - cloudy with butterflies and flowers
-	if (isTransitioning) {
-		return <GardenTransition/>
-	}
+
 
 	if (showSuccess) {
 		return <WelcomeGarden />;

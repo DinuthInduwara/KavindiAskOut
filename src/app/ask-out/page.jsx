@@ -2,11 +2,19 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import GentleRain from "../../components/gental-rain";
-
+import GardenTransition from "../../components/garden-transition"; // Import the transition component
 function MainComponent() {
 	const [noClickCount, setNoClickCount] = React.useState(0);
-	const [showResult, setShowResult] = React.useState(false);
+	const [showPage, setShowPage] = React.useState(false);
 
+	React.useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowPage(true);
+		}, 1000000); // Adjust delay as needed
+
+		// 🔁 Clean up on unmount
+		return () => clearTimeout(timer);
+	}, []);
 
 	const questions = [
 		"Kavindi, do you like me? Just a little bit? 💕",
@@ -49,8 +57,6 @@ function MainComponent() {
 		"https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif", // Cat dramatically falling
 	];
 
-
-
 	const currentQuestion =
 		questions[Math.min(noClickCount, questions.length - 1)];
 	const currentNoText =
@@ -62,166 +68,171 @@ function MainComponent() {
 		setNoClickCount((prev) => prev + 1);
 	};
 
-
 	// Gif explosion screen
-
 
 	const handleYesClick = () => {
 		router.push("/ask-out/result");
 	};
 
 
+	if (showPage) {
+		return (
+			<div>
+				<GentleRain />
 
-	return (
-		<div>
-			<GentleRain />
-
-			<div
-				style={{
-					minHeight: "100vh",
-					background:
-						"linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					padding: "20px",
-				}}
-			>
 				<div
 					style={{
-						textAlign: "center",
-						backgroundColor: "white",
-						padding: "40px",
-						borderRadius: "20px",
-						boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
-						maxWidth: "600px",
-						width: "100%",
+						minHeight: "100vh",
+						background:
+							"linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						padding: "20px",
 					}}
 				>
-					{noClickCount > 0 && (
-						<div
-							style={{
-								marginBottom: "20px",
-								display: "flex",
-								justifyContent: "center",
-							}}
-						>
-							<img
-								src={currentCatGif}
-								alt="Sad cat reaction"
-								style={{
-									width: "150px",
-									height: "150px",
-									borderRadius: "15px",
-									objectFit: "cover",
-									border: "3px solid #ff69b4",
-									boxShadow:
-										"0 4px 15px rgba(255, 105, 180, 0.3)",
-								}}
-							/>
-						</div>
-					)}
-
-					<div style={{ fontSize: "50px", marginBottom: "30px" }}>
-						💝
-					</div>
-
-					<h1
-						style={{
-							fontSize: "28px",
-							color: "#333",
-							marginBottom: "40px",
-							fontFamily: "serif",
-							lineHeight: "1.4",
-						}}
-					>
-						{currentQuestion}
-					</h1>
-
 					<div
 						style={{
-							display: "flex",
-							gap: "20px",
-							justifyContent: "center",
-							alignItems: "center",
-							flexWrap: "wrap",
+							textAlign: "center",
+							backgroundColor: "white",
+							padding: "40px",
+							borderRadius: "20px",
+							boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+							maxWidth: "600px",
+							width: "100%",
 						}}
 					>
-						<button
-							onClick={handleYesClick}
+						{noClickCount > 0 && (
+							<div
+								style={{
+									marginBottom: "20px",
+									display: "flex",
+									justifyContent: "center",
+								}}
+							>
+								<img
+									src={currentCatGif}
+									alt="Sad cat reaction"
+									style={{
+										width: "150px",
+										height: "150px",
+										borderRadius: "15px",
+										objectFit: "cover",
+										border: "3px solid #ff69b4",
+										boxShadow:
+											"0 4px 15px rgba(255, 105, 180, 0.3)",
+									}}
+								/>
+							</div>
+						)}
+
+						<div style={{ fontSize: "50px", marginBottom: "30px" }}>
+							💝
+						</div>
+
+						<h1
 							style={{
-								width: `${yesButtonSize}px`,
-								height: "60px",
-								backgroundColor: "#4caf50",
-								color: "white",
-								border: "none",
-								borderRadius: "30px",
-								fontSize: "20px",
-								fontWeight: "bold",
-								cursor: "pointer",
-								transition: "all 0.3s ease",
-								boxShadow: "0 4px 15px rgba(76, 175, 80, 0.3)",
-							}}
-							onMouseOver={(e) => {
-								e.target.style.backgroundColor = "#45a049";
-								e.target.style.transform = "scale(1.05)";
-							}}
-							onMouseOut={(e) => {
-								e.target.style.backgroundColor = "#4caf50";
-								e.target.style.transform = "scale(1)";
+								fontSize: "28px",
+								color: "#333",
+								marginBottom: "40px",
+								fontFamily: "serif",
+								lineHeight: "1.4",
 							}}
 						>
-							Yes! 💚
-						</button>
+							{currentQuestion}
+						</h1>
 
-						{noClickCount < questions.length && (
+						<div
+							style={{
+								display: "flex",
+								gap: "20px",
+								justifyContent: "center",
+								alignItems: "center",
+								flexWrap: "wrap",
+							}}
+						>
 							<button
-								onClick={handleNoClick}
+								onClick={handleYesClick}
 								style={{
-									width: "140px",
+									width: `${yesButtonSize}px`,
 									height: "60px",
-									backgroundColor: "#f44336",
+									backgroundColor: "#4caf50",
 									color: "white",
 									border: "none",
 									borderRadius: "30px",
-									fontSize: "14px",
+									fontSize: "20px",
 									fontWeight: "bold",
 									cursor: "pointer",
 									transition: "all 0.3s ease",
 									boxShadow:
-										"0 4px 15px rgba(244, 67, 54, 0.3)",
+										"0 4px 15px rgba(76, 175, 80, 0.3)",
 								}}
 								onMouseOver={(e) => {
-									e.target.style.backgroundColor = "#da190b";
+									e.target.style.backgroundColor = "#45a049";
 									e.target.style.transform = "scale(1.05)";
 								}}
 								onMouseOut={(e) => {
-									e.target.style.backgroundColor = "#f44336";
+									e.target.style.backgroundColor = "#4caf50";
 									e.target.style.transform = "scale(1)";
 								}}
 							>
-								{currentNoText}
+								Yes! 💚
 							</button>
+
+							{noClickCount < questions.length && (
+								<button
+									onClick={handleNoClick}
+									style={{
+										width: "140px",
+										height: "60px",
+										backgroundColor: "#f44336",
+										color: "white",
+										border: "none",
+										borderRadius: "30px",
+										fontSize: "14px",
+										fontWeight: "bold",
+										cursor: "pointer",
+										transition: "all 0.3s ease",
+										boxShadow:
+											"0 4px 15px rgba(244, 67, 54, 0.3)",
+									}}
+									onMouseOver={(e) => {
+										e.target.style.backgroundColor =
+											"#da190b";
+										e.target.style.transform =
+											"scale(1.05)";
+									}}
+									onMouseOut={(e) => {
+										e.target.style.backgroundColor =
+											"#f44336";
+										e.target.style.transform = "scale(1)";
+									}}
+								>
+									{currentNoText}
+								</button>
+							)}
+						</div>
+
+						{noClickCount > 0 && (
+							<p
+								style={{
+									marginTop: "30px",
+									fontSize: "16px",
+									color: "#666",
+									fontStyle: "italic",
+								}}
+							>
+								The "Yes" button is getting bigger... and the
+								cat is getting sadder... 😿
+							</p>
 						)}
 					</div>
-
-					{noClickCount > 0 && (
-						<p
-							style={{
-								marginTop: "30px",
-								fontSize: "16px",
-								color: "#666",
-								fontStyle: "italic",
-							}}
-						>
-							The "Yes" button is getting bigger... and the cat is
-							getting sadder... 😿
-						</p>
-					)}
 				</div>
 			</div>
-		</div>
-	);
+		);
+	}
+	return <GardenTransition />;
+
 }
 
 export default MainComponent;
