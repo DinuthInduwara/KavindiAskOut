@@ -278,88 +278,132 @@ function MainComponent() {
 
   if (isComplete) {
     return (
-      <div
-        style={{
-          minHeight: "100vh",
-          background:
-            "linear-gradient(135deg, #ffeef8 0%, #e8f5e8 25%, #fff0f5 50%, #f0fff0 75%, #fef7ff 100%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "20px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* Floating decorations */}
-        {["💕", "🌸", "💚", "🌿", "💖", "🌺"].map((emoji, index) => (
-          <div
-            key={index}
-            style={{
-              position: "absolute",
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              fontSize: `${Math.random() * 20 + 15}px`,
-              opacity: 0.3,
-              animation: `float ${3 + Math.random() * 2}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 3}s`,
-              pointerEvents: "none",
-            }}
-          >
-            {emoji}
-          </div>
-        ))}
+		<div
+			style={{
+				minHeight: "100vh",
+				background:
+					"linear-gradient(135deg, #ffeef8 0%, #e8f5e8 25%, #fff0f5 50%, #f0fff0 75%, #fef7ff 100%)",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				padding: "20px",
+				position: "relative",
+				overflow: "hidden",
+			}}
+		>
+			{/* Floating decorations */}
+			{[
+				"💕",
+				"🌸",
+				"💚",
+				"🌿",
+				"💖",
+				"🌺",
+				"💘",
+				"🌼",
+				"💗",
+				"🍃",
+				"💓",
+				"🌷",
+				"💞",
+				"🍀",
+				"🩷",
+				"🌹",
+				"💐",
+				"🦋",
+				"💌",
+				"🌻",
+				"💟",
+				"🍓",
+				"💝",
+				"🌙",
+				"🎀",
+				"🌾",
+				"🌤️",
+				"✨",
+				"🌈",
+		
+			].map((emoji, index) => (
+				<div
+					key={index}
+					style={{
+						position: "absolute",
+						left: `${Math.random() * 100}%`,
+						top: `${Math.random() * 100}%`,
+						fontSize: `${Math.random() * 20 + 15}px`,
+						opacity: 0.3,
+						animation: `float ${
+							3 + Math.random() * 2
+						}s ease-in-out infinite`,
+						animationDelay: `${Math.random() * 3}s`,
+						pointerEvents: "none",
+					}}
+				>
+					{emoji}
+				</div>
+			))}
 
-        <div
-          style={{
-            textAlign: "center",
-            background: "rgba(255, 255, 255, 0.9)",
-            borderRadius: "30px",
-            padding: "50px",
-            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
-            border: "3px solid rgba(255, 182, 193, 0.3)",
-            maxWidth: "600px",
-          }}
-        >
-          <div style={{ fontSize: "60px", marginBottom: "20px" }}>💕✨</div>
-          <h1
-            style={{
-              fontSize: "36px",
-              background: "linear-gradient(45deg, #e91e63, #4caf50, #ff69b4)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              marginBottom: "30px",
-              fontWeight: "bold",
-            }}
-          >
-            Thank You My Love! 💖
-          </h1>
-          <p style={{ fontSize: "18px", color: "#666", marginBottom: "30px" }}>
-            Your answers mean the world to me! 🌸
-          </p>
-          <button
-            onClick={handleBackToLoveStory}
-            style={{
-              background: "linear-gradient(45deg, #e91e63, #4caf50)",
-              border: "none",
-              borderRadius: "25px",
-              padding: "15px 30px",
-              fontSize: "18px",
-              fontWeight: "bold",
-              color: "white",
-              cursor: "pointer",
-              boxShadow: "0 8px 20px rgba(233, 30, 99, 0.3)",
-              transition: "all 0.3s ease",
-            }}
-            onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
-            onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-          >
-            💕 Back to Love Story 💕
-          </button>
-        </div>
-      </div>
-    );
+			<div
+				style={{
+					textAlign: "center",
+					background: "rgba(255, 255, 255, 0.9)",
+					borderRadius: "30px",
+					padding: "50px",
+					boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
+					border: "3px solid rgba(255, 182, 193, 0.3)",
+					maxWidth: "600px",
+				}}
+			>
+				<div style={{ fontSize: "60px", marginBottom: "20px" }}>
+					💕✨
+				</div>
+				<h1
+					style={{
+						fontSize: "36px",
+						background:
+							"linear-gradient(45deg, #e91e63, #4caf50, #ff69b4)",
+						backgroundClip: "text",
+						WebkitBackgroundClip: "text",
+						color: "transparent",
+						marginBottom: "30px",
+						fontWeight: "bold",
+					}}
+				>
+					Thank You My Love! 💖
+				</h1>
+				<p
+					style={{
+						fontSize: "18px",
+						color: "#666",
+						marginBottom: "30px",
+					}}
+				>
+					Your answers mean the world to me! 🌸
+				</p>
+				<button
+					onClick={handleBackToLoveStory}
+					style={{
+						background: "linear-gradient(45deg, #e91e63, #4caf50)",
+						border: "none",
+						borderRadius: "25px",
+						padding: "15px 30px",
+						fontSize: "18px",
+						fontWeight: "bold",
+						color: "white",
+						cursor: "pointer",
+						boxShadow: "0 8px 20px rgba(233, 30, 99, 0.3)",
+						transition: "all 0.3s ease",
+					}}
+					onMouseOver={(e) =>
+						(e.target.style.transform = "scale(1.05)")
+					}
+					onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
+				>
+					💕 Back to Love Story 💕
+				</button>
+			</div>
+		</div>
+	);
   }
 
   return (

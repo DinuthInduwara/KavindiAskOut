@@ -1,9 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { useMusicPlayer } from "../../context/MusicPlayerContext";
 
-// Music Player Component OUTSIDE MainComponent
 
 function MainComponent() {
 	const [password, setPassword] = React.useState("");
@@ -12,27 +10,10 @@ function MainComponent() {
 	const [isShaking, setIsShaking] = React.useState(false);
 	const [showSuccess, setShowSuccess] = React.useState(false);
 	const [isTransitioning, setIsTransitioning] = React.useState(false);
-	
+
 	const router = useRouter(); // Use Next.js router for navigation
 	const correctPassword = "kavindi123"; // Secret password only Kavindi knows
-	
-	const { isPlaying, setIsPlaying, audioRef } = useMusicPlayer();
-	// Remove auto-play on mount to avoid NotAllowedError
-	const handlePlayMusic = () => {
-		if (audioRef.current) {
-			audioRef.current
-				.play()
-				.then(() => {
-					setIsPlaying(true);
-				})
-				.catch((error) => {
-					console.error("Error playing audio:", error);
-				});
-		}
-	};
-	React.useEffect(() => {
-		handlePlayMusic();
-	}, [audioRef, setIsPlaying]);
+
 	const SunriseEffect = () => (
 		<div
 			style={{

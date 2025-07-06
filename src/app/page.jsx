@@ -2,8 +2,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import GentleRain from "../components/gental-rain";
-import { useMusicPlayer } from "../context/MusicPlayerContext";
-import MessageBox from "../components/message-card";
 
 function MainComponent() {
 	const [isLoaded, setIsLoaded] = React.useState(false);
@@ -12,22 +10,7 @@ function MainComponent() {
 	const [isLoading, setIsLoading] = React.useState(true);
 	const router = useRouter();
 
-	const { isPlaying, setIsPlaying, audioRef } = useMusicPlayer();
-	const handlePlayMusic = () => {
-		if (audioRef.current) {
-			audioRef.current
-				.play()
-				.then(() => {
-					setIsPlaying(true);
-				})
-				.catch((error) => {
-					console.error("Error playing audio:", error);
-				});
-		}
-	};
-	React.useEffect(() => {
-		handlePlayMusic()
-	}, [isPlaying, audioRef]);
+
 
 
 	React.useEffect(() => {
