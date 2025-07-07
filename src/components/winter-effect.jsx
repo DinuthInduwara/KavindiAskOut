@@ -141,7 +141,9 @@ const SnowyLoveEffects = () => (
 export default function SnowyTransition() {
 	const router  = useRouter()
 	const handleEnterApp = ()=>{
-		router.push("/ask-out/result")
+		setTimeout(() => {
+			router.push("/ask-out/result")
+		}, 1200);
 	}
 	const winterElements = [
 		"❄️",

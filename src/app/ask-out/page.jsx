@@ -2,6 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import GardenTransition from "../../components/garden-transition";
+import WinterEffect from "../../components/winter-effect";
 
 const MoonlitGardenEffects = () => (
 	<div
@@ -183,6 +184,7 @@ const MoonlitGardenEffects = () => (
 function MainComponent() {
 	const router = useRouter();
 	const [showPage, setShowPage] = React.useState(false);
+	const [yesClicked, setyesClicked] = React.useState(false);
 
 	React.useEffect(() => {
 		const timer = setTimeout(() => {
@@ -194,7 +196,10 @@ function MainComponent() {
 	}, []);
 
 	const handleYesClick = () => {
-		router.push("/ask-out/result");
+		setTimeout(() => {
+			setShowPage(false);
+			setyesClicked(true);
+		}, 500);
 	};
 
 	const [noClickCount, setNoClickCount] = React.useState(0);
@@ -274,8 +279,6 @@ function MainComponent() {
 		catGifs[Math.min(noClickCount - 1, catGifs.length - 1)];
 	const currentLoveMessage =
 		loveMessages[Math.min(noClickCount, loveMessages.length - 1)];
-
-
 
 	const handleNoClick = () => {
 		setNoClickCount((prev) => prev + 1);
@@ -732,6 +735,10 @@ function MainComponent() {
 				</div>
 			</>
 		);
+	}
+
+	if (yesClicked) {
+		return <WinterEffect />;
 	}
 	return <GardenTransition />;
 }
