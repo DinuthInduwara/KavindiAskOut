@@ -336,7 +336,7 @@ function MainComponent() {
 				<div
 					style={{
 						textAlign: "center",
-						background: "rgba(255, 255, 255, 0.95)",
+						background: "rgba(255, 255, 255, 0.70)",
 						borderRadius: "25px",
 						padding: "40px",
 						boxShadow: isWrong

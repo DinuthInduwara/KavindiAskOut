@@ -105,7 +105,7 @@ export default function GardenTransition() {
 				<div
 					style={{
 						textAlign: "center",
-						background: "rgba(255, 255, 255, 0.60)",
+						background: "rgba(255, 255, 255, 0.70)",
 						borderRadius: "30px",
 						padding: "50px",
 						boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
