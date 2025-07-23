@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 import GardenTransition from "../../components/garden-transition";
 import WinterEffect from "../../components/winter-effect";
 
@@ -182,7 +181,6 @@ const MoonlitGardenEffects = () => (
 );
 
 function MainComponent() {
-	const router = useRouter();
 	const [showPage, setShowPage] = React.useState(false);
 	const [yesClicked, setyesClicked] = React.useState(false);
 

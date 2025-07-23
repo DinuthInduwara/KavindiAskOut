@@ -142,7 +142,7 @@ export default function SnowyTransition() {
 	const router  = useRouter()
 	const handleEnterApp = ()=>{
 		setTimeout(() => {
-			router.push("/ask-out/result")
+			router.push("/lovely-quiz");
 		}, 1200);
 	}
 	const winterElements = [

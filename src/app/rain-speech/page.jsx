@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
+import RainText from "../../components/text-write-animation";
 
 const RainyEffects = () => (
 	<div
 		style={{
 			position: "absolute",
+			minHeight: "100vh",
 			top: 0,
 			left: 0,
 			width: "100%",
@@ -112,6 +114,8 @@ const RainyEffects = () => (
 );
 
 function RainTransition() {
+	const fullText = `Kavindi, 🌧️\nDo you know how I see the rain?\n\nThe rain… it doesn’t fall from the sky.\nIt falls from hearts. 💧\n\nWhen you’re hurting, it rains.\nWhen I’m hurting… it rains too.\nAnd the worst storms… come when I’m hurt because of you.\n\nThis rain is heavy. ☁️\nIt hides the world, clouds my thoughts, and sometimes… I forget who I am in it.\n\nBut then— I see you smile. 🌈\nAnd just like that… the storm fades.\nThe clouds pull back.\nThe world softens.\n\nYour smile breaks through the rain like sunlight tearing open the sky. ☀️\n\nFor a moment, I forget every wound. Every scar.\nEvery reason I was hurting.\n\nWhen I feel your presence, even my name disappears.\nI don’t exist in that moment. Only you do.\n\nI’ve walked through every storm, not because I loved the rain—\nbut because I was waiting for you.\n\nI exist to stop this rain.\n\nBut the truth is… only you can.\nYour voice. Your hand. Your smile.\n\nEven if the whole world becomes rain—\nI’ll keep walking through it, just to see you shine again. ✨`;
+
 	return (
 		<>
 			<div
@@ -128,7 +132,6 @@ function RainTransition() {
 				}}
 			>
 				<RainyEffects />
-
 				<div
 					style={{
 						textAlign: "center",
@@ -138,6 +141,7 @@ function RainTransition() {
 						boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3)",
 						border: "2px solid rgba(135, 206, 235, 0.3)",
 						zIndex: 10,
+						maxWidth: "600px",
 						animation:
 							"rainyGlow 3s ease-in-out infinite alternate",
 						backdropFilter: "blur(10px)",
@@ -176,7 +180,35 @@ function RainTransition() {
 						Thunder rolls, lightning strikes, and raindrops fall...
 						⚡🌧️
 					</p>
-					<div style={{ fontSize: "22px", color: "#D6EAF8" }}>
+
+					<div
+						style={{
+							fontFamily: "Dancing Script, cursive",
+							fontSize: "1.5rem",
+							color: "#ffffffcc",
+							textAlignLast: "center",
+
+							background: "rgba(44, 62, 80, 0.85)",
+							borderRadius: "25px",
+							padding: "30px 40px",
+							boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3)",
+							border: "2px solid rgba(135, 206, 235, 0.3)",
+							zIndex: 10,
+							backdropFilter: "blur(10px)",
+							lineHeight: 1.8,
+							whiteSpace: "pre-wrap",
+						}}
+					>
+						<RainText fullText={fullText} />
+					</div>
+
+					<div
+						style={{
+							fontSize: "22px",
+							color: "#D6EAF8",
+							marginTop: "20px",
+						}}
+					>
 						☂️ ⛈️ 🌧️ ⚡ 💧
 					</div>
 				</div>
@@ -270,4 +302,5 @@ function RainTransition() {
 		</>
 	);
 }
+
 export default RainTransition;
