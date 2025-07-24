@@ -331,7 +331,7 @@ function MainComponent() {
 					{hiddenButton && (
 						<button
 							onClick={() =>
-								(window.location.href = "/after-rain")
+								(window.location.href = "/about")
 							}
 							style={{
 								marginTop: "30px",
