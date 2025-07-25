@@ -275,6 +275,14 @@ function MainComponent() {
 										src: "/gift.jpg",
 										caption: "Inventing to the future 🚀",
 									},
+									{
+										src: "/nlines.png",
+										caption: "Number of lines of code written 💻",
+									},
+									{
+										src: "/nwords.png",
+										caption: "Number of words typed 📝",
+									},
 								].map((photo, index) => (
 									<div
 										key={index}
