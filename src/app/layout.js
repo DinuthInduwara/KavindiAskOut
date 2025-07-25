@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={inter.className}>
 				<MusicPlayerProvider>
-					<MessageBox />
+					<MessageBox title="I have something to say 🤗" />
 					<MessageBox message="HI, Im Going TO Play Some Music, Is That Ok ?" />
 					<GlobalMusicPlayer />
 					{children}
