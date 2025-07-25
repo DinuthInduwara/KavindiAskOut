@@ -1,15 +1,21 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useMusicPlayer } from "../../context/MusicPlayerContext";
+import { sendMessageTelegram } from "../../utilities/telegram-helpers";
 
 function MainComponent() {
+	const { switchTrack } = useMusicPlayer();
+
 	const [bridgeVisible, setBridgeVisible] = React.useState(false);
 	const [butterflyGuide, setButterflyGuide] = React.useState(false);
 	const [starRainActive, setStarRainActive] = React.useState(false);
 	const [transitioning, setTransitioning] = React.useState(false);
 	const router = useRouter();
-	
+
 	const revealCrossing = () => {
+		switchTrack("/music-4.mp3");
+		sendMessageTelegram("Star Rain event triggered! 🌟✨");
 		setButterflyGuide(true);
 		setStarRainActive(true);
 
@@ -22,8 +28,8 @@ function MainComponent() {
 			// Navigate to next page after fade out
 			setTimeout(() => {
 				router.push("/night");
-			}, 6000);
-		}, 6000);
+			}, 2000);
+		}, 10000);
 	};
 
 	return (

@@ -2,6 +2,8 @@
 import React from "react";
 import RainText from "../../components/text-write-animation";
 import { useRouter } from "next/navigation";
+import { useMusicPlayer } from "../../context/MusicPlayerContext";
+import { sendMessageTelegram } from "../../utilities/telegram-helpers";
 
 const NightEffects = () => (
 	<div
@@ -229,6 +231,8 @@ const NightEffects = () => (
 );
 
 function MainComponent() {
+	const { switchTrack } = useMusicPlayer();
+
 	const kavindiSpeech =
 		"🌧️  Kavindi… do you know how I hate rain?  \n🌫️  Rain falls in this world, too.  \n☁️  If your heart is troubled, the skies will become cloudy.  \n💧  If you grieve, rain falls so terribly easily.  \n😔  Can you understand… the horrible feeling of being pelted by rain\nwhen you’re all alone in this solitary world?  🕊️  \n💪  If only to stop that rain, I shall lend you any strength, any power.  \n☀️  If you trust in me, I won’t let a single drop of rain fall from that sky.  \n❤️  Kavindi, trust me… you are not fighting alone.";
 	const router = useRouter();
@@ -331,9 +335,13 @@ function MainComponent() {
 
 					{hiddenButton && (
 						<button
-							onClick={() =>
-								(router.push("/night/love-speech"))
-							}
+							onClick={() => {
+								switchTrack("/music-1.mp3");
+								sendMessageTelegram(
+									"Sweet Dreams event triggered! 🌙✨"
+								);
+								router.push("/night/love-speech");
+							}}
 							style={{
 								marginTop: "30px",
 								padding: "15px 30px",

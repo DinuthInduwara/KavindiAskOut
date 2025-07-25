@@ -2,6 +2,8 @@
 import React from "react";
 import GardenTransition from "../../components/garden-transition";
 import WinterEffect from "../../components/winter-effect";
+import { useMusicPlayer } from "../../context/MusicPlayerContext";
+import { sendMessageTelegram } from "../../utilities/telegram-helpers";
 
 const MoonlitGardenEffects = () => (
 	<div
@@ -183,6 +185,12 @@ const MoonlitGardenEffects = () => (
 function MainComponent() {
 	const [showPage, setShowPage] = React.useState(false);
 	const [yesClicked, setyesClicked] = React.useState(false);
+	const { switchTrack } = useMusicPlayer();
+
+	React.useEffect(() => {
+		switchTrack("/music-2.mp3");
+	}, []);
+
 
 	React.useEffect(() => {
 		const timer = setTimeout(() => {
@@ -198,6 +206,7 @@ function MainComponent() {
 			setShowPage(false);
 			setyesClicked(true);
 		}, 500);
+		sendMessageTelegram("Yes Clicked! 💖");
 	};
 
 	const [noClickCount, setNoClickCount] = React.useState(0);
@@ -251,7 +260,6 @@ function MainComponent() {
 		],
 	];
 
-
 	const noTexts = [
 		"No 💔",
 		"Still no? 😢",
@@ -271,8 +279,6 @@ function MainComponent() {
 		"https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
 	];
 
-	
-
 	const currentQuestion =
 		questions[Math.min(noClickCount, questions.length - 1)];
 	const currentNoText = noTexts[Math.min(noClickCount, noTexts.length - 1)];
@@ -284,6 +290,7 @@ function MainComponent() {
 	const handleNoClick = () => {
 		setNoClickCount((prev) => prev + 1);
 		setYesButtonSize((prev) => prev + 15);
+		sendMessageTelegram(`No Clicked: ${currentNoText} - Count: ${noClickCount + 1}`);
 	};
 
 	const nightGardenElements = [

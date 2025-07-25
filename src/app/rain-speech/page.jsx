@@ -2,6 +2,7 @@
 import React from "react";
 import RainText from "../../components/text-write-animation";
 import { useRouter } from "next/navigation";
+import { useMusicPlayer } from "../../context/MusicPlayerContext";
 
 const RainyEffects = () => (
 	<div
@@ -115,6 +116,13 @@ const RainyEffects = () => (
 );
 
 function RainTransition() {
+
+	const { switchTrack } = useMusicPlayer();
+	
+		React.useEffect(() => {
+			switchTrack("/music-3.mp3");
+		}, []);
+
 	const fullText = `Kavindi, 🌧️💙\nDo you know how I see the rain? 🤔\n\nThe rain… it doesn’t fall from the sky. ☁️\nIt falls from hearts. 💧💔\n\nWhen you’re hurting, it rains. 😔\nWhen I’m hurting… it rains too. 😞\nAnd the worst storms… come when I’m hurt because of you. 🌪️\n\nThis rain is heavy. 🕳️\nIt hides the world, clouds my thoughts, and sometimes… I forget who I am in it. 🫥🌫️\n\nBut then— I see you smile. 🌈😊\nAnd just like that… the storm fades. 🌤️\nThe clouds pull back. ☁️➡️☀️\nThe world softens. 🌍💫\n\nYour smile breaks through the rain like sunlight tearing open the sky. ☀️🌤️💖\n\nFor a moment, I forget every wound. 🩹\nEvery scar. ⚡\nEvery reason I was hurting. 💔\n\nWhen I feel your presence, even my name disappears. 🫶\nI don’t exist in that moment. Only you do. 👁️‍🗨️💗\n\nI’ve walked through every storm, not because I loved the rain— 🌧️👣\nbut because I was waiting for you. 🕰️💘\n\nI exist to stop this rain. 🌫️\n\nBut the truth is… only you can. 🌷\nYour voice. 🎶 Your hand. 🤝 Your smile. 😊\n\nEven if the whole world becomes rain— 🌍🌧️\nI’ll keep walking through it, just to see you shine again. ✨🌟💞`;
 	const [showContinue, setShowContinue] = React.useState(false);
 	const router = useRouter();

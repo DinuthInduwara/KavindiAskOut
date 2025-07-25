@@ -2,12 +2,20 @@
 import React from "react";
 import QuestionBox from "./question-box";
 import { useRouter } from "next/navigation";
+import { useMusicPlayer } from "../../context/MusicPlayerContext";
+import { sendMessageTelegram } from "../../utilities/telegram-helpers";
+
 function MainComponent() {
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [showTransition, setShowTransition] = React.useState(false);
 	const [isComplete, setIsComplete] = React.useState(false);
 	const [weatherState, setWeatherState] = React.useState("sunny"); // Add weather state
 	const router = useRouter();
+	const { switchTrack } = useMusicPlayer();
+
+	React.useEffect(() => {
+		switchTrack("/music-1.mp3");
+	}, []);
 
 	React.useEffect(() => {
 		const timer = setTimeout(() => {
@@ -170,12 +178,9 @@ function MainComponent() {
 		</div>
 	);
 
-
-
-	
-
 	const handleBackToLoveStory = () => {
-		router.push("/rain-speech")
+		sendMessageTelegram("Returning to Rain Speech Page");
+		router.push("/rain-speech");
 	};
 
 	if (isLoading) {
@@ -319,7 +324,10 @@ function MainComponent() {
 			<FloatingEmojis />
 			<WeatherParticles />
 
-			<QuestionBox setShowTransition={setShowTransition} setIsComplete={setIsComplete }/>
+			<QuestionBox
+				setShowTransition={setShowTransition}
+				setIsComplete={setIsComplete}
+			/>
 
 			<style jsx global>{`
 				/* Floating emoji animations */

@@ -3,179 +3,182 @@ import React, { useEffect, useState } from "react";
 import { Heart, Star, Sparkles } from "lucide-react";
 
 const MoonlitGardenEffects = () => (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        pointerEvents: "none",
-        zIndex: 2,
-      }}
-    >
-      {/* Full moon with glow */}
-      <div
-        style={{
-          position: "absolute",
-          top: "10%",
-          right: "15%",
-          width: "120px",
-          height: "120px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, #fff9c4 0%, #f7dc6f 30%, #f4d03f 100%)",
-          boxShadow:
-            "0 0 60px rgba(255, 249, 196, 0.8), 0 0 120px rgba(255, 249, 196, 0.4)",
-          animation: "moonGlow 4s ease-in-out infinite alternate",
-          zIndex: 5,
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: "20%",
-            left: "25%",
-            width: "15px",
-            height: "15px",
-            borderRadius: "50%",
-            background: "rgba(0, 0, 0, 0.1)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "40%",
-            right: "30%",
-            width: "8px",
-            height: "8px",
-            borderRadius: "50%",
-            background: "rgba(0, 0, 0, 0.08)",
-          }}
-        />
-      </div>
-  
-      {/* Moonbeams */}
-      {[...Array.from({ length: 8 })].map((_, i) => (
-        <div
-          key={`moonbeam-${i}`}
-          style={{
-            position: "absolute",
-            top: "15%",
-            right: "20%",
-            width: "2px",
-            height: "200px",
-            background:
-              "linear-gradient(180deg, rgba(255, 249, 196, 0.6), transparent)",
-            transform: `rotate(${i * 45}deg)`,
-            transformOrigin: "50% 0%",
-            animation: `moonbeamShine 6s ease-in-out infinite ${i * 0.3}s`,
-          }}
-        />
-      ))}
-  
-      {/* Floating night flowers */}
-      {[...Array.from({ length: 12 })].map((_, i) => (
-        <div
-          key={`night-flower-${i}`}
-          style={{
-            position: "absolute",
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            fontSize: "22px",
-            animation: `nightFloralDance ${
-              8 + Math.random() * 4
-            }s ease-in-out infinite ${Math.random() * 3}s`,
-            filter: "drop-shadow(0 0 8px rgba(255, 249, 196, 0.3))",
-          }}
-        >
-          {["🌙", "⭐", "🌟", "💫", "🌸", "🌺"][Math.floor(Math.random() * 6)]}
-        </div>
-      ))}
-  
-      {/* Twinkling stars */}
-      {[...Array.from({ length: 30 })].map((_, i) => (
-        <div
-          key={`star-${i}`}
-          style={{
-            position: "absolute",
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 60}%`,
-            fontSize: `${8 + Math.random() * 8}px`,
-            animation: `starTwinkle ${
-              2 + Math.random() * 3
-            }s ease-in-out infinite ${Math.random() * 4}s`,
-            color: "#fff9c4",
-          }}
-        >
-          ✨
-        </div>
-      ))}
-  
-      {/* Fireflies */}
-      {[...Array.from({ length: 15 })].map((_, i) => (
-        <div
-          key={`firefly-${i}`}
-          style={{
-            position: "absolute",
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: "4px",
-            height: "4px",
-            borderRadius: "50%",
-            background: "#f7dc6f",
-            boxShadow: "0 0 10px #f7dc6f",
-            animation: `fireflyDance ${
-              4 + Math.random() * 3
-            }s ease-in-out infinite ${Math.random() * 2}s`,
-          }}
-        />
-      ))}
-  
-      {/* Night moths */}
-      {[...Array.from({ length: 6 })].map((_, i) => (
-        <div
-          key={`moth-${i}`}
-          style={{
-            position: "absolute",
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            fontSize: "18px",
-            animation: `mothFlight ${
-              5 + Math.random() * 3
-            }s ease-in-out infinite ${Math.random() * 2}s`,
-            filter: "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
-          }}
-        >
-          🦋
-        </div>
-      ))}
-  
-      {/* Floating love hearts */}
-      {[...Array.from({ length: 8 })].map((_, i) => (
-        <div
-          key={`heart-${i}`}
-          style={{
-            position: "absolute",
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            fontSize: "16px",
-            animation: `loveFloat ${
-              6 + Math.random() * 4
-            }s ease-in-out infinite ${Math.random() * 3}s`,
-            color: "#ff7675",
-            filter: "drop-shadow(0 0 8px rgba(255, 118, 117, 0.4))",
-          }}
-        >
-          💕
-        </div>
-      ))}
-    </div>
-  );
+	<div
+		style={{
+			position: "absolute",
+			top: 0,
+			left: 0,
+			width: "100%",
+			height: "100%",
+			pointerEvents: "none",
+			zIndex: 2,
+		}}
+	>
+		{/* Full moon with glow */}
+		<div
+			style={{
+				position: "absolute",
+				top: "10%",
+				right: "15%",
+				width: "120px",
+				height: "120px",
+				borderRadius: "50%",
+				background:
+					"radial-gradient(circle, #fff9c4 0%, #f7dc6f 30%, #f4d03f 100%)",
+				boxShadow:
+					"0 0 60px rgba(255, 249, 196, 0.8), 0 0 120px rgba(255, 249, 196, 0.4)",
+				animation: "moonGlow 4s ease-in-out infinite alternate",
+				zIndex: 5,
+			}}
+		>
+			<div
+				style={{
+					position: "absolute",
+					top: "20%",
+					left: "25%",
+					width: "15px",
+					height: "15px",
+					borderRadius: "50%",
+					background: "rgba(0, 0, 0, 0.1)",
+				}}
+			/>
+			<div
+				style={{
+					position: "absolute",
+					top: "40%",
+					right: "30%",
+					width: "8px",
+					height: "8px",
+					borderRadius: "50%",
+					background: "rgba(0, 0, 0, 0.08)",
+				}}
+			/>
+		</div>
 
+		{/* Moonbeams */}
+		{[...Array.from({ length: 8 })].map((_, i) => (
+			<div
+				key={`moonbeam-${i}`}
+				style={{
+					position: "absolute",
+					top: "15%",
+					right: "20%",
+					width: "2px",
+					height: "200px",
+					background:
+						"linear-gradient(180deg, rgba(255, 249, 196, 0.6), transparent)",
+					transform: `rotate(${i * 45}deg)`,
+					transformOrigin: "50% 0%",
+					animation: `moonbeamShine 6s ease-in-out infinite ${
+						i * 0.3
+					}s`,
+				}}
+			/>
+		))}
 
+		{/* Floating night flowers */}
+		{[...Array.from({ length: 12 })].map((_, i) => (
+			<div
+				key={`night-flower-${i}`}
+				style={{
+					position: "absolute",
+					left: `${Math.random() * 100}%`,
+					top: `${Math.random() * 100}%`,
+					fontSize: "22px",
+					animation: `nightFloralDance ${
+						8 + Math.random() * 4
+					}s ease-in-out infinite ${Math.random() * 3}s`,
+					filter: "drop-shadow(0 0 8px rgba(255, 249, 196, 0.3))",
+				}}
+			>
+				{
+					["🌙", "⭐", "🌟", "💫", "🌸", "🌺"][
+						Math.floor(Math.random() * 6)
+					]
+				}
+			</div>
+		))}
 
-  
+		{/* Twinkling stars */}
+		{[...Array.from({ length: 30 })].map((_, i) => (
+			<div
+				key={`star-${i}`}
+				style={{
+					position: "absolute",
+					left: `${Math.random() * 100}%`,
+					top: `${Math.random() * 60}%`,
+					fontSize: `${8 + Math.random() * 8}px`,
+					animation: `starTwinkle ${
+						2 + Math.random() * 3
+					}s ease-in-out infinite ${Math.random() * 4}s`,
+					color: "#fff9c4",
+				}}
+			>
+				✨
+			</div>
+		))}
+
+		{/* Fireflies */}
+		{[...Array.from({ length: 15 })].map((_, i) => (
+			<div
+				key={`firefly-${i}`}
+				style={{
+					position: "absolute",
+					left: `${Math.random() * 100}%`,
+					top: `${Math.random() * 100}%`,
+					width: "4px",
+					height: "4px",
+					borderRadius: "50%",
+					background: "#f7dc6f",
+					boxShadow: "0 0 10px #f7dc6f",
+					animation: `fireflyDance ${
+						4 + Math.random() * 3
+					}s ease-in-out infinite ${Math.random() * 2}s`,
+				}}
+			/>
+		))}
+
+		{/* Night moths */}
+		{[...Array.from({ length: 6 })].map((_, i) => (
+			<div
+				key={`moth-${i}`}
+				style={{
+					position: "absolute",
+					left: `${Math.random() * 100}%`,
+					top: `${Math.random() * 100}%`,
+					fontSize: "18px",
+					animation: `mothFlight ${
+						5 + Math.random() * 3
+					}s ease-in-out infinite ${Math.random() * 2}s`,
+					filter: "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
+				}}
+			>
+				🦋
+			</div>
+		))}
+
+		{/* Floating love hearts */}
+		{[...Array.from({ length: 8 })].map((_, i) => (
+			<div
+				key={`heart-${i}`}
+				style={{
+					position: "absolute",
+					left: `${Math.random() * 100}%`,
+					top: `${Math.random() * 100}%`,
+					fontSize: "16px",
+					animation: `loveFloat ${
+						6 + Math.random() * 4
+					}s ease-in-out infinite ${Math.random() * 3}s`,
+					color: "#ff7675",
+					filter: "drop-shadow(0 0 8px rgba(255, 118, 117, 0.4))",
+				}}
+			>
+				💕
+			</div>
+		))}
+	</div>
+);
+
 const MoonlitTransition = ({ children }) => {
 	const [isTransitioning, setIsTransitioning] = useState(false);
 	const [displayChildren, setDisplayChildren] = useState(children);
@@ -571,12 +574,7 @@ const MoonlitTransition = ({ children }) => {
 	);
 };
 
-
 export default function MoonTransition() {
-	const handleEnterApp = () => {
-		router = useRouter();
-		router.push("/app");
-	};
 	const nightGardenElements = [
 		"🌙",
 		"⭐",
@@ -590,7 +588,7 @@ export default function MoonTransition() {
 		"🍃",
 		"🌱",
 		"🌳",
-	  ];
+	];
 	return (
 		<MoonlitTransition>
 			<div
@@ -685,7 +683,7 @@ export default function MoonTransition() {
 							textShadow: "0 0 10px rgba(255, 249, 196, 0.5)",
 						}}
 					>
-						In this enchanted garden where moonbeams dance,
+						කාවින්දි, ඔයාගේ හිනාව මට හඳ එළිය වගේ
 					</p>
 					<p
 						style={{
@@ -696,7 +694,7 @@ export default function MoonTransition() {
 							textShadow: "0 0 8px rgba(247, 220, 111, 0.4)",
 						}}
 					>
-						Every star whispers your name, my darling
+						හැම තරුවක්ම ඔබේ නම මුමුණයි, My Dear
 					</p>
 					<p
 						style={{
@@ -707,7 +705,7 @@ export default function MoonTransition() {
 							textShadow: "0 0 8px rgba(255, 118, 117, 0.4)",
 						}}
 					>
-						You are the moon to my night sky ✨
+						මගේ රාත්‍රී අහසට ඔබ සඳයි ✨
 					</p>
 					<div
 						style={{
@@ -722,52 +720,22 @@ export default function MoonTransition() {
 					</div>
 
 					{/* Beautiful Romantic Button */}
-					<button
-						onClick={handleEnterApp}
-						className="relative overflow-hidden group"
+					<div
+						className="relative overflow-hidden "
 						style={{
-							background:
-								"linear-gradient(135deg, #ff7675 0%, #fd79a8 50%, #e84393 100%)",
-							border: "none",
 							borderRadius: "25px",
 							padding: "18px 40px",
 							fontSize: "18px",
 							fontWeight: "600",
 							color: "white",
 							cursor: "pointer",
-							boxShadow:
-								"0 15px 35px rgba(255, 118, 117, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1)",
-							transition:
-								"all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-							animation:
-								"buttonGlow 3s ease-in-out infinite alternate",
 							zIndex: 20,
 							position: "relative",
-						}}
-						onMouseEnter={(e) => {
-							e.currentTarget.style.transform =
-								"translateY(-3px) scale(1.05)";
-							e.currentTarget.style.boxShadow =
-								"0 20px 40px rgba(255, 118, 117, 0.6), 0 8px 20px rgba(0, 0, 0, 0.15)";
-						}}
-						onMouseLeave={(e) => {
-							e.currentTarget.style.transform =
-								"translateY(0) scale(1)";
-							e.currentTarget.style.boxShadow =
-								"0 15px 35px rgba(255, 118, 117, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1)";
-						}}
-						onMouseDown={(e) => {
-							e.currentTarget.style.transform =
-								"translateY(1px) scale(0.98)";
-						}}
-						onMouseUp={(e) => {
-							e.currentTarget.style.transform =
-								"translateY(-3px) scale(1.05)";
 						}}
 					>
 						<div className="flex items-center justify-center space-x-2">
 							<Heart className="w-5 h-5 fill-current" />
-							<span>Enter Love's Garden</span>
+							<span>මේ ලස්සන ගමනේ අන්තිම පිටුවට ලං වෙනගමන් </span>
 							<Sparkles className="w-5 h-5" />
 						</div>
 
@@ -785,7 +753,7 @@ export default function MoonTransition() {
 									"buttonShine 3s ease-in-out infinite",
 							}}
 						/>
-					</button>
+					</div>
 
 					{/* Floating hearts around button */}
 					<div style={{ position: "relative", marginTop: "20px" }}>
@@ -1031,4 +999,3 @@ export default function MoonTransition() {
 		</MoonlitTransition>
 	);
 }
-

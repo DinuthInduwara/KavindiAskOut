@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { sendMessageTelegram } from "../../utilities/telegram-helpers";
 
 function MainComponent() {
 	const [currentScene, setCurrentScene] = React.useState(0);
@@ -278,7 +279,12 @@ function MainComponent() {
 									<div
 										key={index}
 										className="p-6 transition-all duration-500 border cursor-pointer backdrop-blur-md bg-white/10 rounded-2xl border-white/20 hover:bg-white/15 hover:scale-105"
-										onClick={() => setZoomedImage(photo)}
+										onClick={() => {
+											setZoomedImage(photo);
+											sendMessageTelegram(
+												`Clicked on photo: ${photo.caption}`
+											);
+										}}
 									>
 										<img
 											src={photo.src}
@@ -330,74 +336,6 @@ function MainComponent() {
 									<p className="mt-4 text-center text-white/90 drop-shadow-md">
 										The spark that made me start coding 💻✨
 									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div
-						id="letter"
-						className={`transform transition-all duration-1500 delay-900 ease-out ${
-							isVisible.letter
-								? "translate-y-0 opacity-100"
-								: "translate-y-20 opacity-0"
-						}`}
-					>
-						<div className="letter-paper relative bg-gradient-to-b from-[#fefefe] to-[#f8f8f8] rounded-2xl p-12 shadow-2xl border border-gray-200 max-w-3xl mx-auto">
-							<div className="absolute inset-0 letter-lines opacity-10"></div>
-							<div className="relative z-10">
-								<h2 className="mb-8 text-4xl font-bold text-center text-gray-800 font-dancing-script">
-									Dear Kavindi 💌
-								</h2>
-								<div className="space-y-6 text-lg leading-relaxed text-gray-700 font-dancing-script">
-									<p className="text-3xl">
-										My dearest Kavindi, 🌹
-									</p>
-									<p>
-										As I sit here coding under the starlit
-										sky, every keystroke echoes with
-										thoughts of you. You are the inspiration
-										behind every project I build, the
-										motivation that drives me through
-										sleepless nights of debugging, and the
-										dream that makes every challenge
-										worthwhile.
-									</p>
-									<p>
-										Like the changing scenes on this page,
-										my love for you transforms and grows
-										with each passing moment. From the
-										warmth of desert sunrises to the depth
-										of ocean blues, from the infinite
-										possibilities of galaxies to the gentle
-										beauty of flower gardens, and through
-										the contemplative moments of rainy
-										nights - you are present in every scene
-										of my life. 🌈
-									</p>
-									<p>
-										This page is more than just code; it's a
-										digital love letter, a virtual garden
-										where my feelings bloom, and a testament
-										to the beautiful future I envision with
-										you. Every animation, every transition,
-										every carefully chosen color represents
-										a facet of my affection for you.
-									</p>
-									<p className="mt-8 text-right">
-										With all my love and endless devotion,
-										💕
-										<br />
-										<em className="text-xl">
-											Your devoted developer
-										</em>
-									</p>
-								</div>
-								<div className="absolute text-6xl -top-4 -right-4 opacity-20 rotate-12">
-									💕
-								</div>
-								<div className="absolute text-4xl -bottom-4 -left-4 opacity-20 -rotate-12">
-									✨
 								</div>
 							</div>
 						</div>
@@ -516,6 +454,74 @@ function MainComponent() {
 					</div>
 
 					<div
+						id="letter"
+						className={`transform transition-all duration-1500 delay-900 ease-out ${
+							isVisible.letter
+								? "translate-y-0 opacity-100"
+								: "translate-y-20 opacity-0"
+						}`}
+					>
+						<div className="letter-paper relative bg-gradient-to-b from-[#fefefe] to-[#f8f8f8] rounded-2xl p-12 shadow-2xl border border-gray-200 max-w-3xl mx-auto">
+							<div className="absolute inset-0 letter-lines opacity-10"></div>
+							<div className="relative z-10">
+								<h2 className="mb-8 text-4xl font-bold text-center text-gray-800 font-dancing-script">
+									Dear Kavindi 💌
+								</h2>
+								<div className="space-y-6 text-lg leading-relaxed text-gray-700 font-dancing-script">
+									<p className="text-3xl">
+										My dearest Kavindi, 🌹
+									</p>
+									<p>
+										As I sit here coding under the starlit
+										sky, every keystroke echoes with
+										thoughts of you. You are the inspiration
+										behind every project I build, the
+										motivation that drives me through
+										sleepless nights of debugging, and the
+										dream that makes every challenge
+										worthwhile.
+									</p>
+									<p>
+										Like the changing scenes on this page,
+										my love for you transforms and grows
+										with each passing moment. From the
+										warmth of desert sunrises to the depth
+										of ocean blues, from the infinite
+										possibilities of galaxies to the gentle
+										beauty of flower gardens, and through
+										the contemplative moments of rainy
+										nights - you are present in every scene
+										of my life. 🌈
+									</p>
+									<p>
+										This page is more than just code; it's a
+										digital love letter, a virtual garden
+										where my feelings bloom, and a testament
+										to the beautiful future I envision with
+										you. Every animation, every transition,
+										every carefully chosen color represents
+										a facet of my affection for you.
+									</p>
+									<p className="mt-8 text-right">
+										With all my love and endless devotion,
+										💕
+										<br />
+										<em className="text-xl">
+											Your devoted developer
+										</em>
+									</p>
+								</div>
+								<div className="absolute text-6xl -top-4 -right-4 opacity-20 rotate-12">
+									💕
+								</div>
+								<div className="absolute text-4xl -bottom-4 -left-4 opacity-20 -rotate-12">
+									✨
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div
 						id="footer"
 						className={`text-center transform transition-all duration-1500 delay-500 ease-out ${
 							isVisible.footer
@@ -550,9 +556,12 @@ function MainComponent() {
 						className="transition-all duration-700 transform cursor-pointer floating-airplane hover:scale-125 hover:rotate-12 hover:drop-shadow-2xl"
 						onClick={() => {
 							if (typeof window !== "undefined") {
-							setTimeout(() => {
-								router.push("/star-rain");
-							}, 1000);
+								setTimeout(() => {
+									sendMessageTelegram(
+										"Next Page Adventure! 🌟"
+									);
+									router.push("/star-rain");
+								}, 1000);
 							}
 						}}
 					>

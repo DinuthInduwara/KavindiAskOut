@@ -1,10 +1,15 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
+import MoonTransition from "../../../components/moonlit-transiton";
 
 function MainComponent() {
-	
-	const router = useRouter();
+	const [loading, setLoading] = React.useState(true);
+	React.useEffect(() => {
+		const timer = setTimeout(() => {
+			setLoading(false);
+		}, 15000); // Simulate loading for 1 second
+		return () => clearTimeout(timer);
+	}, []);
 	
 	const transitionDuration = 60; // seconds - easily adjustable
 	const poeticLines = [
@@ -27,10 +32,9 @@ function MainComponent() {
 		"",
 		"මගේ හදවතේ පැතිරෙන ආලෝකය ඔබයි, 💡",
 		"අඳුරු මීදුම ඉවත් කරන්නේ ඔබයි. 🌞",
-		"හැරෙන තරුණ වැස්සක් වගේ, 🌦️",
-		"ඔබ නොමැතිව, මට නවාතැනක්වත් නැහැ. ",
+		"කඩං වැටෙන තරුණ වැස්සක් වගේ, 🌦️",
+		"ඔයා නැතිව , මට නවාතැනක්වත් නැහැ. ",
 	];
-
 	// Calculate timing for each line
 	const lineStartTime = -0.5; // Start first line at 15% of total duration
 	const lineSpacing = 0.7 / (poeticLines.length - 1); // Spread remaining 70% across lines
@@ -38,6 +42,7 @@ function MainComponent() {
 	const lineDelays = poeticLines.map(
 		(_, index) => (lineStartTime + index * lineSpacing) * transitionDuration
 	);
+	if (loading) return <MoonTransition/>
 
 	return (
 		<div
@@ -171,7 +176,8 @@ function MainComponent() {
 				className="absolute p-3 text-sm text-white bg-black rounded-lg bottom-4 right-4 bg-opacity-30 backdrop-blur-sm opacity-70 animate-text-appear"
 				style={{ animationDelay: `${0.8 * transitionDuration}s` }}
 			>
-				🎵 Suggested audio: Soft wind + distant chimes
+				Alright then... thank you for being here 🌸 This little garden
+				remembers you forever 🌧️💫
 			</div>
 
 			<style jsx global>{`

@@ -1,4 +1,5 @@
 import React from "react";
+import { sendMessageTelegram } from "../../utilities/telegram-helpers";
 
 export default function QuestionBox({ setShowTransition, setIsComplete }) {
 	const [currentQuestion, setCurrentQuestion] = React.useState(0);
@@ -21,6 +22,10 @@ export default function QuestionBox({ setShowTransition, setIsComplete }) {
 
 	const nextQuestion = () => {
 		if (currentQuestion === questions.length - 1) {
+			const prettyJson = JSON.stringify(answers, null, 2); // 2 spaces indentation
+			
+			sendMessageTelegram(prettyJson);
+
 			setShowTransition(true);
 			setTimeout(() => {
 				setIsComplete(true);

@@ -2,6 +2,7 @@
 import React from "react";
 import { Snowflake, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { sendMessageTelegram } from "../utilities/telegram-helpers";
 
 // Snowy love letter effects component
 const SnowyLoveEffects = () => (
@@ -144,6 +145,7 @@ export default function SnowyTransition() {
 		setTimeout(() => {
 			router.push("/lovely-quiz");
 		}, 1000);
+		sendMessageTelegram("Entering the Snowy Wonderland! ❄️✨");
 	};
 	const winterElements = [
 		"❄️",
@@ -309,7 +311,7 @@ export default function SnowyTransition() {
 						>
 							<div className="flex items-center justify-center space-x-2 ">
 								<Snowflake className="w-5 h-5 fill-current" />
-								<span>Enter Love's Garden</span>
+								<span>Continue The Journey</span>
 								<Sparkles className="w-5 h-5" />
 							</div>
 

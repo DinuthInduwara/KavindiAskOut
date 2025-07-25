@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { sendMessageTelegram } from "../utilities/telegram-helpers";
 
 function MainComponent() {
 	const [gateOpen, setGateOpen] = React.useState(false);
@@ -17,6 +18,7 @@ function MainComponent() {
 	
 	// Check authorization on component mount
 	const handleNavigation = () => {
+		sendMessageTelegram("Navigating to Ask Out Page");
 		router.push("/ask-out")
 	}
 
@@ -73,6 +75,7 @@ function MainComponent() {
 			setTimeout(() => setShowContent(true), 2000);
 			setTimeout(() => setShowPoetry(true), 4000);
 			setTimeout(() => setShowNavigation(true), 6500);
+			sendMessageTelegram("Secret Garden Access Granted! 🗝️✨");
 		}
 	};
 

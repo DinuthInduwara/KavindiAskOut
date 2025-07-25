@@ -3,11 +3,8 @@ import React from "react";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
 import { motion, AnimatePresence } from "framer-motion";
 
-
-
-
 export default function GlobalMusicPlayer() {
-	const { isPlaying, setIsPlaying, audioRef } = useMusicPlayer();
+	const { isPlaying, setIsPlaying, audioRef, currentSrc } = useMusicPlayer();
 	const toggleMusic = () => {
 		if (isPlaying) {
 			audioRef.current.pause();
@@ -57,8 +54,8 @@ export default function GlobalMusicPlayer() {
 
 			{/* Audio element */}
 			<audio ref={audioRef} loop preload="auto">
-				<source src="/music.mp3" type="audio/wav" />
-				<source src="/music.mp3" type="audio/mpeg" />
+				<source src={currentSrc} type="audio/wav" />
+				<source src={currentSrc} type="audio/mpeg" />
 			</audio>
 		</motion.div>
 	);
