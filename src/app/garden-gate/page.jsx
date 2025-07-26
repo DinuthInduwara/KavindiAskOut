@@ -2,8 +2,7 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import WelcomeGarden from "../../components/welcome-garden"; // Import the welcome garden component
-import {sendMessageTelegram} from "../../utilities/telegram-helpers"
-
+import { sendMessageTelegram } from "../../utilities/telegram-helpers";
 
 const CloudyTransition = () => (
 	<div
@@ -93,6 +92,7 @@ function MainComponent() {
 	const [wrongAttempts, setWrongAttempts] = React.useState(0);
 	const [isShaking, setIsShaking] = React.useState(false);
 	const [showSuccess, setShowSuccess] = React.useState(false);
+	const clouds = React.useMemo(() => <CloudyTransition />, []);
 
 	const router = useRouter(); // Use Next.js router for navigation
 	const correctPassword = process.env.NEXT_PUBLIC_PASSWORD; // Secret password only Kavindi knows
@@ -289,7 +289,7 @@ function MainComponent() {
 						</div>
 					)
 				)}
-				<CloudyTransition />;{/* Garden creatures reactions */}
+				{clouds};{/* Garden creatures reactions */}
 				{isWrong && (
 					<>
 						<div
