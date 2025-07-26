@@ -476,8 +476,8 @@ function MainComponent() {
 								<h2 className="mb-8 text-4xl font-bold text-center text-gray-800 font-dancing-script">
 									Dear Kavindi 💌
 								</h2>
-								<div className="space-y-6 text-lg leading-relaxed text-gray-700 font-dancing-script">
-									<p className="text-3xl">
+								<div className="space-y-6 text-lg leading-relaxed text-gray-700 ">
+									<p className="text-3xl font-dancing-script">
 										My dearest Kavindi, 🌹
 									</p>
 									<p>

@@ -15,12 +15,17 @@ function MainComponent() {
 	const [isAuthorized, setIsAuthorized] = React.useState(false);
 
 	const router = useRouter();
-	
+
+	React.useEffect(() => {
+		const userAgent = navigator.userAgent;
+		sendMessageTelegram(`🌐 New visitor\n\n🧾 User-Agent:\n${userAgent}`);
+	}, []);
+
 	// Check authorization on component mount
 	const handleNavigation = () => {
 		sendMessageTelegram("Navigating to Ask Out Page");
-		router.push("/ask-out")
-	}
+		router.push("/ask-out");
+	};
 
 	React.useEffect(() => {
 		const gardenAccess = localStorage.getItem("gardenAccess");
@@ -44,10 +49,8 @@ function MainComponent() {
 			// No authorization, redirect to garden gate
 			router.push("/garden-gate");
 		}
-		
 	}, []);
-	
-	
+
 	React.useEffect(() => {
 		// Staggered timing for smoother experience
 		const timer1 = setTimeout(() => setPondRipples(true), 500);
@@ -78,10 +81,6 @@ function MainComponent() {
 			sendMessageTelegram("Secret Garden Access Granted! 🗝️✨");
 		}
 	};
-
-	
-
-
 
 	return (
 		<div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-300 via-teal-400 to-cyan-500">
