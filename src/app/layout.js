@@ -8,7 +8,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
 	title: "For Kavindi Manika ❤️",
-	description: "A beautifully crafted tribute to Kavindi – a girl whose smile lights up the skies. This heartfelt website is filled with memories, poetic moments, and dreams written in pixels. Explore the magic woven just for her",
+	icons: {
+		icon: "/favicon.png",
+		apple: "/favicon.png",
+	},
+	description:
+		"A beautifully crafted tribute to Kavindi – a girl whose smile lights up the skies. This heartfelt website is filled with memories, poetic moments, and dreams written in pixels. Explore the magic woven just for her",
 };
 
 export default function RootLayout({ children }) {
