@@ -337,13 +337,13 @@ function MainComponent() {
 								<div className="p-6 transition-all duration-500 border backdrop-blur-md bg-white/10 rounded-2xl border-white/20 hover:bg-white/15">
 									<iframe
 										className="w-full h-64 shadow-lg rounded-xl"
-										src="hhttps://www.youtube.com/embed/roPiy2JydwA?si=NDrmjbV2t79bISZ8"
+										src="https://www.youtube.com/embed/roPiy2JydwA?si=NDrmjbV2t79bISZ8"
 										title="The song that makes me melt 🫠✨"
 										frameBorder="0"
 										allowFullScreen
 									></iframe>
 									<p className="mt-4 text-center text-white/90 drop-shadow-md">
-										The spark that made me start coding 💻✨
+										The song that makes me melt 🫠✨{" "}
 									</p>
 								</div>
 							</div>
