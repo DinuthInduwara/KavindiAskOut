@@ -431,7 +431,12 @@ function MainComponent() {
 										style={{
 											animationDelay: `${index * 0.1}s`,
 										}}
-										onClick={() => setZoomedImage(photo)}
+										onClick={() => {
+											setZoomedImage(photo);
+											sendMessageTelegram(
+												`Clicked on photo: ${photo.caption}`
+											);
+										}}
 									>
 										<div className="relative overflow-hidden rounded-xl">
 											<img
