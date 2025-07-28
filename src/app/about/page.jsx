@@ -337,8 +337,8 @@ function MainComponent() {
 								<div className="p-6 transition-all duration-500 border backdrop-blur-md bg-white/10 rounded-2xl border-white/20 hover:bg-white/15">
 									<iframe
 										className="w-full h-64 shadow-lg rounded-xl"
-										src="https://www.youtube.com/embed/KMU8_NWefZI?si=jHi74rSuO5QkE0OH"
-										title="The spark that made me doing coding 💻✨"
+										src="hhttps://www.youtube.com/embed/roPiy2JydwA?si=NDrmjbV2t79bISZ8"
+										title="The song that makes me melt 🫠✨"
 										frameBorder="0"
 										allowFullScreen
 									></iframe>

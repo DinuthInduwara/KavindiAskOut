@@ -59,7 +59,7 @@ const MoonlitGardenEffects = () => (
 		</div>
 
 		{/* Moonbeams */}
-		{[...Array.from({ length: 8 })].map((_, i) => (
+		{[...Array.from({ length: 10 })].map((_, i) => (
 			<div
 				key={`moonbeam-${i}`}
 				style={{
@@ -80,7 +80,7 @@ const MoonlitGardenEffects = () => (
 		))}
 
 		{/* Floating night flowers */}
-		{[...Array.from({ length: 12 })].map((_, i) => (
+		{[...Array.from({ length: 15 })].map((_, i) => (
 			<div
 				key={`night-flower-${i}`}
 				style={{
@@ -122,7 +122,7 @@ const MoonlitGardenEffects = () => (
 		))}
 
 		{/* Fireflies */}
-		{[...Array.from({ length: 15 })].map((_, i) => (
+		{[...Array.from({ length: 20 })].map((_, i) => (
 			<div
 				key={`firefly-${i}`}
 				style={{
@@ -142,7 +142,7 @@ const MoonlitGardenEffects = () => (
 		))}
 
 		{/* Night moths */}
-		{[...Array.from({ length: 6 })].map((_, i) => (
+		{[...Array.from({ length: 8 })].map((_, i) => (
 			<div
 				key={`moth-${i}`}
 				style={{
@@ -190,7 +190,6 @@ function MainComponent() {
 	React.useEffect(() => {
 		switchTrack("/music-2.mp3");
 	}, []);
-
 
 	React.useEffect(() => {
 		const timer = setTimeout(() => {
@@ -290,7 +289,9 @@ function MainComponent() {
 	const handleNoClick = () => {
 		setNoClickCount((prev) => prev + 1);
 		setYesButtonSize((prev) => prev + 15);
-		sendMessageTelegram(`No Clicked: ${currentNoText} - Count: ${noClickCount + 1}`);
+		sendMessageTelegram(
+			`No Clicked: ${currentNoText} - Count: ${noClickCount + 1}`
+		);
 	};
 
 	const nightGardenElements = [
@@ -327,7 +328,7 @@ function MainComponent() {
 					<MoonlitGardenEffects />
 
 					{/* Night garden celebration elements */}
-					{[...Array.from({ length: 15 })].map((_, i) => (
+					{[...Array.from({ length: 20 })].map((_, i) => (
 						<div
 							key={i}
 							style={{

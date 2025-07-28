@@ -10,7 +10,11 @@ function MainComponent() {
 		}, 15000); // Simulate loading for 1 second
 		return () => clearTimeout(timer);
 	}, []);
-	
+
+	React.useEffect(() => {
+		document.title = "🫅The End of the journey ";
+	}, []);
+
 	const transitionDuration = 60; // seconds - easily adjustable
 	const poeticLines = [
 		"කවින්දි, නුඹ හිනැහෙද්දි, 😊",
@@ -42,7 +46,7 @@ function MainComponent() {
 	const lineDelays = poeticLines.map(
 		(_, index) => (lineStartTime + index * lineSpacing) * transitionDuration
 	);
-	if (loading) return <MoonTransition/>
+	if (loading) return <MoonTransition />;
 
 	return (
 		<div
