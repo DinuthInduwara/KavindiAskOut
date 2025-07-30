@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide system cursor completely */
+html,
+body,
+* {
+    cursor: none !important;
+}
+
+/* Optional: Show text selection cursor for text inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea {
+    cursor: none !important;
+}
+
+/* If you need text selection to work normally */
+input[type="text"]::selection,
+textarea::selection {
+    background: rgba(0, 120, 255, 0.2);
+}

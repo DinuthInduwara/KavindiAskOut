@@ -3,6 +3,7 @@ import "./globals.css";
 import { MusicPlayerProvider } from "../context/MusicPlayerContext";
 import GlobalMusicPlayer from "../components/global-music-player";
 import MessageBox from "../components/message-card";
+import { ButterflyProvider } from "../context/ButterflyContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,12 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={inter.className}>
 				<MusicPlayerProvider>
-					<MessageBox title="I have something to say 🤗" />
-					<MessageBox message="HI, Im Going TO Play Some Music, Is That Ok ?" />
-					<GlobalMusicPlayer />
-					{children}
+					<ButterflyProvider>
+						<MessageBox title="I have something to say 🤗" />
+						<MessageBox message="HI, Im Going TO Play Some Music, Is That Ok ?" />
+						<GlobalMusicPlayer />
+						{children}
+					</ButterflyProvider>
 				</MusicPlayerProvider>
 			</body>
 		</html>

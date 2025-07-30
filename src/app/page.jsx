@@ -11,7 +11,6 @@ function MainComponent() {
 	const [keyClicked, setKeyClicked] = React.useState(false);
 	const [showPoetry, setShowPoetry] = React.useState(false);
 	const [showNavigation, setShowNavigation] = React.useState(false);
-	const [cursorPos, setCursorPos] = React.useState({ x: 0, y: 0 });
 	const [isAuthorized, setIsAuthorized] = React.useState(false);
 
 	const fetchUserData = async () => {
@@ -100,14 +99,7 @@ function MainComponent() {
 		};
 	}, []);
 
-	React.useEffect(() => {
-		const handleMouseMove = (e) => {
-			setCursorPos({ x: e.clientX, y: e.clientY });
-		};
 
-		window.addEventListener("mousemove", handleMouseMove);
-		return () => window.removeEventListener("mousemove", handleMouseMove);
-	}, []);
 
 	const handleKeyClick = () => {
 		if (!keyClicked) {
@@ -197,27 +189,7 @@ function MainComponent() {
 				></div>
 			</div>
 
-			{/* Cursor Following Butterflies */}
-			<div
-				className="absolute text-2xl pointer-events-none butterfly-follower cursor-butterfly"
-				style={{
-					left: `${cursorPos.x - 50}px`,
-					top: `${cursorPos.y - 50}px`,
-					transition: "all 2s ease-out",
-				}}
-			>
-				🦋
-			</div>
-			<div
-				className="absolute text-xl pointer-events-none butterfly-follower cursor-butterfly-2"
-				style={{
-					left: `${cursorPos.x - 80}px`,
-					top: `${cursorPos.y - 30}px`,
-					transition: "all 3s ease-out",
-				}}
-			>
-				🦋
-			</div>
+
 
 			{/* Falling Sakura Petals */}
 			<div className="absolute inset-0 pointer-events-none">
