@@ -125,8 +125,7 @@ function WelcomeGarden() {
 	const router = useRouter();
 	const handleEnterApp = () => {
 		setTimeout(() => {
-			
-			router.push("/");
+			router.push("/welcome-garden");
 		}, 1000); // Optional delay for effect
 	};
 	const gardenElements = [
