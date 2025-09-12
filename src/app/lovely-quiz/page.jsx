@@ -178,6 +178,11 @@ function MainComponent() {
 		</div>
 	);
 
+
+	React.useEffect(() => {
+		router.prefetch("/rain-speech");
+	}, [router]);
+
 	const handleBackToLoveStory = () => {
 		sendMessageTelegram("Returning to Rain Speech Page");
 		router.push("/rain-speech");

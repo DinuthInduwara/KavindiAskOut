@@ -1,7 +1,7 @@
 
 import { Heart, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
-
+import { useEffect } from "react";
 // Magical garden effects component
 
 const MagicalGardenEffects = () => (
@@ -24,9 +24,8 @@ const MagicalGardenEffects = () => (
 					position: "absolute",
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
-					animation: `butterflyDance ${
-						4 + Math.random() * 3
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `butterflyDance ${4 + Math.random() * 3
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 				}}
 			>
 				<div style={{ fontSize: "28px" }}>🦋</div>
@@ -56,9 +55,8 @@ const MagicalGardenEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "20px",
-					animation: `petalDrift ${
-						6 + Math.random() * 4
-					}s ease-in-out infinite ${Math.random() * 3}s`,
+					animation: `petalDrift ${6 + Math.random() * 4
+						}s ease-in-out infinite ${Math.random() * 3}s`,
 				}}
 			>
 				{["🌸", "🌺", "🌼", "🌻"][Math.floor(Math.random() * 4)]}
@@ -74,9 +72,8 @@ const MagicalGardenEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "12px",
-					animation: `twinkle ${
-						1 + Math.random() * 2
-					}s ease-in-out infinite ${Math.random() * 3}s`,
+					animation: `twinkle ${1 + Math.random() * 2
+						}s ease-in-out infinite ${Math.random() * 3}s`,
 				}}
 			>
 				✨
@@ -92,9 +89,8 @@ const MagicalGardenEffects = () => (
 					left: "-10%",
 					top: `${20 + Math.random() * 60}%`,
 					fontSize: "18px",
-					animation: `leafFloat ${
-						8 + Math.random() * 4
-					}s linear infinite ${i * 0.5}s`,
+					animation: `leafFloat ${8 + Math.random() * 4
+						}s linear infinite ${i * 0.5}s`,
 				}}
 			>
 				{["🍃", "🌿"][Math.floor(Math.random() * 2)]}
@@ -110,9 +106,8 @@ const MagicalGardenEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "20px",
-					animation: `beeBuzz ${
-						3 + Math.random() * 2
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `beeBuzz ${3 + Math.random() * 2
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 				}}
 			>
 				🐝
@@ -128,6 +123,9 @@ function WelcomeGarden() {
 			router.push("/welcome-garden");
 		}, 1000); // Optional delay for effect
 	};
+	useEffect(() => {
+		router.prefetch("/welcome-garden");
+	}, [router]);
 	const gardenElements = [
 		"🌸",
 		"🌺",
@@ -169,18 +167,17 @@ function WelcomeGarden() {
 							left: `${Math.random() * 100}%`,
 							top: `${Math.random() * 100}%`,
 							fontSize: `${Math.random() * 30 + 20}px`,
-							animation: `gardenCelebration ${
-								2 + Math.random() * 2
-							}s ease-in-out infinite`,
+							animation: `gardenCelebration ${2 + Math.random() * 2
+								}s ease-in-out infinite`,
 							animationDelay: `${Math.random() * 2}s`,
 							zIndex: 1,
 						}}
 					>
 						{
 							gardenElements[
-								Math.floor(
-									Math.random() * gardenElements.length
-								)
+							Math.floor(
+								Math.random() * gardenElements.length
+							)
 							]
 						}
 					</div>

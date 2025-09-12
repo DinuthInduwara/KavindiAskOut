@@ -26,6 +26,9 @@ function MainComponent() {
         sendMessageTelegram("Navigating to Ask Out Page");
         router.push("/ask-out");
     };
+    React.useEffect(() => {
+        router.prefetch("/ask-out");
+    }, [router]);
 
 
     React.useEffect(() => {

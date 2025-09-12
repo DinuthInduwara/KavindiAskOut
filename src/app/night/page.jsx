@@ -69,9 +69,8 @@ const NightEffects = () => (
 					left: `${Math.random() * 100}%`,
 					fontSize: "16px",
 					color: "#FFD700",
-					animation: `starTwinkle ${
-						2 + Math.random() * 3
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `starTwinkle ${2 + Math.random() * 3
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 				}}
 			>
 				✨
@@ -91,9 +90,8 @@ const NightEffects = () => (
 					background: "#E6E6FA",
 					borderRadius: "50%",
 					boxShadow: "0 0 8px rgba(230, 230, 250, 0.8)",
-					animation: `gentleGlow ${
-						3 + Math.random() * 2
-					}s ease-in-out infinite ${Math.random() * 1}s`,
+					animation: `gentleGlow ${3 + Math.random() * 2
+						}s ease-in-out infinite ${Math.random() * 1}s`,
 				}}
 			/>
 		))}
@@ -111,9 +109,8 @@ const NightEffects = () => (
 					background: "radial-gradient(circle, #ADFF2F, #32CD32)",
 					borderRadius: "50%",
 					boxShadow: "0 0 12px rgba(173, 255, 47, 0.8)",
-					animation: `fireflyFloat ${
-						4 + Math.random() * 3
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `fireflyFloat ${4 + Math.random() * 3
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 				}}
 			/>
 		))}
@@ -127,9 +124,8 @@ const NightEffects = () => (
 					left: `${20 + i * 30}%`,
 					top: `${25 + Math.random() * 15}%`,
 					fontSize: "32px",
-					animation: `owlHoot ${
-						5 + Math.random() * 2
-					}s ease-in-out infinite ${i * 1.5}s`,
+					animation: `owlHoot ${5 + Math.random() * 2
+						}s ease-in-out infinite ${i * 1.5}s`,
 				}}
 			>
 				🦉
@@ -147,9 +143,8 @@ const NightEffects = () => (
 					fontSize: `${25 + Math.random() * 15}px`,
 					opacity: 0.4,
 					filter: "brightness(0.7) contrast(1.2)",
-					animation: `nightCloudDrift ${
-						15 + Math.random() * 8
-					}s linear infinite ${i * 2}s`,
+					animation: `nightCloudDrift ${15 + Math.random() * 8
+						}s linear infinite ${i * 2}s`,
 				}}
 			>
 				☁️
@@ -165,9 +160,8 @@ const NightEffects = () => (
 					left: `${Math.random() * 80}%`,
 					bottom: `${15 + Math.random() * 20}%`,
 					fontSize: "24px",
-					animation: `sleepyBreathe ${
-						3 + Math.random() * 1
-					}s ease-in-out infinite ${Math.random() * 1}s`,
+					animation: `sleepyBreathe ${3 + Math.random() * 1
+						}s ease-in-out infinite ${Math.random() * 1}s`,
 				}}
 			>
 				{["🦔", "🐰", "🦝", "🐿️"][i]}
@@ -183,14 +177,13 @@ const NightEffects = () => (
 					left: `${Math.random() * 100}%`,
 					bottom: `${5 + Math.random() * 15}%`,
 					fontSize: "20px",
-					animation: `nightBloom ${
-						4 + Math.random() * 2
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `nightBloom ${4 + Math.random() * 2
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 				}}
 			>
 				{
 					["🌙", "🌸", "🌺", "💜", "🌷", "🌼"][
-						Math.floor(Math.random() * 6)
+					Math.floor(Math.random() * 6)
 					]
 				}
 			</div>
@@ -208,9 +201,8 @@ const NightEffects = () => (
 					height: "30px",
 					background: "rgba(230, 230, 250, 0.1)",
 					borderRadius: "50px",
-					animation: `mistFloat ${
-						6 + Math.random() * 3
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `mistFloat ${6 + Math.random() * 3
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 				}}
 			/>
 		))}
@@ -237,6 +229,13 @@ function MainComponent() {
 		"🌧️  Kavindi… do you know how I hate rain?  \n🌫️  Rain falls in this world, too.  \n☁️  If your heart is troubled, the skies will become cloudy.  \n💧  If you grieve, rain falls so terribly easily.  \n😔  Can you understand… the horrible feeling of being pelted by rain\nwhen you’re all alone in this solitary world?  🕊️  \n💪  If only to stop that rain, I shall lend you any strength, any power.  \n☀️  If you trust in me, I won’t let a single drop of rain fall from that sky.  \n❤️  Kavindi, trust me… you are not fighting alone.";
 	const router = useRouter();
 	const [hiddenButton, setHiddenButton] = React.useState(false);
+
+	React.useEffect(() => {
+		router.prefetch("/night/love-speech");
+	}, [router]);
+
+
+
 	return (
 		<>
 			<div

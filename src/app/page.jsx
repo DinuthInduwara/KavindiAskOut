@@ -141,6 +141,11 @@ function MainComponent() {
 	}, []);
 
 
+	React.useEffect(() => {
+		router.prefetch("/");
+	}, [router]);
+
+
 
 	const SunriseEffect = () => (
 		<div

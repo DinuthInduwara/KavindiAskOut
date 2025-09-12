@@ -27,9 +27,8 @@ const SnowyLoveEffects = () => (
 					top: `-10px`,
 					fontSize: `${8 + Math.random() * 12}px`,
 					color: "rgba(255, 255, 255, 0.8)",
-					animation: `snowFall ${
-						8 + Math.random() * 6
-					}s linear infinite ${Math.random() * 5}s`,
+					animation: `snowFall ${8 + Math.random() * 6
+						}s linear infinite ${Math.random() * 5}s`,
 					zIndex: 3,
 				}}
 			>
@@ -46,15 +45,14 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "18px",
-					animation: `loveLetterFloat ${
-						6 + Math.random() * 4
-					}s ease-in-out infinite ${Math.random() * 3}s`,
+					animation: `loveLetterFloat ${6 + Math.random() * 4
+						}s ease-in-out infinite ${Math.random() * 3}s`,
 					filter: "drop-shadow(0 0 8px rgba(255, 182, 193, 0.4))",
 				}}
 			>
 				{
 					["💌", "💕", "💖", "💝", "💗", "💘"][
-						Math.floor(Math.random() * 6)
+					Math.floor(Math.random() * 6)
 					]
 				}
 			</div>
@@ -69,9 +67,8 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "16px",
-					animation: `winterHeartDance ${
-						5 + Math.random() * 3
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `winterHeartDance ${5 + Math.random() * 3
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 					color: "#ffb6c1",
 					filter: "drop-shadow(0 0 6px rgba(255, 182, 193, 0.3))",
 				}}
@@ -89,9 +86,8 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: `${6 + Math.random() * 8}px`,
-					animation: `gentleSparkle ${
-						3 + Math.random() * 2
-					}s ease-in-out infinite ${Math.random() * 3}s`,
+					animation: `gentleSparkle ${3 + Math.random() * 2
+						}s ease-in-out infinite ${Math.random() * 3}s`,
 					color: "rgba(255, 255, 255, 0.9)",
 				}}
 			>
@@ -108,9 +104,8 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 60}%`,
 					fontSize: "20px",
-					animation: `loveBirdFly ${
-						8 + Math.random() * 4
-					}s ease-in-out infinite ${Math.random() * 3}s`,
+					animation: `loveBirdFly ${8 + Math.random() * 4
+						}s ease-in-out infinite ${Math.random() * 3}s`,
 					filter: "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
 				}}
 			>
@@ -127,9 +122,8 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "22px",
-					animation: `winterFlowerSway ${
-						7 + Math.random() * 3
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `winterFlowerSway ${7 + Math.random() * 3
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 					filter: "drop-shadow(0 0 8px rgba(255, 182, 193, 0.3))",
 				}}
 			>
@@ -147,6 +141,13 @@ export default function SnowyTransition() {
 		}, 1000);
 		sendMessageTelegram("Entering the Snowy Wonderland! ❄️✨");
 	};
+
+
+	React.useEffect(() => {
+		router.prefetch("/lovely-quiz");
+	}, [router]);
+
+
 	const winterElements = [
 		"❄️",
 		"❅",
@@ -188,9 +189,8 @@ export default function SnowyTransition() {
 							left: `${Math.random() * 100}%`,
 							top: `${Math.random() * 100}%`,
 							fontSize: `${Math.random() * 25 + 15}px`,
-							animation: `winterCelebration ${
-								4 + Math.random() * 3
-							}s ease-in-out infinite`,
+							animation: `winterCelebration ${4 + Math.random() * 3
+								}s ease-in-out infinite`,
 							animationDelay: `${Math.random() * 2}s`,
 							zIndex: 1,
 							filter: "drop-shadow(0 0 8px rgba(255, 255, 255, 0.4))",
@@ -198,9 +198,9 @@ export default function SnowyTransition() {
 					>
 						{
 							winterElements[
-								Math.floor(
-									Math.random() * winterElements.length
-								)
+							Math.floor(
+								Math.random() * winterElements.length
+							)
 							]
 						}
 					</div>

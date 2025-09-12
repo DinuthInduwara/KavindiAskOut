@@ -9,6 +9,10 @@ function MainComponent() {
 	const [zoomedImage, setZoomedImage] = React.useState(null);
 	const router = useRouter();
 
+	React.useEffect(() => {
+		router.prefetch("/star-rain");
+	}, [router]);
+
 	const scenes = [
 		{
 			name: "desert",

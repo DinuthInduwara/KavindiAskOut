@@ -31,6 +31,9 @@ function MainComponent() {
 			}, 2000);
 		}, 10000);
 	};
+	React.useEffect(() => {
+		router.prefetch("/night");
+	}, [router]);
 
 	return (
 		<div
