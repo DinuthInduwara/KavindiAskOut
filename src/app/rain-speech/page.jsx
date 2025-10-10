@@ -3,6 +3,10 @@ import React from "react";
 import RainText from "../../components/text-write-animation";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "../../context/MusicPlayerContext";
+import { Playfair_Display, Manrope } from "next/font/google";
+
+const playfair = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] });
+const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 const RainyEffects = () => (
 	<div
@@ -145,7 +149,7 @@ function RainTransition() {
 				style={{
 					minHeight: "100vh",
 					background:
-						"linear-gradient(135deg, #2C3E50 0%, #34495E 25%, #4A6741 50%, #5D6D7E 75%, #85929E 100%)",
+						"radial-gradient(1200px 600px at 70% 10%, rgba(59, 130, 246, 0.15), transparent 60%), linear-gradient(135deg, #0f172a 0%, #111827 35%, #1f2937 70%, #0b1220 100%)",
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
@@ -158,78 +162,128 @@ function RainTransition() {
 				<div
 					style={{
 						textAlign: "center",
-						background: "rgba(44, 62, 80, 0.85)",
-						borderRadius: "25px",
-						padding: "40px",
-						boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3)",
-						border: "2px solid rgba(135, 206, 235, 0.3)",
+						background: "rgba(17, 24, 39, 0.65)",
+						borderRadius: "28px",
+						padding: "48px 48px 36px 48px",
+						boxShadow: "0 25px 60px rgba(0, 0, 0, 0.45)",
+						border: "1px solid rgba(148, 163, 184, 0.25)",
 						zIndex: 10,
-						maxWidth: "600px",
-						animation:
-							"rainyGlow 3s ease-in-out infinite alternate",
-						backdropFilter: "blur(10px)",
+						maxWidth: "720px",
+						width: "min(92vw, 720px)",
+						animation: "rainyGlow 4s ease-in-out infinite alternate",
+						backdropFilter: "blur(14px)",
 					}}
 				>
 					<div
 						style={{
-							fontSize: "70px",
-							marginBottom: "20px",
-							animation: "thunderBounce 2s ease-in-out infinite",
+							fontSize: "56px",
+							marginBottom: "12px",
+							animation: "thunderBounce 2.6s ease-in-out infinite",
 						}}
 					>
 						⛈️🌧️⚡
 					</div>
 					<h1
+						className={playfair.className}
 						style={{
-							fontSize: "32px",
+							fontSize: "38px",
+							letterSpacing: "0.3px",
 							background:
-								"linear-gradient(45deg, #85C1E9, #AED6F1, #D6EAF8)",
+								"linear-gradient(90deg, #c7d2fe 0%, #93c5fd 45%, #a5b4fc 100%)",
 							backgroundClip: "text",
 							WebkitBackgroundClip: "text",
 							color: "transparent",
-							marginBottom: "20px",
-							fontWeight: "bold",
+							marginBottom: "6px",
+							fontWeight: 700,
 						}}
 					>
 						Dancing in the Rain 🌧️
 					</h1>
 					<p
+						className={manrope.className}
 						style={{
-							fontSize: "16px",
-							color: "#AED6F1",
-							marginBottom: "20px",
+							fontSize: "15px",
+							color: "#cbd5e1",
+							marginBottom: "18px",
 						}}
 					>
-						Thunder rolls, lightning strikes, and raindrops fall...
-						⚡🌧️
+						A soft storm, a quiet heart, and a little love letter in rain.
+					</p>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							flexWrap: "wrap",
+							gap: "8px",
+							marginBottom: "22px",
+						}}
+					>
+						{["rain-kissed", "heartfelt", "poetry", "devotion"].map((chip) => (
+							<span
+								key={chip}
+								className={manrope.className}
+								style={{
+									display: "inline-block",
+									padding: "6px 10px",
+									borderRadius: "999px",
+									fontSize: "12px",
+									letterSpacing: "0.3px",
+									color: "#bfdbfe",
+									background: "rgba(59, 130, 246, 0.12)",
+									border: "1px solid rgba(59, 130, 246, 0.25)",
+								}}
+							>
+								{chip}
+							</span>
+						))}
+					</div>
+					<p
+						className={manrope.className}
+						style={{
+							fontSize: "15px",
+							color: "#a5b4fc",
+							marginBottom: "18px",
+						}}
+					>
+						Thunder rolls, lightning whispers, and raindrops write what words cannot. ⚡🌧️
 					</p>
 
 					<div
+						className={manrope.className}
 						style={{
-							fontFamily: "Dancing Script, cursive",
-							fontSize: "1.5rem",
-							color: "#ffffffcc",
+							fontSize: "1.125rem",
+							color: "#e5e7eb",
 							textAlignLast: "center",
-
-							background: "rgba(44, 62, 80, 0.85)",
-							borderRadius: "25px",
-							padding: "30px 40px",
-							boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3)",
-							border: "2px solid rgba(135, 206, 235, 0.3)",
+							background: "rgba(17, 24, 39, 0.55)",
+							borderRadius: "22px",
+							padding: "28px 36px",
+							boxShadow: "0 18px 45px rgba(0, 0, 0, 0.35)",
+							border: "1px solid rgba(148, 163, 184, 0.25)",
 							zIndex: 10,
 							backdropFilter: "blur(10px)",
-							lineHeight: 1.8,
+							lineHeight: 1.9,
 							whiteSpace: "pre-wrap",
 						}}
 					>
 						<RainText fullText={fullText} />
 					</div>
+					<div
+						className={manrope.className}
+						style={{
+							marginTop: "18px",
+							fontSize: "13px",
+							color: "#94a3b8",
+							letterSpacing: "0.4px",
+						}}
+					>
+						— written for <span style={{ color: "#bfdbfe" }}>Kavindi</span> with a sky full of rain
+					</div>
 
 					<div
 						style={{
-							fontSize: "22px",
-							color: "#D6EAF8",
-							marginTop: "20px",
+							fontSize: "20px",
+							color: "#c7d2fe",
+							marginTop: "18px",
 						}}
 					>
 						☂️ ⛈️ 🌧️ ⚡ 💧
@@ -247,11 +301,11 @@ function RainTransition() {
 							display: "flex",
 							alignItems: "center",
 							gap: "12px",
-							background: "rgba(255, 255, 255, 0.15)",
+							background: "rgba(99, 102, 241, 0.18)",
 							backdropFilter: "blur(10px)",
 							borderRadius: "50px",
 							padding: "16px 24px",
-							border: "2px solid rgba(255, 255, 255, 0.3)",
+							border: "1px solid rgba(99, 102, 241, 0.35)",
 							boxShadow: "0 8px 25px rgba(0, 0, 0, 0.2)",
 							animation:
 								"gentleGlow 3s ease-in-out infinite alternate, craneFloat 4s ease-in-out infinite",
@@ -261,39 +315,39 @@ function RainTransition() {
 							router.push("/about");
 						}}
 						onMouseEnter={(e) => {
-							e.target.style.transform = "scale(1.05)";
-							e.target.style.background =
-								"rgba(255, 255, 255, 0.25)";
-							e.target.style.boxShadow =
+							e.currentTarget.style.transform = "scale(1.05)";
+							e.currentTarget.style.background =
+								"rgba(99, 102, 241, 0.28)";
+							e.currentTarget.style.boxShadow =
 								"0 12px 35px rgba(0, 0, 0, 0.3)";
 						}}
 						onMouseLeave={(e) => {
-							e.target.style.transform = "scale(1)";
-							e.target.style.background =
-								"rgba(255, 255, 255, 0.15)";
-							e.target.style.boxShadow =
+							e.currentTarget.style.transform = "scale(1)";
+							e.currentTarget.style.background =
+								"rgba(99, 102, 241, 0.18)";
+							e.currentTarget.style.boxShadow =
 								"0 8px 25px rgba(0, 0, 0, 0.2)";
 						}}
 					>
 						<div
 							style={{
-								fontSize: "24px",
-								filter: "drop-shadow(0 0 12px rgba(255, 255, 255, 0.8))",
+								fontSize: "22px",
+								filter: "drop-shadow(0 0 10px rgba(165, 180, 252, 0.8))",
 							}}
 						>
-							🕊️
+							🌙
 						</div>
 						<span
+							className={manrope.className}
 							style={{
-								color: "#ffffff",
-								fontSize: "16px",
-								fontWeight: "500",
-								fontFamily: "system-ui, sans-serif",
-								textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
-								letterSpacing: "0.5px",
+								color: "#eef2ff",
+								fontSize: "15px",
+								fontWeight: 600,
+								textShadow: "0 2px 4px rgba(0, 0, 0, 0.35)",
+								letterSpacing: "0.4px",
 							}}
 						>
-							Ready for See Some Stufff? 🌙
+							Ready to see something beautiful?
 						</span>
 					</div>
 				)}
@@ -358,12 +412,12 @@ function RainTransition() {
 
 					@keyframes rainyGlow {
 						0% {
-							box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
-								0 0 20px rgba(135, 206, 235, 0.2);
+							box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4),
+								0 0 16px rgba(165, 180, 252, 0.16);
 						}
 						100% {
-							box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4),
-								0 0 30px rgba(135, 206, 235, 0.4);
+							box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5),
+								0 0 26px rgba(165, 180, 252, 0.28);
 						}
 					}
 

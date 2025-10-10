@@ -14,7 +14,7 @@ export default function LoadingPage({progress, setProgress}) {
     // Emoji animation cycle
     const emojiInterval = setInterval(() => {
       setCurrentEmoji((prev) => (prev + 1) % emojiSequence.length);
-    }, 800);
+    }, 2000);
 
     // Progress simulation
     const progressInterval = setInterval(() => {

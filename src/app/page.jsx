@@ -94,6 +94,16 @@ function MainComponent() {
 	const clouds = React.useMemo(() => <CloudyTransition />, []);
 	const [progress, setProgress] = React.useState(0);
 
+	// Smooth key press pulse for input without triggering React re-renders
+	const handleKeyPulse = React.useCallback((e) => {
+		const el = e.currentTarget;
+		// Restart animation by toggling the class
+		el.classList.remove("typingPulse");
+		// Force reflow to allow re-adding the class
+		void el.offsetWidth;
+		el.classList.add("typingPulse");
+	}, []);
+
 
 	const router = useRouter(); // Use Next.js router for navigation
 	const correctPassword = process.env.NEXT_PUBLIC_PASSWORD; // Secret password only Kavindi knows
@@ -440,6 +450,7 @@ function MainComponent() {
 								<input
 									type="password"
 					ref={passwordRef}
+					onKeyDown={handleKeyPulse}
 									placeholder="🔑 Enter the secret garden key..."
 									style={{
 										width: "100%",
@@ -522,6 +533,16 @@ function MainComponent() {
 						</p>
 					</div>
 					<style jsx global>{`
+				.typingPulse {
+					animation: keyPressPulse 140ms ease;
+				}
+
+				@keyframes keyPressPulse {
+					0% { transform: scale(1); filter: brightness(1); }
+					50% { transform: scale(0.985); filter: brightness(0.98); }
+					100% { transform: scale(1); filter: brightness(1); }
+				}
+
 					@keyframes sunRays {
 						0%,
 						100% {
