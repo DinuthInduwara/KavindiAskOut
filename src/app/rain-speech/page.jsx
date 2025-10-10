@@ -134,15 +134,6 @@ function RainTransition() {
 
 	const fullText = `Kavindi, 🌧️💙\nDo you know how I see the rain? 🤔\n\nThe rain… it doesn’t fall from the sky. ☁️\nIt falls from hearts. 💧💔\n\nWhen you’re hurting, it rains. 😔\nWhen I’m hurting… it rains too. 😞\nAnd the worst storms… come when I’m hurt because of you. 🌪️\n\nThis rain is heavy. 🕳️\nIt hides the world, clouds my thoughts, and sometimes… I forget who I am in it. 🫥🌫️\n\nBut then— I see you smile. 🌈😊\nAnd just like that… the storm fades. 🌤️\nThe clouds pull back. ☁️➡️☀️\nThe world softens. 🌍💫\n\nYour smile breaks through the rain like sunlight tearing open the sky. ☀️🌤️💖\n\nFor a moment, I forget every wound. 🩹\nEvery scar. ⚡\nEvery reason I was hurting. 💔\n\nWhen I feel your presence, even my name disappears. 🫶\nI don’t exist in that moment. Only you do. 👁️‍🗨️💗\n\nI’ve walked through every storm, not because I loved the rain— 🌧️👣\nbut because I was waiting for you. 🕰️💘\n\nI exist to stop this rain. 🌫️\n\nBut the truth is… only you can. 🌷\nYour voice. 🎶 Your hand. 🤝 Your smile. 😊\n\nEven if the whole world becomes rain— 🌍🌧️\nI’ll keep walking through it, just to see you shine again. ✨🌟💞`;
 	const [showContinue, setShowContinue] = React.useState(false);
-
-
-	React.useEffect(() => {
-		// Show the continue element after 15 seconds
-		const timer = setTimeout(() => {
-			setShowContinue(true);
-		}, fullText.length * 70 + 1000);
-		return () => clearTimeout(timer);
-	}, []);
 	return (
 		<>
 			<div
@@ -265,7 +256,7 @@ function RainTransition() {
 							whiteSpace: "pre-wrap",
 						}}
 					>
-						<RainText fullText={fullText} />
+						<RainText fullText={fullText} setClickble={setShowContinue} />
 					</div>
 					<div
 						className={manrope.className}
@@ -290,66 +281,51 @@ function RainTransition() {
 					</div>
 				</div>
 				{showContinue && (
-					<div
+					<button
+						className={manrope.className}
 						style={{
 							position: "fixed",
-							bottom: "40px",
-							right: "40px",
+							bottom: "36px",
+							right: "36px",
 							zIndex: 20,
-							cursor: "pointer",
 							pointerEvents: "auto",
-							display: "flex",
+							display: "inline-flex",
 							alignItems: "center",
-							gap: "12px",
-							background: "rgba(99, 102, 241, 0.18)",
-							backdropFilter: "blur(10px)",
-							borderRadius: "50px",
-							padding: "16px 24px",
-							border: "1px solid rgba(99, 102, 241, 0.35)",
-							boxShadow: "0 8px 25px rgba(0, 0, 0, 0.2)",
+							gap: "10px",
+							padding: "14px 22px",
+							borderRadius: "999px",
+							border: "1px solid rgba(148, 163, 184, 0.28)",
+							background:
+								"linear-gradient(180deg, rgba(99,102,241,0.22), rgba(79,70,229,0.18))",
+							color: "#eef2ff",
+							boxShadow: "0 12px 32px rgba(0,0,0,0.35)",
+							backdropFilter: "blur(8px)",
+							cursor: "pointer",
+							transition: "transform .25s ease, box-shadow .25s ease, background .25s ease",
 							animation:
 								"gentleGlow 3s ease-in-out infinite alternate, craneFloat 4s ease-in-out infinite",
-							transition: "all 0.3s ease",
 						}}
 						onClick={() => {
 							router.push("/about");
 						}}
 						onMouseEnter={(e) => {
-							e.currentTarget.style.transform = "scale(1.05)";
+							e.currentTarget.style.transform = "translateY(-2px) scale(1.04)";
+							e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.45)";
 							e.currentTarget.style.background =
-								"rgba(99, 102, 241, 0.28)";
-							e.currentTarget.style.boxShadow =
-								"0 12px 35px rgba(0, 0, 0, 0.3)";
+								"linear-gradient(180deg, rgba(129,140,248,0.3), rgba(99,102,241,0.26))";
 						}}
 						onMouseLeave={(e) => {
-							e.currentTarget.style.transform = "scale(1)";
+							e.currentTarget.style.transform = "translateY(0) scale(1)";
+							e.currentTarget.style.boxShadow = "0 12px 32px rgba(0,0,0,0.35)";
 							e.currentTarget.style.background =
-								"rgba(99, 102, 241, 0.18)";
-							e.currentTarget.style.boxShadow =
-								"0 8px 25px rgba(0, 0, 0, 0.2)";
+								"linear-gradient(180deg, rgba(99,102,241,0.22), rgba(79,70,229,0.18))";
 						}}
 					>
-						<div
-							style={{
-								fontSize: "22px",
-								filter: "drop-shadow(0 0 10px rgba(165, 180, 252, 0.8))",
-							}}
-						>
-							🌙
-						</div>
-						<span
-							className={manrope.className}
-							style={{
-								color: "#eef2ff",
-								fontSize: "15px",
-								fontWeight: 600,
-								textShadow: "0 2px 4px rgba(0, 0, 0, 0.35)",
-								letterSpacing: "0.4px",
-							}}
-						>
+						<span style={{ fontSize: "18px", filter: "drop-shadow(0 0 10px rgba(165, 180, 252, 0.7))" }}>🌙</span>
+						<span style={{ fontWeight: 700, letterSpacing: "0.3px" }}>
 							Ready to see something beautiful?
 						</span>
-					</div>
+					</button>
 				)}
 
 				<style jsx global>{`
