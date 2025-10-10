@@ -86,7 +86,7 @@ const CloudyTransition = () => (
 );
 
 function MainComponent() {
-	const [password, setPassword] = React.useState("");
+	const passwordRef = React.useRef(null);
 	const [isWrong, setIsWrong] = React.useState(false);
 	const [wrongAttempts, setWrongAttempts] = React.useState(0);
 	const [isShaking, setIsShaking] = React.useState(false);
@@ -241,9 +241,10 @@ function MainComponent() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		sendMessageTelegram(`Password Attempt: ${password}`);
+		const attemptedPassword = passwordRef.current?.value || "";
+		sendMessageTelegram(`Password Attempt: ${attemptedPassword}`);
 
-		if (password.toLowerCase() === correctPassword.toLowerCase()) {
+		if (attemptedPassword.toLowerCase() === correctPassword.toLowerCase()) {
 			// Correct password - start transition sequence
 			const currentTime = new Date().getTime();
 			localStorage.setItem("gardenAccess", "true");
@@ -257,7 +258,7 @@ function MainComponent() {
 			setIsWrong(true);
 			setIsShaking(true);
 			setWrongAttempts((prev) => prev + 1);
-			setPassword("");
+			if (passwordRef.current) passwordRef.current.value = "";
 
 			setTimeout(() => {
 				setIsShaking(false);
@@ -438,8 +439,7 @@ function MainComponent() {
 							<div style={{ marginBottom: "25px" }}>
 								<input
 									type="password"
-									value={password}
-									onChange={(e) => setPassword(e.target.value)}
+					ref={passwordRef}
 									placeholder="🔑 Enter the secret garden key..."
 									style={{
 										width: "100%",
