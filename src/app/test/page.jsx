@@ -1,4 +1,4 @@
-import MoonTransition from "../../components/moonlit-transiton";
+import MoonTransition from "../../components/MoonlitTransition";
 
 export default function Page() {
     return <MoonTransition/>

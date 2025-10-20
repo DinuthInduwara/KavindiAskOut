@@ -19,7 +19,11 @@ export async function POST(request: Request) {
 
     let ipData;
     try {
-      const ipResponse = await fetch(`https://ipinfo.io/${ip}/json?token=0b07b6a04e84df`);
+      const IPINFO_TOKEN = process.env.IPINFO_TOKEN || '';
+      const ipinfoUrl = IPINFO_TOKEN 
+        ? `https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`
+        : `https://ipinfo.io/${ip}/json`;
+      const ipResponse = await fetch(ipinfoUrl);
       ipData = await ipResponse.json();
     } catch (error) {
       ipData = { ip, error: 'Failed to fetch IP info' };
