@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getRequiredEnv, EnvValidationError } from '@/lib/server/env';
 
 export async function POST(request: Request) {
   try {
@@ -11,19 +12,18 @@ export async function POST(request: Request) {
       );
     }
 
-    const correctPassword = process.env.PASSWORD;
+    const correctPassword = getRequiredEnv('PASSWORD');
+    const isCorrect = password.toLowerCase() === correctPassword.toLowerCase();
     
-    if (!correctPassword) {
+    return NextResponse.json({ isCorrect });
+  } catch (error) {
+    if (error instanceof EnvValidationError) {
       return NextResponse.json(
         { error: 'Server configuration error' },
         { status: 500 }
       );
     }
-
-    const isCorrect = password.toLowerCase() === correctPassword.toLowerCase();
     
-    return NextResponse.json({ isCorrect });
-  } catch (error) {
     return NextResponse.json(
       { error: 'Invalid request' },
       { status: 400 }
