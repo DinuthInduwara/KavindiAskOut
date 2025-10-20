@@ -1,0 +1,38 @@
+/**
+ * Animation timing constants
+ */
+
+export const TYPEWRITER_TIMINGS = {
+  WORD_FADE_MS: 500,
+  WORD_STAGGER_MS: 260,
+  LETTER_COLOR_MS: 420,
+  LETTER_STAGGER_MS: 50,
+} as const;
+
+export const ANIMATION_DURATIONS = {
+  CLOUD_MOVE: [8, 12],
+  BUTTERFLY_TRAIL: [4, 6],
+  PETAL_FLOAT: [5, 8],
+  SNOWFLAKE_DANCE: [6, 10],
+  CRYSTAL_FLOAT: [8, 12],
+  FAIRY_DANCE: [4, 7],
+  NIGHT_FLOAT: [8, 12],
+  MOONBEAM_SHINE: [6, 6],
+} as const;
+
+export const ANIMATION_COUNTS = {
+  CLOUDS: 8,
+  BUTTERFLIES: 6,
+  PETALS: 10,
+  SNOWFLAKES: 35,
+  CRYSTALS: 15,
+  SPARKLES: 40,
+  FROST: 12,
+  FAIRIES: 8,
+  ANIMALS: 6,
+  SUN_RAYS: 12,
+  SUN_PARTICLES: 15,
+  NIGHT_FLOWERS: 12,
+  MOONBEAMS: 8,
+  STARS: 20,
+} as const;
