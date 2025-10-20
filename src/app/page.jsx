@@ -6,7 +6,80 @@ import LoadingPage from "../components/loading-page";
 import { AnimatedOverlay } from "@/components/effects";
 import { CLOUDLY_EFFECT, SUNRISE_EFFECT } from "@/config/effects";
 import { GARDEN_EMOJIS, SAD_EMOJIS } from "@/constants/emojis";
-import SunriseEffect from "../components/SunriseEffect";
+
+const MoonlitGardenEffects = () => (
+        <div
+                style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        pointerEvents: "none",
+                        zIndex: 2,
+                }}
+        >
+                {/* Full moon with glow */}
+                <div
+                        style={{
+                                position: "absolute",
+                                top: "10%",
+                                right: "15%",
+                                width: "120px",
+                                height: "120px",
+                                borderRadius: "50%",
+                                background:
+                                        "radial-gradient(circle, #fff9c4 0%, #f7dc6f 30%, #f4d03f 100%)",
+                                boxShadow:
+                                        "0 0 60px rgba(255, 249, 196, 0.8), 0 0 120px rgba(255, 249, 196, 0.4)",
+                                animation: "moonGlow 4s ease-in-out infinite alternate",
+                                zIndex: 5,
+                        }}
+                >
+                        <div
+                                style={{
+                                        position: "absolute",
+                                        top: "20%",
+                                        left: "25%",
+                                        width: "15px",
+                                        height: "15px",
+                                        borderRadius: "50%",
+                                        background: "rgba(0, 0, 0, 0.1)",
+                                }}
+                        />
+                        <div
+                                style={{
+                                        position: "absolute",
+                                        top: "40%",
+                                        right: "30%",
+                                        width: "8px",
+                                        height: "8px",
+                                        borderRadius: "50%",
+                                        background: "rgba(0, 0, 0, 0.08)",
+                                }}
+                        />
+                </div>
+
+                {/* Moonbeams */}
+                {[...Array.from({ length: 10 })].map((_, i) => (
+                        <div
+                                key={`moonbeam-${i}`}
+                                style={{
+                                        position: "absolute",
+                                        top: "15%",
+                                        right: "20%",
+                                        width: "2px",
+                                        height: "200px",
+                                        background:
+                                                "linear-gradient(180deg, rgba(255, 249, 196, 0.6), transparent)",
+                                        transform: `rotate(${i * 45}deg)`,
+                                        transformOrigin: "50% 0%",
+                                        animation: `moonbeamShine 6s ease-in-out infinite ${i * 0.3}s`,
+                                }}
+                        />
+                ))}
+        </div>
+);
 
 function MainComponent() {
         const passwordRef = React.useRef(null);
@@ -230,7 +303,7 @@ function MainComponent() {
                                                 position: "relative",
                                         }}
                                 >
-                                        {!isWrong && <SunriseEffect />}
+                                        {!isWrong && <MoonlitGardenEffects />}
                                         <div
                                                 style={{
                                                         fontSize: "60px",
