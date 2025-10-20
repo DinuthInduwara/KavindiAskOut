@@ -34,17 +34,17 @@ export default function SunMoonDecoration({ mode = 'sun' }: SunMoonDecorationPro
     : 'rgba(199, 210, 254, 0.5)';
   
   const beamGradient = isSun
-    ? 'linear-gradient(180deg, rgba(255, 242, 178, 0.5), transparent)'
-    : 'linear-gradient(180deg, rgba(224, 231, 255, 0.4), transparent)';
+    ? 'linear-gradient(180deg, rgba(255, 242, 178, 0.8), rgba(255, 217, 102, 0.4), transparent)'
+    : 'linear-gradient(180deg, rgba(224, 231, 255, 0.7), rgba(199, 210, 254, 0.3), transparent)';
 
   return (
     <div
       style={{
         position: 'absolute',
-        top: '-30px',
-        right: '-30px',
-        width: '90px',
-        height: '90px',
+        top: '-40px',
+        left: '-40px',
+        width: '140px',
+        height: '140px',
         pointerEvents: 'none',
         zIndex: -1,
       }}
@@ -54,9 +54,9 @@ export default function SunMoonDecoration({ mode = 'sun' }: SunMoonDecorationPro
         animate={{
           scale: [1, 1.05, 1],
           boxShadow: [
-            `0 0 30px ${glowColor}, 0 0 60px ${glowColor}`,
-            `0 0 40px ${glowColor}, 0 0 80px ${glowColor}`,
-            `0 0 30px ${glowColor}, 0 0 60px ${glowColor}`,
+            `0 0 50px ${glowColor}, 0 0 100px ${glowColor}`,
+            `0 0 70px ${glowColor}, 0 0 130px ${glowColor}`,
+            `0 0 50px ${glowColor}, 0 0 100px ${glowColor}`,
           ],
         }}
         transition={{
@@ -69,11 +69,11 @@ export default function SunMoonDecoration({ mode = 'sun' }: SunMoonDecorationPro
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '60px',
-          height: '60px',
+          width: '90px',
+          height: '90px',
           borderRadius: '50%',
           background: coreGradient,
-          boxShadow: `0 0 30px ${glowColor}, 0 0 60px ${glowColor}`,
+          boxShadow: `0 0 50px ${glowColor}, 0 0 100px ${glowColor}`,
         }}
       >
         {/* Subtle surface details for moon */}
@@ -110,8 +110,8 @@ export default function SunMoonDecoration({ mode = 'sun' }: SunMoonDecorationPro
         <motion.div
           key={`beam-${i}`}
           animate={{
-            opacity: [0.3, 0.6, 0.3],
-            scaleY: [1, 1.15, 1],
+            opacity: [0.5, 0.85, 0.5],
+            scaleY: [1, 1.2, 1],
           }}
           transition={{
             duration: 4,
@@ -123,12 +123,13 @@ export default function SunMoonDecoration({ mode = 'sun' }: SunMoonDecorationPro
             position: 'absolute',
             top: '50%',
             left: '50%',
-            width: '2px',
-            height: '100px',
+            width: '4px',
+            height: '180px',
             background: beamGradient,
             transformOrigin: '50% 0%',
             transform: `translate(-50%, -50%) rotate(${i * 45}deg)`,
-            opacity: 0.3,
+            opacity: 0.5,
+            filter: 'blur(1px)',
           }}
         />
       ))}
