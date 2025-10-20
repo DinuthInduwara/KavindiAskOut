@@ -26,16 +26,17 @@ export default function SunriseEffect() {
                                 style={{
                                         position: "absolute",
                                         top: "-70px",
-                                        left: "-70px",
+                                        right: "-70px",
                                         width: "140px",
                                         height: "140px",
                                         borderRadius: "50%",
                                         background:
                                                 "radial-gradient(circle, #FFD966 0%, #FFF2B2 40%, #FFE082 100%)",
                                         boxShadow:
-                                                "0 0 80px rgba(255, 217, 102, 0.8), 0 0 140px rgba(255, 217, 102, 0.5), 0 0 200px rgba(255, 217, 102, 0.3)",
+                                                "0 0 40px rgba(255, 217, 102, 0.3), 0 0 70px rgba(255, 217, 102, 0.2), 0 0 100px rgba(255, 217, 102, 0.1)",
                                         animation: "sunrisePulse 4s ease-in-out infinite alternate",
-                                        zIndex: 2,
+                                        zIndex: -1,
+                                        opacity: 0.6,
                                 }}
                         >
                                 {/* Inner glow */}
@@ -49,7 +50,7 @@ export default function SunriseEffect() {
                                                 height: "80%",
                                                 borderRadius: "50%",
                                                 background:
-                                                        "radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent)",
+                                                        "radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent)",
                                                 animation: "innerGlow 3s ease-in-out infinite alternate",
                                         }}
                                 />
@@ -62,15 +63,15 @@ export default function SunriseEffect() {
                                         style={{
                                                 position: "absolute",
                                                 top: "10px",
-                                                left: "10px",
-                                                width: "4px",
+                                                right: "10px",
+                                                width: "2px",
                                                 height: "250px",
                                                 background:
-                                                        "linear-gradient(180deg, rgba(255, 242, 178, 0.8), rgba(255, 217, 102, 0.5), transparent)",
+                                                        "linear-gradient(180deg, rgba(255, 242, 178, 0.3), rgba(255, 217, 102, 0.2), transparent)",
                                                 transform: `rotate(${config.rotation}deg)`,
                                                 transformOrigin: "50% 0%",
                                                 animation: `sunbeamShine 6s ease-in-out infinite ${config.delay}s`,
-                                                filter: "blur(1.5px)",
+                                                filter: "blur(1px)",
                                         }}
                                 />
                         ))}
@@ -82,17 +83,17 @@ export default function SunriseEffect() {
                                         style={{
                                                 position: "absolute",
                                                 top: "10px",
-                                                left: "10px",
-                                                width: "6px",
+                                                right: "10px",
+                                                width: "3px",
                                                 height: "200px",
                                                 background:
-                                                        "linear-gradient(180deg, rgba(255, 255, 200, 0.6), rgba(255, 242, 178, 0.3), transparent)",
+                                                        "linear-gradient(180deg, rgba(255, 255, 200, 0.25), rgba(255, 242, 178, 0.15), transparent)",
                                                 transform: `rotate(${config.rotation + 15}deg)`,
                                                 transformOrigin: "50% 0%",
                                                 animation: `sunbeamShine 8s ease-in-out infinite ${
                                                         config.delay + 0.5
                                                 }s`,
-                                                filter: "blur(2px)",
+                                                filter: "blur(1.5px)",
                                         }}
                                 />
                         ))}
@@ -110,12 +111,13 @@ export default function SunriseEffect() {
                                                 style={{
                                                         position: "absolute",
                                                         top: `${10 + y}px`,
-                                                        left: `${10 + x}px`,
-                                                        width: "6px",
-                                                        height: "6px",
+                                                        right: `${10 + x}px`,
+                                                        width: "4px",
+                                                        height: "4px",
                                                         borderRadius: "50%",
                                                         background: "#FFD966",
-                                                        boxShadow: "0 0 12px rgba(255, 217, 102, 0.8)",
+                                                        boxShadow: "0 0 8px rgba(255, 217, 102, 0.3)",
+                                                        opacity: 0.5,
                                                         animation: `sunParticleFloat ${
                                                                 3 + (i % 3)
                                                         }s ease-in-out infinite ${i * 0.3}s`,
