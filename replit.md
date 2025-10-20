@@ -23,10 +23,14 @@ Preferred communication style: Simple, everyday language.
 - **Purpose:** Creates a custom butterfly-themed cursor that hides the default system cursor completely
 - **Interaction Detection:** Automatically detects hovering over interactive elements (buttons, links, inputs)
 
-**Music Player**
-- **Implementation:** Global context provider (`MusicPlayerContext`) with audio ref management
-- **Features:** Smooth volume fade transitions between tracks, centralized playback control
-- **Audio Handling:** Client-side audio element with fade-in/fade-out effects for professional transitions
+**Music Player** (Refactored October 2025)
+- **Architecture:** Modular design with separation of concerns across multiple layers
+- **Configuration Layer:** `src/config/audioConfig.js` - Centralized constants for audio behavior, timeouts, and track definitions
+- **Utilities Layer:** `src/utils/audioHelpers.js` - Reusable functions for fade effects, safe play/pause operations
+- **Service Layer:** `src/services/audioPreloader.js` - Intelligent audio preloading with metadata-first strategy, timeout handling, and automatic next-track preloading
+- **Hooks Layer:** `src/hooks/useAudioPlayer.js` - Custom hook for future extensibility and reusable playback logic
+- **Context Layer:** `src/context/MusicPlayerContext.js` - Global state management with proper playback state transitions (IDLE → LOADING → PLAYING/PAUSED/ERROR)
+- **Features:** Smooth volume fade transitions, intelligent preloading, graceful error handling, network timeout protection
 - **Global Access:** Available across all pages through context provider in root layout
 
 ## State Management
