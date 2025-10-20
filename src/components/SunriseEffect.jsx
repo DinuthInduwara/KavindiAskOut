@@ -18,15 +18,15 @@ export default function SunriseEffect() {
                                 height: "100%",
                                 pointerEvents: "none",
                                 zIndex: 0,
-                                overflow: "hidden",
+                                overflow: "visible",
                         }}
                 >
                         {/* Sun orb with glow */}
                         <div
                                 style={{
                                         position: "absolute",
-                                        top: "-60px",
-                                        left: "-60px",
+                                        top: "-70px",
+                                        left: "-70px",
                                         width: "140px",
                                         height: "140px",
                                         borderRadius: "50%",
