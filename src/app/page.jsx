@@ -6,7 +6,7 @@ import LoadingPage from "../components/loading-page";
 import { AnimatedOverlay } from "@/components/effects";
 import { CLOUDLY_EFFECT, SUNRISE_EFFECT } from "@/config/effects";
 import { GARDEN_EMOJIS, SAD_EMOJIS } from "@/constants/emojis";
-import SunMoonDecoration from "../components/SunMoonDecoration";
+import SunriseEffect from "../components/SunriseEffect";
 
 function MainComponent() {
         const passwordRef = React.useRef(null);
@@ -227,8 +227,10 @@ function MainComponent() {
                                                         ? "sunGlow 2s ease-in-out infinite alternate"
                                                         : "none",
                                                 transition: "all 0.3s ease",
+                                                position: "relative",
                                         }}
                                 >
+                                        {!isWrong && <SunriseEffect />}
                                         <div
                                                 style={{
                                                         fontSize: "60px",
@@ -259,8 +261,7 @@ function MainComponent() {
                                         </h1>
 
                                         <form onSubmit={handleSubmit}>
-                                                <div style={{ marginBottom: "25px", position: "relative" }}>
-                                                        {!isWrong && <SunMoonDecoration mode="sun" />}
+                                                <div style={{ marginBottom: "25px" }}>
                                                         <input
                                                                 type="password"
                                                                 ref={passwordRef}
@@ -280,8 +281,6 @@ function MainComponent() {
                                                                         boxShadow: isWrong
                                                                                 ? "0 4px 15px rgba(255, 107, 107, 0.2)"
                                                                                 : "0 4px 15px rgba(255, 223, 0, 0.2)",
-                                                                        position: "relative",
-                                                                        zIndex: 1,
                                                                 }}
                                                                 onFocus={(e) => {
                                                                         e.target.style.border = "3px solid #00b894";

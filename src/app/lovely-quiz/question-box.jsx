@@ -1,7 +1,7 @@
 import React from "react";
 import { sendMessageTelegram } from "../../utilities/telegram-helpers";
 import { QUIZ_QUESTIONS } from "@/constants/quiz";
-import SunMoonDecoration from "../../components/SunMoonDecoration";
+import SunriseEffect from "../../components/SunriseEffect";
 
 export default function QuestionBox({ setShowTransition, setIsComplete }) {
         const [currentQuestion, setCurrentQuestion] = React.useState(0);
@@ -57,6 +57,7 @@ export default function QuestionBox({ setShowTransition, setIsComplete }) {
                                 margin: "0 auto",
                         }}
                 >
+                        <SunriseEffect />
                         <div
                                 style={{
                                         background: "rgba(255, 255, 255, 0.2)",
@@ -152,12 +153,9 @@ export default function QuestionBox({ setShowTransition, setIsComplete }) {
                                                 marginBottom: "25px",
                                                 display: "flex",
                                                 justifyContent: "center",
-                                                position: "relative",
                                         }}
                                 >
-                                        <div style={{ position: "relative", width: "100%", maxWidth: "400px" }}>
-                                                <SunMoonDecoration mode="moon" />
-                                                <textarea
+                                        <textarea
                                                         value={currentAnswer || ""}
                                                         onChange={(e) => handleTextAnswer(e.target.value)}
                                                         onFocus={() => setIsTyping(true)}
@@ -179,8 +177,6 @@ export default function QuestionBox({ setShowTransition, setIsComplete }) {
                                                                         "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                                                                 textAlign: "center",
                                                                 boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-                                                                position: "relative",
-                                                                zIndex: 1,
                                                         }}
                                                         onFocusCapture={(e) => {
                                                                 e.target.style.border = "2px solid #4a7c59";
@@ -196,7 +192,6 @@ export default function QuestionBox({ setShowTransition, setIsComplete }) {
                                                                         "0 4px 15px rgba(0, 0, 0, 0.05)";
                                                         }}
                                                 />
-                                        </div>
                                 </div>
                         )}
                         <div
