@@ -1,6 +1,7 @@
 import React from "react";
 import { sendMessageTelegram } from "../../utilities/telegram-helpers";
 import { QUIZ_QUESTIONS } from "@/constants/quiz";
+import SunMoonDecoration from "../../components/SunMoonDecoration";
 
 export default function QuestionBox({ setShowTransition, setIsComplete }) {
         const [currentQuestion, setCurrentQuestion] = React.useState(0);
@@ -151,46 +152,51 @@ export default function QuestionBox({ setShowTransition, setIsComplete }) {
                                                 marginBottom: "25px",
                                                 display: "flex",
                                                 justifyContent: "center",
+                                                position: "relative",
                                         }}
                                 >
-                                        <textarea
-                                                value={currentAnswer || ""}
-                                                onChange={(e) => handleTextAnswer(e.target.value)}
-                                                onFocus={() => setIsTyping(true)}
-                                                onBlur={() => setIsTyping(false)}
-                                                placeholder={currentQ.placeholder}
-                                                style={{
-                                                        width: "100%",
-                                                        maxWidth: "400px",
-                                                        minHeight: "120px",
-                                                        padding: "18px",
-                                                        border: "2px solid rgba(74, 124, 89, 0.3)",
-                                                        borderRadius: "15px",
-                                                        fontSize: "15px",
-                                                        resize: "vertical",
-                                                        outline: "none",
-                                                        background: "rgba(255, 255, 255, 0.8)",
-                                                        color: "#2d5016",
-                                                        fontFamily: "inherit",
-                                                        transition:
-                                                                "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                                                        textAlign: "center",
-                                                        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-                                                }}
-                                                onFocusCapture={(e) => {
-                                                        e.target.style.border = "2px solid #4a7c59";
-                                                        e.target.style.transform = "scale(1.03)";
-                                                        e.target.style.boxShadow =
-                                                                "0 8px 30px rgba(74, 124, 89, 0.2)";
-                                                }}
-                                                onBlurCapture={(e) => {
-                                                        e.target.style.border =
-                                                                "2px solid rgba(74, 124, 89, 0.3)";
-                                                        e.target.style.transform = "scale(1)";
-                                                        e.target.style.boxShadow =
-                                                                "0 4px 15px rgba(0, 0, 0, 0.05)";
-                                                }}
-                                        />
+                                        <div style={{ position: "relative", width: "100%", maxWidth: "400px" }}>
+                                                <SunMoonDecoration mode="moon" />
+                                                <textarea
+                                                        value={currentAnswer || ""}
+                                                        onChange={(e) => handleTextAnswer(e.target.value)}
+                                                        onFocus={() => setIsTyping(true)}
+                                                        onBlur={() => setIsTyping(false)}
+                                                        placeholder={currentQ.placeholder}
+                                                        style={{
+                                                                width: "100%",
+                                                                minHeight: "120px",
+                                                                padding: "18px",
+                                                                border: "2px solid rgba(74, 124, 89, 0.3)",
+                                                                borderRadius: "15px",
+                                                                fontSize: "15px",
+                                                                resize: "vertical",
+                                                                outline: "none",
+                                                                background: "rgba(255, 255, 255, 0.8)",
+                                                                color: "#2d5016",
+                                                                fontFamily: "inherit",
+                                                                transition:
+                                                                        "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                                                                textAlign: "center",
+                                                                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
+                                                                position: "relative",
+                                                                zIndex: 1,
+                                                        }}
+                                                        onFocusCapture={(e) => {
+                                                                e.target.style.border = "2px solid #4a7c59";
+                                                                e.target.style.transform = "scale(1.03)";
+                                                                e.target.style.boxShadow =
+                                                                        "0 8px 30px rgba(74, 124, 89, 0.2)";
+                                                        }}
+                                                        onBlurCapture={(e) => {
+                                                                e.target.style.border =
+                                                                        "2px solid rgba(74, 124, 89, 0.3)";
+                                                                e.target.style.transform = "scale(1)";
+                                                                e.target.style.boxShadow =
+                                                                        "0 4px 15px rgba(0, 0, 0, 0.05)";
+                                                        }}
+                                                />
+                                        </div>
                                 </div>
                         )}
                         <div
