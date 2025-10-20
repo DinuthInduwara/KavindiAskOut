@@ -1,22 +1,15 @@
 "use client";
 import React from "react";
+import { TYPEWRITER_TIMINGS } from "@/constants/animations";
 
 export default function RainText({ fullText, setClickble }) {
-    // Animation configuration
-    const WORD_FADE_MS = 500; // duration of each word's fade-in
-    const WORD_STAGGER_MS = 260; // delay between words (slower for readability)
-    const LETTER_COLOR_MS = 420; // duration of each letter color-up
-    const LETTER_STAGGER_MS = 50; // delay between letters within a word
-
-    // Split text into lines and words while preserving spaces and line breaks
     const lines = React.useMemo(() => fullText.split("\n"), [fullText]);
 
-    // Compute total duration to trigger setClickble at the end
     React.useEffect(() => {
         let totalWords = 0;
         let maxLettersInLastWord = 0;
         for (const line of lines) {
-            const words = line.split(/(\s+)/); // keeps spaces as tokens
+            const words = line.split(/(\s+)/);
             for (const token of words) {
                 if (/^\s+$/.test(token)) continue;
                 totalWords += 1;
@@ -24,11 +17,11 @@ export default function RainText({ fullText, setClickble }) {
             }
         }
         const totalDuration =
-            totalWords * WORD_STAGGER_MS +
-            WORD_FADE_MS +
-            maxLettersInLastWord * LETTER_STAGGER_MS +
-            LETTER_COLOR_MS +
-            400; // buffer
+            totalWords * TYPEWRITER_TIMINGS.WORD_STAGGER_MS +
+            TYPEWRITER_TIMINGS.WORD_FADE_MS +
+            maxLettersInLastWord * TYPEWRITER_TIMINGS.LETTER_STAGGER_MS +
+            TYPEWRITER_TIMINGS.LETTER_COLOR_MS +
+            400;
 
         const timer = setTimeout(() => {
             if (typeof setClickble === "function") {
@@ -36,20 +29,18 @@ export default function RainText({ fullText, setClickble }) {
             }
         }, totalDuration);
         return () => clearTimeout(timer);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [lines]);
+    }, [lines, setClickble]);
 
     let globalWordIndex = 0;
 
     return (
         <div className="kavindi-text" style={{ position: "relative" }}>
             {lines.map((line, lineIdx) => {
-                const tokens = line.split(/(\s+)/); // words and spaces
+                const tokens = line.split(/(\s+)/);
                 return (
                     <div key={`line-${lineIdx}`} style={{ display: "block" }}>
                         {tokens.map((token, tokenIdx) => {
                             if (/^\s+$/.test(token)) {
-                                // Render literal spaces to preserve static layout
                                 return (
                                     <span key={`space-${lineIdx}-${tokenIdx}`}>
                                         {token}
@@ -58,7 +49,7 @@ export default function RainText({ fullText, setClickble }) {
                             }
 
                             const thisWordIndex = globalWordIndex++;
-                            const wordDelay = thisWordIndex * WORD_STAGGER_MS;
+                            const wordDelay = thisWordIndex * TYPEWRITER_TIMINGS.WORD_STAGGER_MS;
 
                             return (
                                 <span
@@ -66,13 +57,13 @@ export default function RainText({ fullText, setClickble }) {
                                     style={{
                                         display: "inline-block",
                                         opacity: 0,
-                                        animation: `wordFade ${WORD_FADE_MS}ms ease forwards`,
+                                        animation: `wordFade ${TYPEWRITER_TIMINGS.WORD_FADE_MS}ms ease forwards`,
                                         animationDelay: `${wordDelay}ms`,
                                     }}
                                 >
                                     {Array.from(token).map((ch, letterIdx) => {
                                         const letterDelay =
-                                            wordDelay + letterIdx * LETTER_STAGGER_MS;
+                                            wordDelay + letterIdx * TYPEWRITER_TIMINGS.LETTER_STAGGER_MS;
                                         return (
                                             <span
                                                 key={`ch-${lineIdx}-${tokenIdx}-${letterIdx}`}
@@ -81,8 +72,8 @@ export default function RainText({ fullText, setClickble }) {
                                                     color: "rgba(255,255,255,0.35)",
                                                     filter: "saturate(0.7)",
                                                     transform: "translateY(2px)",
-                                                    animation: `letterColor ${LETTER_COLOR_MS}ms ease forwards` +
-                                                        `, letterCharm ${LETTER_COLOR_MS}ms ease forwards`,
+                                                    animation: `letterColor ${TYPEWRITER_TIMINGS.LETTER_COLOR_MS}ms ease forwards` +
+                                                        `, letterCharm ${TYPEWRITER_TIMINGS.LETTER_COLOR_MS}ms ease forwards`,
                                                     animationDelay: `${letterDelay}ms, ${letterDelay}ms`,
                                                 }}
                                             >
@@ -108,11 +99,11 @@ export default function RainText({ fullText, setClickble }) {
                         filter: saturate(0.7);
                     }
                     60% {
-                        color: #e5e7eb; /* soft white */
+                        color: #e5e7eb;
                         filter: saturate(1);
                     }
                     100% {
-                        color: #eef2ff; /* slightly brighter */
+                        color: #eef2ff;
                         filter: saturate(1.05);
                     }
                 }
