@@ -1,0 +1,1825 @@
+/* ============================================
+   ANIMATIONS.CSS - Consolidated Keyframes
+   ============================================ */
+
+/* ========== FLOATING ANIMATIONS ========== */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@keyframes floatGentle1 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatGentle2 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes floatGentle3 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatGentle4 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0px); opacity: 0.5; }
+  50% { transform: translateY(-30px); opacity: 1; }
+  100% { transform: translateY(-60px); opacity: 0; }
+}
+
+@keyframes gardenFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(180deg);
+  }
+}
+
+@keyframes sadFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(180deg) scale(1);
+  }
+  50% {
+    transform: translateY(10px) rotate(180deg) scale(0.8);
+  }
+}
+
+@keyframes lily-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+@keyframes petalFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes petalDrift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translate(20px, -25px) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-10px, -50px) rotate(180deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate(15px, -75px) rotate(270deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes leafFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -20px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, -40px) rotate(240deg);
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(10px) rotate(2deg);
+  }
+  50% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateX(-10px) rotate(-2deg);
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translateY(-20px) translateX(15px) rotate(5deg) scale(1.1);
+  }
+  66% {
+    transform: translateY(-35px) translateX(-10px) rotate(-3deg) scale(0.95);
+  }
+}
+
+@keyframes musicFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+@keyframes loveFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-15px) rotate(90deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-8px) rotate(180deg) scale(1.05);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-12px) rotate(270deg) scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes creativeLoveFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-15px) rotate(90deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg) scale(1.05);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-18px) rotate(270deg) scale(1.15);
+    opacity: 0.95;
+  }
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes mistFloat {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(30px) translateY(-10px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes loveLetterFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translate(20px, -15px) rotate(5deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-15px, -25px) rotate(-3deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(25px, -10px) rotate(8deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes frostFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(15px, -20px) rotate(90deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-10px, -35px) rotate(180deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(20px, -25px) rotate(270deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes animalFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(-6px) rotate(-3deg);
+  }
+}
+
+@keyframes glassFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes box-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes scroll-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes umbrellaFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(-2deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+    opacity: 1;
+  }
+}
+
+
+/* ========== CELESTIAL ANIMATIONS ========== */
+
+@keyframes moonGlow {
+  0%, 100% {
+    box-shadow: 0 0 50px rgba(255, 249, 196, 0.6),
+      0 0 100px rgba(255, 249, 196, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 70px rgba(255, 249, 196, 0.9),
+      0 0 140px rgba(255, 249, 196, 0.5);
+  }
+}
+
+@keyframes creativeMonPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 50px rgba(255, 249, 196, 0.9),
+      0 0 100px rgba(255, 249, 196, 0.5),
+      0 0 150px rgba(255, 249, 196, 0.2);
+  }
+  25% {
+    transform: scale(1.05) rotate(1deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(0deg);
+    box-shadow: 0 0 70px rgba(255, 249, 196, 1),
+      0 0 140px rgba(255, 249, 196, 0.7),
+      0 0 200px rgba(255, 249, 196, 0.3);
+  }
+  75% {
+    transform: scale(1.08) rotate(-1deg);
+  }
+}
+
+@keyframes moonbeamShine {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleY(1.2);
+  }
+}
+
+@keyframes moonBounce {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes creativeStarTwinkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(0deg);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(1.2) rotate(90deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4) rotate(180deg);
+  }
+  75% {
+    opacity: 0.8;
+    transform: scale(1.1) rotate(270deg);
+  }
+}
+
+@keyframes stars-twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+@keyframes star-pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes starFall {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-200px, 200px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes starRain {
+  0% {
+    transform: translateY(-100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translateX(-200px) translateY(-200px) rotate(-45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200px) translateY(200px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes creativeOrbitHeart {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(70px) rotate(0deg) scale(0.8);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(90deg) translateX(75px) rotate(-90deg) scale(1.1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(70px) rotate(-180deg) scale(0.9);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(270deg) translateX(75px) rotate(-270deg) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(70px) rotate(-360deg) scale(0.8);
+  }
+}
+
+@keyframes sunRays {
+  0%, 100% {
+    opacity: 0.3;
+    transform: rotate(var(--rotation)) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: rotate(var(--rotation)) scale(1.1);
+  }
+}
+
+@keyframes sunParticles {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+
+/* ========== NATURE ANIMATIONS ========== */
+
+@keyframes cloudMove {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+@keyframes cloudFloat {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(30px);
+    opacity: 1;
+  }
+}
+
+@keyframes stormCloudMove {
+  0% {
+    left: -15%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+@keyframes cloud-fade {
+  0% {
+    opacity: 0.9;
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(20px) scale(1.1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateX(50px) scale(1.3);
+  }
+}
+
+@keyframes nightCloudDrift {
+  0%, 100% {
+    transform: translateX(0px);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(30px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes butterflyFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(40px, -30px) rotate(10deg);
+  }
+  50% {
+    transform: translate(80px, -15px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(40px, -25px) rotate(8deg);
+  }
+}
+
+@keyframes butterflyTrail {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(30px) translateY(-20px) rotate(10deg);
+  }
+  50% {
+    transform: translateX(60px) translateY(-10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateX(90px) translateY(-30px) rotate(15deg);
+  }
+}
+
+@keyframes butterfly-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+@keyframes butterflyDance {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(30px, -20px) rotate(15deg);
+  }
+  50% {
+    transform: translate(60px, 0) rotate(0deg);
+  }
+  75% {
+    transform: translate(30px, 20px) rotate(-15deg);
+  }
+}
+
+@keyframes butterflyGuide {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) rotate(15deg);
+  }
+  50% {
+    transform: translateY(-20px) translateX(-15px) rotate(-10deg);
+  }
+  75% {
+    transform: translateY(-35px) translateX(25px) rotate(20deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes fireflyDance {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(30px, -20px);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(15px, -40px);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(-15px, -25px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes fireflyFloat {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateX(20px) translateY(-15px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-15px) translateY(-25px);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateX(10px) translateY(-10px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes mothFlight {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(50px, -30px) rotate(10deg);
+  }
+  66% {
+    transform: translate(-30px, -20px) rotate(-8deg);
+  }
+}
+
+@keyframes beeBuzz {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(15px, -10px);
+  }
+  50% {
+    transform: translate(-10px, 5px);
+  }
+  75% {
+    transform: translate(10px, -5px);
+  }
+}
+
+@keyframes koi-swim {
+  0%, 100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateX(20px) translateY(-10px) rotate(5deg);
+  }
+  66% {
+    transform: translateX(40px) translateY(5px) rotate(-3deg);
+  }
+}
+
+@keyframes nightFloralDance {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(7deg);
+  }
+}
+
+@keyframes nightBloom {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 1;
+  }
+}
+
+@keyframes vine-grow {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-45deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes arch-bloom {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+@keyframes fairyDance {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.8;
+  }
+  33% {
+    transform: translate(25px, -30px) rotate(120deg);
+    opacity: 1;
+  }
+  66% {
+    transform: translate(-20px, -15px) rotate(240deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes loveBirdFly {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(50px, -20px) rotate(10deg);
+  }
+  66% {
+    transform: translate(25px, -35px) rotate(-5deg);
+  }
+}
+
+@keyframes boatSail {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(15px) rotate(2deg);
+  }
+}
+
+
+/* ========== WEATHER ANIMATIONS ========== */
+
+@keyframes rainFall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0.3;
+  }
+}
+
+@keyframes raindrop-fall {
+  0% {
+    transform: translateY(-100vh) rotate(15deg);
+    opacity: 0.8;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rain-fade {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes lightningFlash {
+  0%, 10%, 20%, 100% {
+    opacity: 0;
+  }
+  5%, 15% {
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 1));
+  }
+}
+
+@keyframes rippleEffect {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes mist-appear {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(-10px) translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes snowflakeDance {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  25% {
+    transform: translateY(-15px) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-8px) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg);
+    opacity: 1;
+  }
+}
+
+@keyframes crystalFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translate(20px, -25px) rotate(45deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-15px, -45px) rotate(90deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(25px, -30px) rotate(135deg);
+    opacity: 0.9;
+  }
+}
+
+
+/* ========== GLOW & PULSE ANIMATIONS ========== */
+
+@keyframes glow-text {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1),
+      0 0 30px rgba(255, 215, 0, 0.5);
+  }
+}
+
+@keyframes sunGlow {
+  0% {
+    box-shadow: 0 20px 40px rgba(255, 223, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 20px 40px rgba(255, 223, 0, 0.6);
+  }
+}
+
+@keyframes transitionGlow {
+  0% {
+    box-shadow: 0 20px 40px rgba(135, 206, 235, 0.3);
+  }
+  100% {
+    box-shadow: 0 20px 40px rgba(135, 206, 235, 0.6);
+  }
+}
+
+@keyframes moonlitGlow {
+  0% {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+      0 0 40px rgba(255, 249, 196, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
+      0 0 60px rgba(255, 249, 196, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes snowyGlow {
+  0% {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1),
+      0 0 40px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15),
+      0 0 60px rgba(255, 255, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes rainyGlow {
+  0% {
+    box-shadow: 0 20px 40px rgba(70, 130, 180, 0.3);
+  }
+  100% {
+    box-shadow: 0 20px 40px rgba(70, 130, 180, 0.6);
+  }
+}
+
+@keyframes gardenGlow {
+  0% {
+    box-shadow: 0 20px 40px rgba(34, 139, 34, 0.3);
+  }
+  100% {
+    box-shadow: 0 20px 40px rgba(34, 139, 34, 0.6);
+  }
+}
+
+@keyframes nightGlow {
+  0%, 100% {
+    box-shadow: 0 20px 40px rgba(25, 25, 112, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 40px rgba(25, 25, 112, 0.6);
+  }
+}
+
+@keyframes loveGlow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes gentleGlow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes key-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1))
+      drop-shadow(0 0 35px rgba(255, 255, 255, 0.5));
+  }
+}
+
+@keyframes mushroom-glow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3);
+  }
+}
+
+@keyframes stoneGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+  }
+}
+
+@keyframes glows-emerge {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes musicPulse {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4),
+      0 0 20px rgba(255, 105, 180, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6),
+      0 0 30px rgba(255, 105, 180, 0.5);
+  }
+}
+
+@keyframes musicRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes errorPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes successGlow {
+  0% {
+    box-shadow: 0 20px 40px rgba(0, 184, 148, 0.2);
+  }
+  100% {
+    box-shadow: 0 20px 40px rgba(0, 184, 148, 0.4);
+  }
+}
+
+@keyframes scroll-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6),
+      0 0 35px rgba(255, 192, 203, 0.4);
+  }
+}
+
+@keyframes magicalPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+  }
+}
+
+@keyframes buttonGlow {
+  0%, 100% {
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.6);
+  }
+}
+
+@keyframes nextButtonGlow {
+  0%, 100% {
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.6);
+  }
+}
+
+@keyframes nightButtonGlow {
+  0%, 100% {
+    box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(138, 43, 226, 0.6);
+  }
+}
+
+
+/* ========== TEXT & SHIMMER ANIMATIONS ========== */
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes shimmer-flow {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes textShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes snowyShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes moonlitShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes wordFade {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes letterColor {
+  0% { color: #ff69b4; }
+  25% { color: #ff1493; }
+  50% { color: #c71585; }
+  75% { color: #db7093; }
+  100% { color: #ff69b4; }
+}
+
+@keyframes letterCharm {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.05);
+  }
+}
+
+@keyframes text-appear {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes text-box-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes line-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ========== UI INTERACTION ANIMATIONS ========== */
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes winterBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  33% {
+    transform: translateY(-8px) scale(1.03);
+  }
+  66% {
+    transform: translateY(-12px) scale(1.05);
+  }
+}
+
+@keyframes magicalBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.08);
+  }
+  75% {
+    transform: translateY(-8px) scale(1.03);
+  }
+}
+
+@keyframes romanticBounce {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.03);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.05);
+  }
+  75% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes thunderBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes keyPressPulse {
+  0% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(0.985); filter: brightness(0.98); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+@keyframes buttonShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes buttonHeartFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes scroll-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotate(5deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+
+/* ========== CELEBRATION & MOOD ANIMATIONS ========== */
+
+@keyframes celebration {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg) scale(1.2);
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg) scale(1.1);
+  }
+  75% {
+    transform: translateY(-25px) rotate(270deg) scale(1.3);
+  }
+}
+
+@keyframes winterCelebration {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes gardenCelebration {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg) scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes nightCelebration {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) rotate(180deg) scale(1.12);
+  }
+}
+
+@keyframes happyGate {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(2deg);
+  }
+}
+
+@keyframes sunriseGate {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    text-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.05) rotate(2deg);
+    text-shadow: 0 0 20px rgba(255, 223, 0, 0.8);
+  }
+}
+
+@keyframes sadGate {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+}
+
+@keyframes cry {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes wilt {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(-10deg) scale(0.9);
+  }
+}
+
+@keyframes sadBee {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes owlHoot {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  10% {
+    transform: rotate(-5deg) scale(1.05);
+  }
+  20% {
+    transform: rotate(5deg) scale(1.05);
+  }
+  30% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes sleepyBreathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+
+/* ========== UTILITY & BACKGROUND ANIMATIONS ========== */
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes winterDance {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(3deg);
+  }
+}
+
+@keyframes gardenDance {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(2deg);
+  }
+}
+
+@keyframes winterGardenDance {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes nightGardenDance {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes winterBreeze {
+  0%, 100% {
+    filter: brightness(1) hue-rotate(0deg);
+  }
+  50% {
+    filter: brightness(1.05) hue-rotate(5deg);
+  }
+}
+
+@keyframes gardenBreeze {
+  0%, 100% {
+    filter: brightness(1) hue-rotate(0deg);
+  }
+  50% {
+    filter: brightness(1.03) hue-rotate(3deg);
+  }
+}
+
+@keyframes nightBreeze {
+  0%, 100% {
+    filter: brightness(1) hue-rotate(0deg);
+  }
+  50% {
+    filter: brightness(1.05) hue-rotate(2deg);
+  }
+}
+
+@keyframes sky-transform {
+  0% {
+    background: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460);
+  }
+  30% {
+    background: linear-gradient(to bottom, #2a2a4e, #26314e, #1f4470);
+  }
+  60% {
+    background: linear-gradient(to bottom, #3a3a6e, #36416e, #2f5480);
+  }
+  100% {
+    background: linear-gradient(to bottom, #4a4a8e, #46518e, #3f6490);
+  }
+}
+
+@keyframes smoothColorFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fluidGradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes riverFlow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes waterReflection {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes sparkle-dance {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.3) rotate(90deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(0.8) rotate(180deg);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.2) rotate(270deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes sparkleTrail {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes gentleSparkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes glitterTrail {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes rock-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes winterHeartDance {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+}
+
+@keyframes winterFlowerSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes airplane-float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(-5deg);
+  }
+  25% {
+    transform: translateY(-8px) translateX(4px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-12px) translateX(-2px) rotate(-8deg);
+  }
+  75% {
+    transform: translateY(-6px) translateX(6px) rotate(-3deg);
+  }
+}
+
+@keyframes creatures-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0);
+  }
+  60% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.8;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1);
+  }
+}
+
+@keyframes spirits-float {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) translateX(0) scale(0);
+  }
+  70% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0.6;
+    transform: translateY(0) translateX(10px) scale(1);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateY(-10px) translateX(20px) scale(1);
+  }
+}
