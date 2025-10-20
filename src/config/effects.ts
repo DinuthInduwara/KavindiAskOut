@@ -180,3 +180,39 @@ export const SNOW_LOVE_EFFECT: EffectConfig = {
     },
   ],
 };
+
+export const CLOUDLY_EFFECT: EffectConfig = {
+  name: 'cloudy',
+  elements: [
+    {
+      emojis: CLOUDS,
+      count: 8,
+      animation: 'cloudMove',
+      durationRange: [8, 12],
+      fontSizeRange: [40, 70],
+      opacity: 0.7,
+      customStyles: { left: '-20%' },
+    },
+    {
+      emojis: BUTTERFLIES,
+      count: 6,
+      animation: 'butterflyTrail',
+      durationRange: [4, 6],
+      delayRange: [0, 2],
+      fontSizeRange: [24, 24],
+    },
+    {
+      emojis: PETALS,
+      count: 10,
+      animation: 'petalFloat',
+      durationRange: [5, 8],
+      delayRange: [0, 2],
+      fontSizeRange: [16, 16],
+    },
+  ],
+};
+
+export const SUNRISE_EFFECT: EffectConfig = {
+  name: 'sunrise',
+  elements: [],
+};
