@@ -22,9 +22,9 @@ export interface EffectElement {
   emojis: readonly string[];
   count: number;
   animation: string;
-  durationRange: [number, number];
-  delayRange?: [number, number];
-  fontSizeRange?: [number, number];
+  durationRange: readonly [number, number];
+  delayRange?: readonly [number, number];
+  fontSizeRange?: readonly [number, number];
   className?: string;
   zIndex?: number;
   opacity?: number;
