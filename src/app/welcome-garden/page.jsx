@@ -2,6 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { sendMessageTelegram } from "../../utilities/telegram-helpers";
+import { PageAnimation } from "@/components/animations";
 
 function MainComponent() {
     const [gateOpen, setGateOpen] = React.useState(false);
@@ -58,6 +59,8 @@ function MainComponent() {
 
 
     return (
+		<PageAnimation type="zoomOut" duration={2000} delay={50} isVisible={true}>
+
         <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-300 via-teal-400 to-cyan-500">
             {/* Aurora Sky Effect */}
             <div className="absolute inset-0 pointer-events-none aurora-glow opacity-30"></div>
@@ -1396,6 +1399,7 @@ function MainComponent() {
 				}
 			`}</style>
         </div>
+		</PageAnimation>
     );
 }
 

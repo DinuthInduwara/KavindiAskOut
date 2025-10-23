@@ -6,7 +6,7 @@ import LoadingPage from "../components/loading-page";
 import { AnimatedOverlay } from "@/components/effects";
 import { CLOUDLY_EFFECT, SUNRISE_EFFECT } from "@/config/effects";
 import { GARDEN_EMOJIS, SAD_EMOJIS } from "@/constants/emojis";
-import PageTransition from "@/components/PageTransition";
+import { PageAnimation, FadeAnimation, SlideUpAnimation, BloomAnimation } from "@/components/animations";
 import SuccessCelebration from "@/components/SuccessCelebration";
 import MoonlitGardenEffects from "@/components/MoonlitGardenEffects";
 import "@/styles/animations.css";
@@ -136,17 +136,17 @@ function MainComponent() {
 
         if (showSuccess && progress === 100) {
                 return (
-                        <PageTransition isTransitioning={false} type="fade">
+                        <PageAnimation type="blur" duration={1500} delay={200} isVisible={true}>
                                 <WelcomeGarden />
-                        </PageTransition>
+                        </PageAnimation> 
                 );
         }
 
         if (showSuccess && progress !== 100) {
                 return (
-                        <PageTransition isTransitioning={false} type="slide">
+                        <SlideUpAnimation isVisible={true}>
                                 <LoadingPage progress={progress} setProgress={setProgress} />
-                        </PageTransition>
+                        </SlideUpAnimation> 
                 );
         }
 
@@ -157,7 +157,7 @@ function MainComponent() {
                         <>
                                 <SuccessCelebration isActive={showCelebration} />
 
-                                <PageTransition isTransitioning={isTransitioning} type="bloom">
+                                <BloomAnimation isVisible={!isTransitioning}>
                                         <div
                                                 style={{
                                                         minHeight: "100vh",
@@ -382,7 +382,7 @@ function MainComponent() {
                                                         </p>
                                                 </div>
                                         </div>
-                                </PageTransition>
+                                </BloomAnimation>
 
                                 <style jsx>{`
           @keyframes bloomEffect {

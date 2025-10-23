@@ -1,33 +1,36 @@
 "use client";
 import React from "react";
+import UniversalPageTransition from "./UniversalPageTransition";
 import "@/styles/animations.css";
 
+/**
+ * Updated PageTransition Component
+ * 
+ * Now uses the new UniversalPageTransition system for better
+ * animation handling and more animation options.
+ * 
+ * Maintains backward compatibility with existing usage.
+ */
+
 const PageTransition = ({ children, isTransitioning, type = "fade" }) => {
-    const getTransitionStyle = () => {
-        switch (type) {
-            case "bloom":
-                return {
-                    opacity: isTransitioning ? 0 : 1,
-                    transform: isTransitioning ? "scale(0.8)" : "scale(1)",
-                    filter: isTransitioning ? "blur(10px)" : "blur(0px)",
-                    transition: "all 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                };
-            case "slide":
-                return {
-                    opacity: isTransitioning ? 0 : 1,
-                    transform: isTransitioning ? "translateY(50px)" : "translateY(0)",
-                    transition: "all 1s ease-out",
-                };
-            case "fade":
-            default:
-                return {
-                    opacity: isTransitioning ? 0 : 1,
-                    transition: "opacity 1s ease-in-out",
-                };
-        }
+    // Map old type names to new animation names
+    const animationMap = {
+        "fade": "fade",
+        "slide": "slideUp", // Default slide is now slideUp
+        "bloom": "bloom"
     };
 
-    return <div style={getTransitionStyle()}>{children}</div>;
+    const animationType = animationMap[type] || type;
+
+    return (
+        <UniversalPageTransition
+            animation={animationType}
+            isVisible={!isTransitioning}
+            duration={type === "bloom" ? 1500 : 1000}
+        >
+            {children}
+        </UniversalPageTransition>
+    );
 };
 
 export default PageTransition;
