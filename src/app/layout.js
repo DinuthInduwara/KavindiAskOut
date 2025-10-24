@@ -24,8 +24,8 @@ export default function RootLayout({ children }) {
                         <body className={inter.className}>
                                 <MusicPlayerProvider>
                                         <ButterflyProvider>
-                                                {/* <MessageBox title="I have something to say 🤗" /> */}
-                                                {/* <MessageBox message="HI, Im Going TO Play Some Music, Is That Ok ?" /> */}
+                                                <MessageBox title="I have something to say 🤗" />
+                                                <MessageBox message="HI, Im Going TO Play Some Music, Is That Ok ?" />
                                                 <GlobalMusicPlayer />
                                                 {children}
                                         </ButterflyProvider>
