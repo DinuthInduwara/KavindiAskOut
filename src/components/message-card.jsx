@@ -23,7 +23,7 @@ Just a gentle reminder: මෙතන තියන <b>කිසිම දෙය�
 Stay magical, keep shining bright <b>like you always do! ✨🌟</b>`,
 }) {
 	const [showFlashCard, setShowFlashCard] = React.useState(true);
-	const { toggle, audioRef } = useMusicPlayer();
+	const { toggle, audioRef, isPlaying } = useMusicPlayer();
 
 	const handleOkClick = () => {
 		setShowFlashCard(false);
@@ -39,7 +39,7 @@ Stay magical, keep shining bright <b>like you always do! ✨🌟</b>`,
 			audioRef.current
 				.play()
 				.then(() => {
-					toggle();
+					if (!isPlaying) toggle();
 				})
 				.catch((error) => {
 					console.error("Error playing audio:", error);

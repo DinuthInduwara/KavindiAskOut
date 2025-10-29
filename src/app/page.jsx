@@ -20,6 +20,7 @@ function MainComponent() {
         const [progress, setProgress] = React.useState(0);
         const [isTransitioning, setIsTransitioning] = React.useState(false);
         const [showCelebration, setShowCelebration] = React.useState(false);
+        const [isVerifying, setIsVerifying] = React.useState(false);
 
         const handleKeyPulse = React.useCallback((e) => {
                 const el = e.currentTarget;
@@ -92,6 +93,7 @@ function MainComponent() {
         const handleSubmit = async (e) => {
                 e.preventDefault();
                 const attemptedPassword = passwordRef.current?.value || "";
+                setIsVerifying(true);
 
                 try {
                         await fetch('/api/log-attempt', {
@@ -116,6 +118,7 @@ function MainComponent() {
                                 // Start the beautiful transition
                                 startTransition();
                         } else {
+                                setIsVerifying(false);
                                 setIsWrong(true);
                                 setIsShaking(true);
                                 setWrongAttempts((prev) => prev + 1);
@@ -131,6 +134,7 @@ function MainComponent() {
                         }
                 } catch (error) {
                         console.error('Failed to check password:', error);
+                        setIsVerifying(false);
                 }
         };
 
@@ -138,7 +142,7 @@ function MainComponent() {
                 return (
                         <PageAnimation type="blur" duration={1500} delay={200} isVisible={true}>
                                 <WelcomeGarden />
-                        </PageAnimation> 
+                        </PageAnimation>
                 );
         }
 
@@ -146,7 +150,7 @@ function MainComponent() {
                 return (
                         <SlideUpAnimation isVisible={true}>
                                 <LoadingPage progress={progress} setProgress={setProgress} />
-                        </SlideUpAnimation> 
+                        </SlideUpAnimation>
                 );
         }
 
@@ -344,27 +348,54 @@ function MainComponent() {
                                                                                 fontSize: "18px",
                                                                                 fontWeight: "bold",
                                                                                 color: "white",
-                                                                                cursor: "pointer",
+                                                                                cursor: isVerifying ? "wait" : "pointer",
                                                                                 boxShadow: isWrong
                                                                                         ? "0 8px 20px rgba(225, 112, 85, 0.3)"
                                                                                         : "0 8px 20px rgba(0, 184, 148, 0.3)",
                                                                                 transition: "all 0.3s ease",
                                                                                 width: "100%",
+                                                                                position: "relative",
+                                                                                overflow: "hidden",
                                                                         }}
                                                                         onMouseOver={(e) => {
-                                                                                e.target.style.transform = "scale(1.05)";
-                                                                                e.target.style.boxShadow = isWrong
-                                                                                        ? "0 12px 25px rgba(225, 112, 85, 0.4)"
-                                                                                        : "0 12px 25px rgba(0, 184, 148, 0.4)";
+                                                                                if (!isVerifying) {
+                                                                                        e.target.style.transform = "scale(1.05)";
+                                                                                        e.target.style.boxShadow = isWrong
+                                                                                                ? "0 12px 25px rgba(225, 112, 85, 0.4)"
+                                                                                                : "0 12px 25px rgba(0, 184, 148, 0.4)";
+                                                                                }
                                                                         }}
                                                                         onMouseOut={(e) => {
-                                                                                e.target.style.transform = "scale(1)";
-                                                                                e.target.style.boxShadow = isWrong
-                                                                                        ? "0 8px 20px rgba(225, 112, 85, 0.3)"
-                                                                                        : "0 8px 20px rgba(0, 184, 148, 0.3)";
+                                                                                if (!isVerifying) {
+                                                                                        e.target.style.transform = "scale(1)";
+                                                                                        e.target.style.boxShadow = isWrong
+                                                                                                ? "0 8px 20px rgba(225, 112, 85, 0.3)"
+                                                                                                : "0 8px 20px rgba(0, 184, 148, 0.3)";
+                                                                                }
                                                                         }}
+                                                                        disabled={isVerifying}
                                                                 >
-                                                                        {isWrong ? "🥀 Try Again 🥀" : "🌸 Enter Garden 🌸"}
+                                                                        <div style={{
+                                                                                opacity: isVerifying ? 0 : 1,
+                                                                                transition: 'opacity 0.3s ease'
+                                                                        }}>
+                                                                                {isWrong ? "🥀 Try Again 🥀" : "🌸 Enter Garden 🌸"}
+                                                                        </div>
+                                                                        {isVerifying && (
+                                                                                <div style={{
+                                                                                        position: 'absolute',
+                                                                                        top: '50%',
+                                                                                        left: '50%',
+                                                                                        transform: 'translate(-50%, -50%)',
+                                                                                        display: 'flex',
+                                                                                        alignItems: 'center',
+                                                                                        gap: '8px'
+                                                                                }}>
+                                                                                        <span className="flower-loading">🌸</span>
+                                                                                        <span className="flower-loading" style={{ animationDelay: '0.2s' }}>🌺</span>
+                                                                                        <span className="flower-loading" style={{ animationDelay: '0.4s' }}>🌸</span>
+                                                                                </div>
+                                                                        )}
                                                                 </button>
                                                         </form>
 
@@ -436,6 +467,20 @@ function MainComponent() {
               transform: translateY(-150px) scale(0);
               opacity: 0;
             }
+          }
+
+          @keyframes flowerBounce {
+            0%, 80%, 100% {
+              transform: scale(1) rotate(0deg);
+            }
+            40% {
+              transform: scale(1.4) rotate(10deg);
+            }
+          }
+
+          .flower-loading {
+            display: inline-block;
+            animation: flowerBounce 1.4s infinite ease-in-out;
           }
         `}</style>
                         </>
