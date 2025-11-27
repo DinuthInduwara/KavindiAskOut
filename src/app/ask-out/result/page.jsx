@@ -21,9 +21,8 @@ const SnowyLoveEffects = () => (
 					top: `-10px`,
 					fontSize: `${8 + Math.random() * 12}px`,
 					color: "rgba(255, 255, 255, 0.9)",
-					animation: `snowFall ${
-						8 + Math.random() * 6
-					}s linear infinite ${Math.random() * 5}s`,
+					animation: `snowFall ${8 + Math.random() * 6
+						}s linear infinite ${Math.random() * 5}s`,
 					zIndex: 3,
 					filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.8))",
 				}}
@@ -40,15 +39,14 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "18px",
-					animation: `loveLetterFloat ${
-						6 + Math.random() * 4
-					}s ease-in-out infinite ${Math.random() * 3}s`,
+					animation: `loveLetterFloat ${6 + Math.random() * 4
+						}s ease-in-out infinite ${Math.random() * 3}s`,
 					filter: "drop-shadow(0 0 15px rgba(255, 182, 193, 0.8))",
 				}}
 			>
 				{
 					["💌", "💕", "💖", "💝", "💗", "💘"][
-						Math.floor(Math.random() * 6)
+					Math.floor(Math.random() * 6)
 					]
 				}
 			</div>
@@ -62,9 +60,8 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "16px",
-					animation: `winterHeartDance ${
-						5 + Math.random() * 3
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `winterHeartDance ${5 + Math.random() * 3
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 					color: "#ff69b4",
 					filter: "drop-shadow(0 0 12px rgba(255, 105, 180, 0.7))",
 				}}
@@ -81,9 +78,8 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: `${6 + Math.random() * 8}px`,
-					animation: `gentleSparkle ${
-						3 + Math.random() * 2
-					}s ease-in-out infinite ${Math.random() * 3}s`,
+					animation: `gentleSparkle ${3 + Math.random() * 2
+						}s ease-in-out infinite ${Math.random() * 3}s`,
 					color: "rgba(255, 255, 255, 1)",
 					filter: "drop-shadow(0 0 8px rgba(255, 255, 255, 0.9))",
 				}}
@@ -100,9 +96,8 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 60}%`,
 					fontSize: "20px",
-					animation: `loveBirdFly ${
-						8 + Math.random() * 4
-					}s ease-in-out infinite ${Math.random() * 3}s`,
+					animation: `loveBirdFly ${8 + Math.random() * 4
+						}s ease-in-out infinite ${Math.random() * 3}s`,
 					filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.6))",
 				}}
 			>
@@ -118,9 +113,8 @@ const SnowyLoveEffects = () => (
 					left: `${Math.random() * 100}%`,
 					top: `${Math.random() * 100}%`,
 					fontSize: "22px",
-					animation: `winterFlowerSway ${
-						7 + Math.random() * 3
-					}s ease-in-out infinite ${Math.random() * 2}s`,
+					animation: `winterFlowerSway ${7 + Math.random() * 3
+						}s ease-in-out infinite ${Math.random() * 2}s`,
 					filter: "drop-shadow(0 0 15px rgba(255, 182, 193, 0.7))",
 				}}
 			>
@@ -258,7 +252,7 @@ function MainComponent() {
 					justifyContent: "center",
 					position: "relative",
 					overflow: "hidden",
-					animation: "smoothColorFlow 15s ease-in-out infinite",
+					animation: "fluidGradient 15s ease-in-out infinite",
 				}}
 			>
 				<SnowyLoveEffects />
@@ -362,9 +356,9 @@ function MainComponent() {
 						onClick={(e) =>
 							handleTopEmojiClick(
 								winterElements[
-									Math.floor(
-										Math.random() * winterElements.length
-									)
+								Math.floor(
+									Math.random() * winterElements.length
+								)
 								],
 								e
 							)
@@ -374,9 +368,8 @@ function MainComponent() {
 							left: `${Math.random() * 100}%`,
 							top: `${Math.random() * 100}%`,
 							fontSize: `${Math.random() * 25 + 15}px`,
-							animation: `winterCelebration ${
-								4 + Math.random() * 3
-							}s ease-in-out infinite`,
+							animation: `winterCelebration ${4 + Math.random() * 3
+								}s ease-in-out infinite`,
 							animationDelay: `${Math.random() * 2}s`,
 							zIndex: 1,
 							filter: "drop-shadow(0 0 12px rgba(255, 255, 255, 0.7))",
@@ -398,9 +391,9 @@ function MainComponent() {
 					>
 						{
 							winterElements[
-								Math.floor(
-									Math.random() * winterElements.length
-								)
+							Math.floor(
+								Math.random() * winterElements.length
+							)
 							]
 						}
 					</div>
@@ -562,9 +555,8 @@ function MainComponent() {
 									cursor: "pointer",
 									transition:
 										"all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-									animation: `gentleFloat 3s ease-in-out infinite ${
-										index * 0.3
-									}s`,
+									animation: `gentleFloat 3s ease-in-out infinite ${index * 0.3
+										}s`,
 									boxShadow:
 										"0 10px 25px rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
 									position: "relative",

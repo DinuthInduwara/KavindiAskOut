@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import UniversalPageTransition from "./UniversalPageTransition";
-import "@/styles/animations.css";
 
 /**
  * Updated PageTransition Component

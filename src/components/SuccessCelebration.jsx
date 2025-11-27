@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import "@/styles/animations.css";
 
 const SuccessCelebration = ({ isActive }) => {
     if (!isActive) return null;
@@ -25,7 +24,7 @@ const SuccessCelebration = ({ isActive }) => {
                         left: `${Math.random() * 100}%`,
                         top: `${Math.random() * 100}%`,
                         fontSize: `${30 + Math.random() * 40}px`,
-                        animation: `bloomEffect 3s ease-out ${i * 0.2}s both`,
+                        animation: `bloomEffectCompact 3s ease-out ${i * 0.2}s both`,
                         zIndex: 1001,
                     }}
                 >
@@ -57,7 +56,7 @@ const SuccessCelebration = ({ isActive }) => {
                         left: `${Math.random() * 100}%`,
                         top: `${Math.random() * 100}%`,
                         fontSize: "24px",
-                        animation: `heartFloat 5s ease-in-out ${i * 0.3}s both`,
+                        animation: `heartFloatCompact 5s ease-in-out ${i * 0.3}s both`,
                         zIndex: 1003,
                     }}
                 >

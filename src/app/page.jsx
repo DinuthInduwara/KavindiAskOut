@@ -9,7 +9,6 @@ import { GARDEN_EMOJIS, SAD_EMOJIS } from "@/constants/emojis";
 import { PageAnimation, FadeAnimation, SlideUpAnimation, BloomAnimation } from "@/components/animations";
 import SuccessCelebration from "@/components/SuccessCelebration";
 import MoonlitGardenEffects from "@/components/MoonlitGardenEffects";
-import "@/styles/animations.css";
 
 function MainComponent() {
         const passwordRef = React.useRef(null);
@@ -415,74 +414,7 @@ function MainComponent() {
                                         </div>
                                 </BloomAnimation>
 
-                                <style jsx>{`
-          @keyframes bloomEffect {
-            0% {
-              transform: scale(0) rotate(0deg);
-              opacity: 0;
-            }
-            50% {
-              transform: scale(1.2) rotate(180deg);
-              opacity: 1;
-            }
-            100% {
-              transform: scale(1) rotate(360deg);
-              opacity: 0;
-            }
-          }
-
-          @keyframes goldenSparkle {
-            0% {
-              transform: scale(0) rotate(0deg);
-              opacity: 0;
-            }
-            20% {
-              transform: scale(1) rotate(180deg);
-              opacity: 1;
-            }
-            80% {
-              transform: scale(1) rotate(360deg);
-              opacity: 1;
-            }
-            100% {
-              transform: scale(0) rotate(540deg);
-              opacity: 0;
-            }
-          }
-
-          @keyframes heartFloat {
-            0% {
-              transform: translateY(0) scale(0);
-              opacity: 0;
-            }
-            20% {
-              transform: translateY(-20px) scale(1);
-              opacity: 1;
-            }
-            80% {
-              transform: translateY(-100px) scale(1);
-              opacity: 1;
-            }
-            100% {
-              transform: translateY(-150px) scale(0);
-              opacity: 0;
-            }
-          }
-
-          @keyframes flowerBounce {
-            0%, 80%, 100% {
-              transform: scale(1) rotate(0deg);
-            }
-            40% {
-              transform: scale(1.4) rotate(10deg);
-            }
-          }
-
-          .flower-loading {
-            display: inline-block;
-            animation: flowerBounce 1.4s infinite ease-in-out;
-          }
-        `}</style>
+                           
                         </>
                 );
         }

@@ -138,7 +138,7 @@ export const NIGHT_EFFECT: EffectConfig = {
     {
       emojis: ['💕'],
       count: 8,
-      animation: 'heartFloat',
+      animation: 'heartFloatCompact',
       durationRange: [6, 10],
       fontSizeRange: [18, 18],
       delayRange: [0, 3],

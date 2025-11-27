@@ -194,11 +194,10 @@ function MainComponent() {
                                 <div className="max-w-4xl mx-auto space-y-16">
                                         <div
                                                 id="hero"
-                                                className={`text-center transform transition-all duration-1000 ease-out ${
-                                                        isVisible.hero
+                                                className={`text-center transform transition-all duration-1000 ease-out ${isVisible.hero
                                                                 ? "translate-y-0 opacity-100"
                                                                 : "translate-y-20 opacity-0"
-                                                }`}
+                                                        }`}
                                         >
                                                 <div className="p-10 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
                                                         <h1 className="mb-6 text-6xl font-bold tracking-wide text-white md:text-8xl drop-shadow-lg">
@@ -217,11 +216,10 @@ function MainComponent() {
 
                                         <div
                                                 id="intro"
-                                                className={`transform transition-all duration-1000 delay-200 ease-out ${
-                                                        isVisible.intro
+                                                className={`transform transition-all duration-1000 delay-200 ease-out ${isVisible.intro
                                                                 ? "translate-y-0 opacity-100"
                                                                 : "translate-y-20 opacity-0"
-                                                }`}
+                                                        }`}
                                         >
                                                 <div className="p-10 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
                                                         <h2 className="mb-8 text-4xl font-bold text-center text-white drop-shadow-lg">
@@ -239,11 +237,10 @@ function MainComponent() {
 
                                         <div
                                                 id="gallery"
-                                                className={`transform transition-all duration-1000 delay-400 ease-out ${
-                                                        isVisible.gallery
+                                                className={`transform transition-all duration-1000 delay-400 ease-out ${isVisible.gallery
                                                                 ? "translate-y-0 opacity-100"
                                                                 : "translate-y-20 opacity-0"
-                                                }`}
+                                                        }`}
                                         >
                                                 <div className="p-10 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
                                                         <h2 className="mb-10 text-4xl font-bold text-center text-white drop-shadow-lg">
@@ -315,11 +312,10 @@ function MainComponent() {
 
                                         <div
                                                 id="videos"
-                                                className={`transform transition-all duration-1500 delay-700 ease-out ${
-                                                        isVisible.videos
+                                                className={`transform transition-all duration-1500 delay-700 ease-out ${isVisible.videos
                                                                 ? "translate-y-0 opacity-100"
                                                                 : "translate-y-20 opacity-0"
-                                                }`}
+                                                        }`}
                                         >
                                                 <div className="p-10 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
                                                         <h2 className="mb-10 text-4xl font-bold text-center text-white drop-shadow-lg">
@@ -356,11 +352,10 @@ function MainComponent() {
 
                                         <div
                                                 id="enhanced-gallery"
-                                                className={`transform transition-all duration-1500 delay-300 ease-out ${
-                                                        isVisible["enhanced-gallery"]
+                                                className={`transform transition-all duration-1500 delay-300 ease-out ${isVisible["enhanced-gallery"]
                                                                 ? "translate-y-0 opacity-100"
                                                                 : "translate-y-20 opacity-0"
-                                                }`}
+                                                        }`}
                                         >
                                                 <div className="backdrop-blur-lg bg-white/15 rounded-3xl p-10 border border-white/30 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:bg-white/20 hover:scale-[1.02]">
                                                         <h2 className="mb-12 text-5xl font-bold text-center text-white drop-shadow-lg">
@@ -473,11 +468,10 @@ function MainComponent() {
 
                                         <div
                                                 id="letter"
-                                                className={`transform transition-all duration-1500 delay-900 ease-out ${
-                                                        isVisible.letter
+                                                className={`transform transition-all duration-1500 delay-900 ease-out ${isVisible.letter
                                                                 ? "translate-y-0 opacity-100"
                                                                 : "translate-y-20 opacity-0"
-                                                }`}
+                                                        }`}
                                         >
                                                 <div className="letter-paper relative bg-gradient-to-b from-[#fefefe] to-[#f8f8f8] rounded-2xl p-12 shadow-2xl border border-gray-200 max-w-3xl mx-auto">
                                                         <div className="absolute inset-0 letter-lines opacity-10"></div>
@@ -773,11 +767,10 @@ function MainComponent() {
 
                                         <div
                                                 id="footer"
-                                                className={`text-center transform transition-all duration-1500 delay-500 ease-out ${
-                                                        isVisible.footer
+                                                className={`text-center transform transition-all duration-1500 delay-500 ease-out ${isVisible.footer
                                                                 ? "translate-y-0 opacity-100"
                                                                 : "translate-y-20 opacity-0"
-                                                }`}
+                                                        }`}
                                         >
                                                 <div className="p-8 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
                                                         <p className="mb-6 text-xl text-white/95 drop-shadow-md">
@@ -820,11 +813,11 @@ function MainComponent() {
                                                                 ✈️
                                                         </div>
                                                         <div className="absolute airplane-sparkles -inset-6">
-                                                                <div className="sparkle sparkle-1">✨</div>
-                                                                <div className="sparkle sparkle-2">💫</div>
-                                                                <div className="sparkle sparkle-3">⭐</div>
-                                                                <div className="sparkle sparkle-4">🌟</div>
-                                                                <div className="sparkle sparkle-5">💖</div>
+                                                                <div className="sparkleEffectsparkle-1">✨</div>
+                                                                <div className="sparkleEffectsparkle-2">💫</div>
+                                                                <div className="sparkleEffectsparkle-3">⭐</div>
+                                                                <div className="sparkleEffectsparkle-4">🌟</div>
+                                                                <div className="sparkleEffectsparkle-5">💖</div>
                                                         </div>
                                                         <div className="absolute inset-0 transition-all duration-500 border-2 rounded-full border-white/30 group-hover:border-white/60 animate-ping opacity-30"></div>
                                                         <div className="absolute transition-all duration-700 border rounded-full inset-2 border-purple-400/40 group-hover:border-purple-400/80 animate-pulse"></div>
@@ -838,109 +831,7 @@ function MainComponent() {
                                 </div>
                         </div>
 
-                        <style jsx global>{`
-                                @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 
-                                .font-dancing-script {
-                                        font-family: "Dancing Script", cursive;
-                                }
-
-                                .floating-emoji:nth-child(3n) {
-                                        animation: float 8s ease-in-out infinite;
-                                }
-
-                                .floating-emoji:nth-child(3n + 1) {
-                                        animation: sway 10s ease-in-out infinite;
-                                }
-
-                                .floating-emoji:nth-child(3n + 2) {
-                                        animation: drift 12s ease-in-out infinite;
-                                }
-
-                                .floating-airplane {
-                                        animation: airplane-float 4s ease-in-out infinite;
-                                }
-
-                                .airplane-sparkles {
-                                        pointer-events: none;
-                                }
-
-                                .sparkle {
-                                        position: absolute;
-                                        font-size: 14px;
-                                        opacity: 0.6;
-                                }
-
-                                .sparkle-1 {
-                                        top: -10px;
-                                        left: -15px;
-                                        animation: sparkle 2s ease-in-out infinite;
-                                        animation-delay: 0s;
-                                }
-
-                                .sparkle-2 {
-                                        bottom: -8px;
-                                        right: -12px;
-                                        animation: sparkle 2.5s ease-in-out infinite;
-                                        animation-delay: 0.7s;
-                                }
-
-                                .sparkle-3 {
-                                        top: 50%;
-                                        left: -20px;
-                                        animation: sparkle 3s ease-in-out infinite;
-                                        animation-delay: 1.2s;
-                                }
-
-                                .sparkle-4 {
-                                        top: -8px;
-                                        right: -18px;
-                                        animation: sparkle 2.2s ease-in-out infinite;
-                                        animation-delay: 1.8s;
-                                }
-
-                                .sparkle-5 {
-                                        bottom: 50%;
-                                        right: -10px;
-                                        animation: sparkle 2.8s ease-in-out infinite;
-                                        animation-delay: 0.3s;
-                                }
-
-                                .letter-paper {
-                                        background-image: repeating-linear-gradient(
-                                                #e1f5fe 0px,
-                                                #e1f5fe 24px,
-                                                #e1f5fe 26px
-                                        );
-                                        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
-                                                0 4px 8px rgba(0, 0, 0, 0.1),
-                                                0 8px 16px rgba(0, 0, 0, 0.1),
-                                                0 16px 32px rgba(0, 0, 0, 0.1);
-                                }
-
-                                .letter-lines {
-                                        background-image: repeating-linear-gradient(
-                                                transparent,
-                                                transparent 28px,
-                                                #b3e5fc 28px,
-                                                #b3e5fc 30px
-                                        );
-                                }
-
-                                .backdrop-blur-lg {
-                                        backdrop-filter: blur(20px);
-                                        -webkit-backdrop-filter: blur(20px);
-                                }
-
-                                .backdrop-blur-md {
-                                        backdrop-filter: blur(16px);
-                                        -webkit-backdrop-filter: blur(16px);
-                                }
-
-                                .hover\\:shadow-3xl:hover {
-                                        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-                                }
-                        `}</style>
                 </div>
         );
 }

@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import "@/styles/animations.css";
 
 /**
  * Universal Page Transition Component
