@@ -1,25 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 
-.font-dancing-script {
-    font-family: "Dancing Script", cursive;
-}
-
-.floating-emoji:nth-child(3n) {
-    animation: float 8s ease-in-out infinite;
-}
-
-.floating-emoji:nth-child(3n + 1) {
-    animation: sway 10s ease-in-out infinite;
-}
-
-.floating-emoji:nth-child(3n + 2) {
-    animation: drift 12s ease-in-out infinite;
-}
-
-.floating-airplane {
-    animation: airplane-float 4s ease-in-out infinite;
-}
-
 .airplane-sparkles {
     pointer-events: none;
 }
@@ -28,70 +8,4 @@
     position: absolute;
     font-size: 14px;
     opacity: 0.6;
-}
-
-.sparkle-1 {
-    top: -10px;
-    left: -15px;
-    animation: sparkle 2s ease-in-out infinite;
-    animation-delay: 0s;
-}
-
-.sparkle-2 {
-    bottom: -8px;
-    right: -12px;
-    animation: sparkle 2.5s ease-in-out infinite;
-    animation-delay: 0.7s;
-}
-
-.sparkle-3 {
-    top: 50%;
-    left: -20px;
-    animation: sparkle 3s ease-in-out infinite;
-    animation-delay: 1.2s;
-}
-
-.sparkle-4 {
-    top: -8px;
-    right: -18px;
-    animation: sparkle 2.2s ease-in-out infinite;
-    animation-delay: 1.8s;
-}
-
-.sparkle-5 {
-    bottom: 50%;
-    right: -10px;
-    animation: sparkle 2.8s ease-in-out infinite;
-    animation-delay: 0.3s;
-}
-
-.letter-paper {
-    background-image: repeating-linear-gradient(#e1f5fe 0px,
-            #e1f5fe 24px,
-            #e1f5fe 26px);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
-        0 4px 8px rgba(0, 0, 0, 0.1),
-        0 8px 16px rgba(0, 0, 0, 0.1),
-        0 16px 32px rgba(0, 0, 0, 0.1);
-}
-
-.letter-lines {
-    background-image: repeating-linear-gradient(transparent,
-            transparent 28px,
-            #b3e5fc 28px,
-            #b3e5fc 30px);
-}
-
-.backdrop-blur-lg {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-.backdrop-blur-md {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-}
-
-.hover\\:shadow-3xl:hover {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }

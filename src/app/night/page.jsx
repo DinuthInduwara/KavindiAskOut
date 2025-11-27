@@ -4,6 +4,9 @@ import RainText from "../../components/TypewriterText";
 import { useRouter } from "next/navigation";
 import { useMusicPlayer } from "../../context/MusicPlayerContext";
 import { sendMessageTelegram } from "../../utilities/telegram-helpers";
+import { DynaPuff } from 'next/font/google'
+const dynaPuff = DynaPuff({ subsets: ["latin"], weight: ["400"], });
+
 
 const NightEffects = () => (
         <div
@@ -226,7 +229,47 @@ function MainComponent() {
         const { switchTrack } = useMusicPlayer();
 
         const kavindiSpeech =
-                "🌧️  Kavindi… do you know how I hate rain?  \n🌫️  Rain falls in this world, too.  \n☁️  If your heart is troubled, the skies will become cloudy.  \n💧  If you grieve, rain falls so terribly easily.  \n😔  Can you understand… the horrible feeling of being pelted by rain\nwhen you’re all alone in this solitary world?  🕊️  \n💪  If only to stop that rain, I shall lend you any strength, any power.  \n☀️  If you trust in me, I won’t let a single drop of rain fall from that sky.  \n❤️  Kavindi, trust me… you are not fighting alone.";
+                `🌧️✨\n
+Kavindi…\n      
+do you know\n
+how much I hate rain?\n
+🌫️💭\n
+It falls in this world too,\n
+just like in yours.\n
+☁️😔\n
+When your heart is troubled,\n
+the skies forget how to smile.\n
+💧🥀\n
+When you grieve—\n
+the clouds tear themselves open\n
+so easily,\n
+so cruelly.\n
+😞🌙\n
+Can you understand\n
+this unbearable feeling…\n
+of cold drops\n
+striking your skin\n
+when you’re completely,\n
+terribly\n
+alone\n
+in this solitary world?\n
+🕊️🤍\n
+💪🔥\n
+Just to stop that rain for you,\n
+I would give every ounce of my strength,\n
+every fragment of my power.\n
+☀️🌈\n
+If you trust me—\n
+even a little—\n
+I swear\n
+not a single drop of rain\n
+will ever touch you again.\n
+❤️‍🔥💫\n
+Kavindi…\n
+trust me.\n
+You are not fighting alone.\n
+I’m right here,\n
+holding the sky for you.\n`
         const router = useRouter();
         const [hiddenButton, setHiddenButton] = React.useState(false);
 
@@ -261,7 +304,8 @@ function MainComponent() {
                                                 boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3)",
                                                 border: "2px solid rgba(230, 230, 250, 0.3)",
                                                 zIndex: 10,
-                                                maxWidth: "600px",
+                                                maxWidth: "800px",
+                                                padding: "28px 36px",
                                                 animation:
                                                         "nightGlow 4s ease-in-out infinite alternate",
                                                 backdropFilter: "blur(10px)",
@@ -310,9 +354,9 @@ function MainComponent() {
                                                 <div
                                                         style={{
                                                                 textAlignLast: "center",
-                                                                lineHeight: 1.8,
-                                                                fontFamily: "Dancing Script, cursive",
-
+                                                                lineHeight: 1,
+                                                                fontSize: "20px",
+                                                                fontFamily: dynaPuff.style.fontFamily,
                                                                 whiteSpace: "pre-wrap",
                                                         }}
                                                 >

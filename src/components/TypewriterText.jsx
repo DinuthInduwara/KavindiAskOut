@@ -2,7 +2,7 @@
 import React from "react";
 import { TYPEWRITER_TIMINGS } from "@/constants/animations";
 
-export default function RainText({ fullText, setClickble }) {
+export default function TypewriterText({ fullText, setClickble }) {
     const lines = React.useMemo(() => fullText.split("\n"), [fullText]);
 
     React.useEffect(() => {

@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter  } from "next/font/google";
 import "./globals.css";
 import "../styles/animations.css";
 import { MusicPlayerProvider } from "../context/MusicPlayerContext";
