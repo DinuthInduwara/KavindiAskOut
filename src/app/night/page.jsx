@@ -305,6 +305,7 @@ holding the sky for you.\n`
                                                 border: "2px solid rgba(230, 230, 250, 0.3)",
                                                 zIndex: 10,
                                                 maxWidth: "800px",
+                                                minWidth: "60%",
                                                 padding: "28px 36px",
                                                 animation:
                                                         "nightGlow 4s ease-in-out infinite alternate",

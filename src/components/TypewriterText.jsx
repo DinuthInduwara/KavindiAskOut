@@ -21,7 +21,7 @@ export default function TypewriterText({ fullText, setClickble }) {
             TYPEWRITER_TIMINGS.WORD_FADE_MS +
             maxLettersInLastWord * TYPEWRITER_TIMINGS.LETTER_STAGGER_MS +
             TYPEWRITER_TIMINGS.LETTER_COLOR_MS +
-            400;
+            900;
 
         const timer = setTimeout(() => {
             if (typeof setClickble === "function") {

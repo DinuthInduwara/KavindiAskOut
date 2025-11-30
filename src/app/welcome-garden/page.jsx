@@ -14,13 +14,26 @@ function MainComponent() {
 	const [showNavigation, setShowNavigation] = React.useState(false);
 	const [isAuthorized, setIsAuthorized] = React.useState(false);
 
-
-
-
+	// 🌸 NEW: soft “values” / meaning bullets for the main card
+	const loveValues = [
+		{
+			icon: "🌱",
+			title: "Growth",
+			text: "We grow together slowly, gently, without rushing the magic.",
+		},
+		{
+			icon: "🪷",
+			title: "Calm",
+			text: "Like the pond here, I want your heart to feel safe and peaceful with me.",
+		},
+		{
+			icon: "🕊️",
+			title: "Trust",
+			text: "This garden is a promise: I’ll guard your heart with kindness.",
+		},
+	];
 
 	const router = useRouter();
-
-
 
 	// Check authorization on component mount
 	const handleNavigation = () => {
@@ -30,7 +43,6 @@ function MainComponent() {
 	React.useEffect(() => {
 		router.prefetch("/ask-out");
 	}, [router]);
-
 
 	React.useEffect(() => {
 		// Staggered timing for smoother experience
@@ -43,8 +55,6 @@ function MainComponent() {
 		};
 	}, []);
 
-
-
 	const handleKeyClick = () => {
 		if (!keyClicked) {
 			setKeyClicked(true);
@@ -56,14 +66,23 @@ function MainComponent() {
 		}
 	};
 
-
-
 	return (
-		<PageAnimation type="zoomOut" duration={2000} delay={50} isVisible={true}>
-
-			<div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-300 via-teal-400 to-cyan-500">
+		<PageAnimation
+			type="zoomOut"
+			duration={2000}
+			delay={50}
+			isVisible={true}
+		>
+			{/* ✨ changed background: more romantic / dreamy but still garden-like */}
+			<div
+				className={`relative min-h-screen overflow-hidden bg-gradient-to-br max-h-screen max-w-full ${
+					gateOpen
+						? "from-rose-200 via-pink-300 to-indigo-500"
+						: "from-emerald-300 via-teal-400 to-cyan-500"
+				}`}
+			>
 				{/* Aurora Sky Effect */}
-				<div className="absolute inset-0 pointer-events-none aurora-glow opacity-30"></div>
+				<div className="absolute inset-0 pointer-events-none aurora-glow opacity-40"></div>
 
 				{/* Twinkling Background Stars */}
 				<div className="absolute inset-0 pointer-events-none">
@@ -137,8 +156,6 @@ function MainComponent() {
 					></div>
 				</div>
 
-
-
 				{/* Falling Sakura Petals */}
 				<div className="absolute inset-0 pointer-events-none">
 					<div
@@ -186,14 +203,14 @@ function MainComponent() {
 				</div>
 
 				{/* Enhanced Garden Ground Layer */}
-				<div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-green-700 via-green-500 to-green-400 opacity-70"></div>
+				<div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-green-800/80 via-emerald-500/70 to-emerald-300/70"></div>
 
 				{/* Garden Path */}
-				<div className="absolute bottom-0 w-32 h-40 transform -translate-x-1/2 rounded-t-full opacity-50 left-1/2 bg-gradient-to-t from-amber-600 to-amber-400"></div>
+				<div className="absolute bottom-0 w-32 h-40 transform -translate-x-1/2 rounded-t-full opacity-60 left-1/2 bg-gradient-to-t from-amber-700 to-amber-400"></div>
 
 				{/* Pond Elements */}
-				<div className="absolute w-32 h-20 rounded-full bottom-16 left-20 bg-gradient-to-br from-blue-400 to-blue-600 opacity-70 pond-shimmer"></div>
-				<div className="absolute w-24 h-16 delay-1000 rounded-full bottom-20 right-32 bg-gradient-to-br from-blue-300 to-blue-500 opacity-60 pond-shimmer"></div>
+				<div className="absolute w-32 h-20 rounded-full bottom-16 left-20 bg-gradient-to-br from-blue-400 to-blue-600 opacity-80 pond-shimmer"></div>
+				<div className="absolute w-24 h-16 delay-1000 rounded-full bottom-20 right-32 bg-gradient-to-br from-blue-300 to-blue-500 opacity-70 pond-shimmer"></div>
 
 				{/* Water Lilies on Ponds */}
 				<div className="absolute text-2xl bottom-20 left-24 lily-float">
@@ -240,7 +257,9 @@ function MainComponent() {
 				<div className="absolute text-4xl delay-1000 bottom-32 left-1/4 animal-hop">
 					🐰
 				</div>
-				<div className="absolute text-3xl top-16 left-1/3 bird-fly">🐦</div>
+				<div className="absolute text-3xl top-16 left-1/3 bird-fly">
+					🐦
+				</div>
 				<div className="absolute text-3xl top-20 right-1/4 bird-fly delay-2000">
 					🕊️
 				</div>
@@ -316,8 +335,9 @@ function MainComponent() {
 					<div className="relative w-96 h-96">
 						{/* Left Gate with Decorations */}
 						<div
-							className={`gate-left absolute left-0 top-0 w-48 h-96 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-600 border-r-4 border-amber-900 transition-transform duration-3000 ease-in-out ${gateOpen ? "-translate-x-full" : ""
-								}`}
+							className={`gate-left absolute left-0 top-0 w-48 h-96 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-600 border-r-4 border-amber-900 transition-transform duration-3000 ease-in-out ${
+								gateOpen ? "-translate-x-full" : ""
+							}`}
 						>
 							<div className="absolute border-2 rounded-lg inset-2 border-amber-700">
 								<div className="absolute border rounded opacity-50 top-4 left-4 right-4 bottom-4 border-amber-700"></div>
@@ -361,8 +381,9 @@ function MainComponent() {
 
 						{/* Right Gate with Decorations */}
 						<div
-							className={`gate-right absolute right-0 top-0 w-48 h-96 bg-gradient-to-l from-amber-800 via-amber-700 to-amber-600 border-l-4 border-amber-900 transition-transform duration-3000 ease-in-out ${gateOpen ? "translate-x-full" : ""
-								}`}
+							className={`gate-right absolute right-0 top-0 w-48 h-96 bg-gradient-to-l from-amber-800 via-amber-700 to-amber-600 border-l-4 border-amber-900 transition-transform duration-3000 ease-in-out ${
+								gateOpen ? "translate-x-full" : ""
+							}`}
 						>
 							<div className="absolute border-2 rounded-lg inset-2 border-amber-700">
 								<div className="absolute border rounded opacity-50 top-4 left-4 right-4 bottom-4 border-amber-700"></div>
@@ -469,7 +490,7 @@ function MainComponent() {
 				{/* Enhanced Welcome Content */}
 				{showContent && (
 					<div className="absolute inset-0 flex items-center justify-center fade-in">
-						<div className="max-w-lg p-8 mx-4 text-center border shadow-2xl glass-card rounded-3xl backdrop-blur-lg bg-white/20 border-white/30">
+						<div className="max-w-2xl p-8 mx-4 text-center border shadow-2xl glass-card rounded-3xl backdrop-blur-2xl bg-white/20 border-white/40">
 							<div className="mb-4 text-6xl heart-pulse">🌹</div>
 							<h1 className="mb-4 font-serif text-4xl font-bold text-white md:text-5xl text-glow">
 								Welcome to Our
@@ -484,12 +505,45 @@ function MainComponent() {
 								A sanctuary crafted with love, where every petal
 								whispers your name...
 							</p>
-							<div className="flex justify-center space-x-4 text-2xl">
-								<span className="delay-100 bounce-gentle">🌸</span>
-								<span className="delay-200 bounce-gentle">💖</span>
-								<span className="delay-300 bounce-gentle">🌺</span>
-								<span className="bounce-gentle delay-400">✨</span>
-								<span className="delay-500 bounce-gentle">🦋</span>
+
+							{/* 🌸 NEW: meaning / values inside the main card */}
+							<div className="grid gap-4 mt-4 text-left md:grid-cols-3">
+								{loveValues.map((item, index) => (
+									<div
+										key={index}
+										className="p-3 border rounded-2xl bg-white/15 border-white/30 backdrop-blur-xl"
+									>
+										<div className="flex items-center mb-1 space-x-2">
+											<span className="text-xl">
+												{item.icon}
+											</span>
+											<span className="text-sm font-semibold tracking-wide uppercase text-pink-50">
+												{item.title}
+											</span>
+										</div>
+										<p className="text-xs leading-snug text-pink-50/80">
+											{item.text}
+										</p>
+									</div>
+								))}
+							</div>
+
+							<div className="flex justify-center mt-6 space-x-4 text-2xl">
+								<span className="delay-100 bounce-gentle">
+									🌸
+								</span>
+								<span className="delay-200 bounce-gentle">
+									💖
+								</span>
+								<span className="delay-300 bounce-gentle">
+									🌺
+								</span>
+								<span className="bounce-gentle delay-400">
+									✨
+								</span>
+								<span className="delay-500 bounce-gentle">
+									🦋
+								</span>
 							</div>
 						</div>
 					</div>
@@ -497,15 +551,30 @@ function MainComponent() {
 
 				{/* Floating Poetic Love Message */}
 				{showPoetry && (
-					<div className="absolute max-w-xs poetry-entrance top-20 left-8"></div>
+					<div className="absolute max-w-xs poetry-entrance top-20 left-8">
+						<div className="p-4 text-sm text-left text-white border shadow-lg rounded-2xl glass-card bg-white/15 border-white/30 backdrop-blur-xl">
+							<p className="mb-1 text-xs tracking-wide uppercase text-pink-100/80">
+								For you, only you
+							</p>
+							<p className="italic leading-relaxed text-pink-50/90">
+								“Like these flowers,{" "}
+								<span className="font-semibold">
+									my feelings keep quietly blooming
+								</span>{" "}
+								for you. Every colour here is a tiny piece of my
+								heart, whispering:{" "}
+								<span className="font-semibold">stay</span>.”
+							</p>
+						</div>
+					</div>
 				)}
 
 				{/* Magical Navigation Scroll */}
 				{showNavigation && (
-					<div className="fixed z-50 bottom-8 right-8">
+					<div className="absolute z-50 bottom-8 right-8">
 						<div
 							onClick={handleNavigation}
-							className="transition-all duration-500 transform cursor-pointer magical-scroll-container hover:scale-110 group animate-bounce"
+							className="transition-all duration-1000 transform cursor-pointer magical-scroll-container hover:scale-110 group animate-bounce"
 						>
 							<div className="relative">
 								{/* ✨ Floating Sparkles Around Scroll */}
@@ -573,8 +642,6 @@ function MainComponent() {
 						</div>
 					</div>
 				)}
-
-			
 			</div>
 		</PageAnimation>
 	);

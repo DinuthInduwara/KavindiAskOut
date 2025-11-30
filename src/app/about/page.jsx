@@ -337,7 +337,7 @@ function MainComponent() {
                                                                 <div className="p-6 transition-all duration-500 border backdrop-blur-md bg-white/10 rounded-2xl border-white/20 hover:bg-white/15">
                                                                         <iframe
                                                                                 className="w-full h-64 shadow-lg rounded-xl"
-                                                                                src="https://www.youtube.com/embed/roPiy2JydwA?si=NDrmjbV2t79bISZ8"
+                                                                                src="https://www.youtube.com/embed/A61H6o1f6ts?si=k63ui94LyKgpuvBb"
                                                                                 title="The song that makes me melt 🫠✨"
                                                                                 frameBorder="0"
                                                                                 allowFullScreen
@@ -824,7 +824,7 @@ function MainComponent() {
                                                 </div>
                                         </div>
 
-                                        <div className="absolute right-0 px-6 py-3 text-sm font-semibold text-gray-800 transition-all duration-500 transform translate-y-4 border-2 border-purple-200 shadow-2xl opacity-0 airplane-tooltip -top-20 bg-white/95 backdrop-blur-md rounded-2xl group-hover:opacity-100 group-hover:translate-y-0 whitespace-nowrap">
+                                        <div className="absolute right-0 px-6 py-3 text-sm font-semibold text-gray-800 transition-all duration-1000 transform translate-y-4 border-2 border-purple-200 shadow-2xl opacity-0 airplane-tooltip -top-20 bg-white/95 backdrop-blur-md rounded-2xl group-hover:opacity-100 group-hover:translate-y-0 whitespace-nowrap">
                                                 Continue Your Journey 💕✨
                                                 <div className="absolute w-0 h-0 border-t-8 border-l-4 border-r-4 border-transparent top-full right-8 border-t-white/95"></div>
                                         </div>

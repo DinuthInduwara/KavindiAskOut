@@ -263,7 +263,7 @@ export default function SnowyTransition() {
 						hand in mine.
 					</p>
 
-					<div className="transition-all duration-500 transform cursor-pointer magical-scroll-container hover:scale-110 group animate-bounce">
+					<div className="transition-all duration-1000 transform cursor-pointer magical-scroll-container hover:scale-110 group animate-bounce">
 						<button
 							onClick={handleEnterApp}
 							className="relative overflow-hidden group"
