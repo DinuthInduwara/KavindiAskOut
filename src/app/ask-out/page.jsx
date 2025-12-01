@@ -186,6 +186,97 @@ function MainComponent() {
 	const [showPage, setShowPage] = React.useState(false);
 	const [yesClicked, setyesClicked] = React.useState(false);
 	const { switchTrack } = useMusicPlayer();
+	const loveFlow = React.useMemo(
+		() => ({
+			text: "කාවින්දි, ඔයා දන්නවා නේද මම ඔයාට ආදරෙයි කියල, ඔය කැමතිද එකට 💕",
+			yesLabel: "දන්නවා",
+			noLabel: "නැ",
+			yes: {
+				text: "ඇත්තමයි නේද 😻",
+				yesLabel: "ඔව් ඔව්",
+				noLabel: "JOKE එකක්",
+				no: {
+					text: "ඔයා හරිම ආඩම්බරයි නේද 🦋",
+					yesLabel: "අනේ නෑ",
+					noLabel: "ඔව්! ගොඩක් ",
+					yes: {
+						text: "ආඩම්බර උනාට මට කැමති නේද 😇",
+						yesLabel: "නැ! ආදරෙයි",
+						noLabel: "",
+						yes: { done: true },
+						
+					},
+					no: {
+						text: "දැන්නම් කැමති තමයි. නේද 🫠",
+						yesLabel: "නැ! ආදරෙයි",
+						noLabel: "",
+						yes: { done: true },
+					},
+				},
+				yes: {
+					text: "ඔයා කැමතිද මගේ වෙන්න 😘",
+					yesLabel: "ඔයාගේ විතරක්ම",
+					noLabel: "තාම නැ",
+					yes: {
+						text: "හැමදාටම",
+						yesLabel: "හ්ම්ම්ම් ඔව්!",
+						noLabel: "",
+						yes: { done: true },
+						
+					},
+					no: {
+						text: "දැන්නම් කැමති තමයි. නේද 🫠",
+						yesLabel: "හ්ම්ම්ම් ඔව්!",
+						noLabel: "",
+						yes: { done: true },
+					},
+				},
+			},
+			no: {
+				text: "බොරු නේද කිව්වේ ඔයා නැ කියල ??? 🥺",
+				yesLabel: "ඔව්",
+				noLabel: "ඇත්ත",
+				no: {
+					text: "ඔයා හරිම ආඩම්බරයි නේද 🦋",
+					yesLabel: "එහෙම තමයි",
+					noLabel: "මම එහෙම නැ",
+					yes: {
+						text: "දැන් ඇති නේද ආඩම්බර උනා, Come on, just say yes! , දුක  හිතෙනවනෙ ... 😿",
+						yesLabel: "හ්ම්ම්ම්",
+						noLabel: "",
+						yes: { done: true },
+					},
+					no: {
+						text: "චොකලට් එකක් ඩුන්නොත් කැමති නේ 🍫",
+						yesLabel: "හ්ම්ම්ම්",
+						noLabel: "",
+						yes: { done: true },
+					},
+				},
+				yes: {
+					text: "කැමති නේහ් ! 💖",
+					yesLabel: "හ්ම්ම්ම්",
+					noLabel: "නෑ",
+					yes: {
+						text: "ඇත්තමයි නේද",
+						yesLabel: "ඔව් ඇත්තමයි",
+						noLabel: "",
+						yes: { done: true },
+					},
+					no: {
+						text: "දැන්නම් කැමති තමයි. නේද 🫠",
+						yesLabel: "💖 ආදරෙයි",
+						noLabel: "",
+						yes: { done: true },
+					},
+				},
+			},
+		}),
+		[]
+	);
+	const [currentNode, setCurrentNode] = React.useState(loveFlow);
+	const [noClickCount, setNoClickCount] = React.useState(0);
+	const [yesButtonSize, setYesButtonSize] = React.useState(120);
 
 	React.useEffect(() => {
 		switchTrack("/music-2.mp3");
@@ -200,26 +291,49 @@ function MainComponent() {
 		return () => clearTimeout(timer);
 	}, []);
 
-	const handleYesClick = () => {
+	const triggerFinale = (message) => {
 		setTimeout(() => {
 			setShowPage(false);
 			setyesClicked(true);
 		}, 500);
-		sendMessageTelegram("Yes Clicked! 💖");
+		sendMessageTelegram(message || "Yes Clicked! 💖");
 	};
 
-	const [noClickCount, setNoClickCount] = React.useState(0);
-	const [yesButtonSize, setYesButtonSize] = React.useState(120);
+	const getYesLabel = (node) =>
+		node?.yesLabel && node.yesLabel.trim()
+			? node.yesLabel.trim()
+			: loveFlow.yesLabel?.trim() || "Yes! 💚";
+	const getNoLabel = (node) =>
+		node?.noLabel && node.noLabel.trim()
+			? node.noLabel.trim()
+			: loveFlow.noLabel?.trim() || null;
 
-	const questions = [
-		"කාවින්දි මේ.! ඔයා කැමති නේද මන් එක්ක ඉන්න ? 💕",
-		"බොරු නේද කිව්වේ ඔයා නැ කියල ??? 🥺",
-		"Pretty please? මම promise වෙනවා මම හොද ළමයෙක් වෙනවා කියල ! 🙏",
-		"දැන් ඇති නේද ආඩම්බර උනා, Come on, just say yes! , ඩුක  හිතෙනවනෙ ... 😿",
-		"කැමති නේහ් ! 😭",
-		"තව චෝකොලොට් එකක් ඩුන්නොත් කැමති නේ 🍫",
-		"අනේ දැන් ඉතින් මොනවද කියන්නෙ.. ඤෑ කියලද ? 💘",
-	];
+	const handleBranchClick = (branch) => {
+		const nextNode = currentNode?.[branch];
+		const clickedLabel =
+			branch === "yes" ? getYesLabel(currentNode) : getNoLabel(currentNode);
+
+		if (branch === "no") {
+			setNoClickCount((prev) => prev + 1);
+			setYesButtonSize((prev) => prev + 15);
+		}
+
+		if (!nextNode || nextNode.done || nextNode.text === "Done") {
+			triggerFinale(
+				`${branch.toUpperCase()} clicked on "${currentNode?.text}"${
+					nextNode?.text ? ` -> ${nextNode.text}` : ""
+				}`
+			);
+			return;
+		}
+
+		sendMessageTelegram(
+			`${branch === "yes" ? "Yes" : "No"} clicked on "${
+				currentNode?.text
+			}" -> "${nextNode.text}"`
+		);
+		setCurrentNode(nextNode);
+	};
 
 	const loveMessages = [
 		[
@@ -259,16 +373,6 @@ function MainComponent() {
 		],
 	];
 
-	const noTexts = [
-		"No 💔",
-		"Still no? 😢",
-		"Really? 🥺",
-		"But why? 😿",
-		"ඤෑ 😭",
-		"EwW! ඤෑ 🍫",
-		"Please? 🙏",
-	];
-
 	const catGifs = [
 		"https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif",
 		"https://media.giphy.com/media/L95W4wv8nnb9K/giphy.gif",
@@ -278,21 +382,16 @@ function MainComponent() {
 		"https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
 	];
 
-	const currentQuestion =
-		questions[Math.min(noClickCount, questions.length - 1)];
-	const currentNoText = noTexts[Math.min(noClickCount, noTexts.length - 1)];
+	const currentQuestion = currentNode?.text || "";
+	const yesLabel = getYesLabel(currentNode);
+	const noLabel = getNoLabel(currentNode);
+	const hasNoPath = Boolean(currentNode?.no);
 	const currentCatGif =
-		catGifs[Math.min(noClickCount - 1, catGifs.length - 1)];
+		catGifs[
+			Math.max(0, Math.min(noClickCount - 1, catGifs.length - 1))
+		];
 	const currentLoveMessage =
 		loveMessages[Math.min(noClickCount, loveMessages.length - 1)];
-
-	const handleNoClick = () => {
-		setNoClickCount((prev) => prev + 1);
-		setYesButtonSize((prev) => prev + 15);
-		sendMessageTelegram(
-			`No Clicked: ${currentNoText} - Count: ${noClickCount + 1}`
-		);
-	};
 
 	const nightGardenElements = [
 		"🌙",
@@ -471,7 +570,7 @@ function MainComponent() {
 							}}
 						>
 							<button
-								onClick={handleYesClick}
+								onClick={() => handleBranchClick("yes")}
 								style={{
 									width: `${yesButtonSize}px`,
 									height: "50px",
@@ -495,12 +594,12 @@ function MainComponent() {
 									e.target.style.transform = "scale(1)";
 								}}
 							>
-								Yes! 💚
+								{yesLabel}
 							</button>
 
-							{noClickCount < questions.length - 1 && (
+							{hasNoPath && noLabel && open && (
 								<button
-									onClick={handleNoClick}
+									onClick={() => handleBranchClick("no")}
 									style={{
 										width: "120px",
 										height: "50px",
@@ -527,7 +626,7 @@ function MainComponent() {
 										e.target.style.transform = "scale(1)";
 									}}
 								>
-									{currentNoText}
+									{noLabel}
 								</button>
 							)}
 						</div>
@@ -558,7 +657,6 @@ function MainComponent() {
 							🌙 💕 🌸 ⭐ 🌙
 						</div>
 					</div>
-
 				</div>
 			</>
 		);
