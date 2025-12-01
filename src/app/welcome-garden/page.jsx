@@ -349,8 +349,8 @@ function MainComponent() {
 						<div className="relative w-96 h-96">
 							{/* Left Gate with Decorations */}
 							<div
-								className={`gate-left absolute left-0 top-0 w-48 h-96 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-600 border-r-4 border-amber-900 transition-transform duration-3000 ease-in-out ${
-									gateOpen ? "-translate-x-full" : ""
+								className={`gate-left absolute left-0 top-0 w-48 h-96 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-600 border-r-4 border-amber-900 transition-transform duration-[3000ms] ease-in-out ${
+									gateOpen ? "-translate-x-full duration-1000" : ""
 								}`}
 							>
 								<div className="absolute border-2 rounded-lg inset-2 border-amber-700">
@@ -395,8 +395,8 @@ function MainComponent() {
 
 							{/* Right Gate with Decorations */}
 							<div
-								className={`gate-right absolute right-0 top-0 w-48 h-96 bg-gradient-to-l from-amber-800 via-amber-700 to-amber-600 border-l-4 border-amber-900 transition-transform duration-3000 ease-in-out ${
-									gateOpen ? "translate-x-full" : ""
+								className={`gate-right absolute right-0 top-0 w-48 h-96 bg-gradient-to-l from-amber-800 via-amber-700 to-amber-600 border-l-4 border-amber-900 transition-transform duration-[3000ms] ease-in-out ${
+									gateOpen ? "translate-x-full duration-1000" : ""
 								}`}
 							>
 								<div className="absolute border-2 rounded-lg inset-2 border-amber-700">

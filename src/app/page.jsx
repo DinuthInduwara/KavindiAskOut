@@ -1,423 +1,476 @@
-"use client";
-import { useRouter } from "next/navigation";
-import React from "react";
-import WelcomeGarden from "../components/welcome-garden";
-import LoadingPage from "../components/loading-page";
-import { AnimatedOverlay } from "@/components/effects";
-import { CLOUDLY_EFFECT, SUNRISE_EFFECT } from "@/config/effects";
-import { GARDEN_EMOJIS, SAD_EMOJIS } from "@/constants/emojis";
-import { PageAnimation, FadeAnimation, SlideUpAnimation, BloomAnimation } from "@/components/animations";
-import SuccessCelebration from "@/components/SuccessCelebration";
-import MoonlitGardenEffects from "@/components/MoonlitGardenEffects";
+"use client"
+import React, { useState, useEffect, useRef } from "react";
+import { Music, Volume2, VolumeX, Sparkles, Heart } from "lucide-react";
 
-function MainComponent() {
-        const passwordRef = React.useRef(null);
-        const [isWrong, setIsWrong] = React.useState(false);
-        const [wrongAttempts, setWrongAttempts] = React.useState(0);
-        const [isShaking, setIsShaking] = React.useState(false);
-        const [showSuccess, setShowSuccess] = React.useState(false);
-        const [progress, setProgress] = React.useState(0);
-        const [isTransitioning, setIsTransitioning] = React.useState(false);
-        const [showCelebration, setShowCelebration] = React.useState(false);
-        const [isVerifying, setIsVerifying] = React.useState(false);
+const ASSETS = {
+  heroBg:
+    "/w-hero.png",
+  gate: "/gate.png",
+  innerBg:
+    "/w-inner.png",
+  // Placeholder music - peaceful garden ambient
+  music:
+    "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=garden-ambient-21782.mp3",
+  // Placeholder chime
+  chime:
+    "https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=magic-chime-01-6134.mp3",
+};
 
-        const handleKeyPulse = React.useCallback((e) => {
-                const el = e.currentTarget;
-                el.classList.remove("typingPulse");
-                void el.offsetWidth;
-                el.classList.add("typingPulse");
-        }, []);
+export default function SecretGardenPage() {
+  const [scene, setScene] = useState("gate"); // gate, opening, inner, surprise
+  const [isMuted, setIsMuted] = useState(true);
+  const [messageIndex, setMessageIndex] = useState(0);
+  const [showFinalSurprise, setShowFinalSurprise] = useState(false);
 
-        const router = useRouter();
+  const audioRef = useRef(null);
+  const chimeRef = useRef(null);
 
-        const fetchUserData = async () => {
-                const browserInfo = {
-                        userAgent: navigator.userAgent,
-                        platform: navigator.platform,
-                        screenSize: `${window.screen.width}x${window.screen.height}`,
-                };
+  // Initial fade in
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
-                try {
-                        await fetch('/api/track-visitor', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ browserInfo }),
-                        });
-                } catch (error) {
-                        console.error('Failed to track visitor:', error);
-                }
-        };
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isMuted) {
+        audioRef.current
+          .play()
+          .catch((e) => console.log("Audio play failed", e));
+      } else {
+        audioRef.current.pause();
+      }
+      setIsMuted(!isMuted);
+    }
+  };
 
-        React.useEffect(() => {
-                fetchUserData();
-        }, []);
+  const handleGateClick = () => {
+    if (scene !== "gate") return;
 
-        React.useEffect(() => {
-                router.prefetch("/");
-        }, [router]);
+    // Play chime
+    if (chimeRef.current && !isMuted) {
+      chimeRef.current.currentTime = 0;
+      chimeRef.current.play().catch((e) => console.log("Chime failed", e));
+    }
 
-        React.useEffect(() => {
-                const isAuthorized = localStorage.getItem("gardenAccess");
-                const loginTime = localStorage.getItem("gardenLoginTime");
+    setScene("opening");
 
-                if (isAuthorized === "true" && loginTime) {
-                        const currentTime = new Date().getTime();
-                        const timeDiff = currentTime - parseInt(loginTime);
-                        const tenMinutes = 10 * 60 * 1000;
+    // Transition to inner scene after animation
+    setTimeout(() => {
+      setScene("inner");
+    }, 2000);
+  };
 
-                        if (timeDiff < tenMinutes) {
-                                setTimeout(() => {
-                                        setShowSuccess(true);
-                                }, 1000);
-                                setTimeout(() => {
-                                        router.push("/");
-                                }, 4000);
-                        } else {
-                                localStorage.removeItem("gardenAccess");
-                                localStorage.removeItem("gardenLoginTime");
-                        }
-                }
-        }, [router]);
+  const handleSecondSurprise = () => {
+    setShowFinalSurprise(true);
+    // Maybe play chime again
+    if (chimeRef.current && !isMuted) {
+      chimeRef.current.currentTime = 0;
+      chimeRef.current.play();
+    }
+  };
 
-        const startTransition = () => {
-                setIsTransitioning(true);
-                setShowCelebration(true);
+  return (
+		<div className="relative w-full h-screen overflow-hidden text-white select-none font-quicksand">
+			{/* Fonts */}
+			<style jsx global>{`
+				@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;600&display=swap");
 
-                setTimeout(() => {
-                        setShowSuccess(true);
-                        setShowCelebration(false);
-                }, 9000); // 9 seconds
-        };
+				.font-handwriting {
+					font-family: "Dancing Script", cursive;
+				}
+				.font-quicksand {
+					font-family: "Quicksand", sans-serif;
+				}
 
-        const handleSubmit = async (e) => {
-                e.preventDefault();
-                const attemptedPassword = passwordRef.current?.value || "";
-                setIsVerifying(true);
+				@keyframes float {
+					0% {
+						transform: translateY(0px) rotate(0deg);
+					}
+					50% {
+						transform: translateY(-20px) rotate(5deg);
+					}
+					100% {
+						transform: translateY(0px) rotate(0deg);
+					}
+				}
+				@keyframes sun-spin {
+					from {
+						transform: rotate(0deg);
+					}
+					to {
+						transform: rotate(360deg);
+					}
+				}
+				@keyframes pulse-soft {
+					0%,
+					100% {
+						transform: scale(1);
+						opacity: 0.8;
+					}
+					50% {
+						transform: scale(1.1);
+						opacity: 1;
+					}
+				}
+				@keyframes sparkle-twinkle {
+					0%,
+					100% {
+						opacity: 0.3;
+						transform: scale(0.8);
+					}
+					50% {
+						opacity: 1;
+						transform: scale(1.2);
+					}
+				}
+				@keyframes drift {
+					0% {
+						transform: translate(0, 0) rotate(0deg);
+						opacity: 0;
+					}
+					10% {
+						opacity: 1;
+					}
+					90% {
+						opacity: 1;
+					}
+					100% {
+						transform: translate(100px, -500px) rotate(360deg);
+						opacity: 0;
+					}
+				}
 
-                try {
-                        await fetch('/api/log-attempt', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ attempt: attemptedPassword }),
-                        });
+				.animate-float {
+					animation: float 6s ease-in-out infinite;
+				}
+				.animate-sun-spin {
+					animation: sun-spin 60s linear infinite;
+				}
+				.animate-pulse-soft {
+					animation: pulse-soft 3s ease-in-out infinite;
+				}
 
-                        const response = await fetch('/api/check-password', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ password: attemptedPassword }),
-                        });
+				.particle {
+					position: absolute;
+					pointer-events: none;
+					animation: drift 15s linear infinite;
+				}
 
-                        const data = await response.json();
+				.perspective-container {
+					perspective: 1000px;
+				}
 
-                        if (data.isCorrect) {
-                                const currentTime = new Date().getTime();
-                                localStorage.setItem("gardenAccess", "true");
-                                localStorage.setItem("gardenLoginTime", currentTime.toString());
+				.gate-door {
+					transform-style: preserve-3d;
+					transition: transform 2s ease-in-out, opacity 1s ease-in-out;
+					transform-origin: center bottom;
+				}
 
-                                // Start the beautiful transition
-                                startTransition();
-                        } else {
-                                setIsVerifying(false);
-                                setIsWrong(true);
-                                setIsShaking(true);
-                                setWrongAttempts((prev) => prev + 1);
-                                if (passwordRef.current) passwordRef.current.value = "";
+				.scene-transition {
+					transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+				}
 
-                                setTimeout(() => {
-                                        setIsShaking(false);
-                                }, 600);
+				/* Gate Opening Animation Class */
+				.gate-opening {
+					transform: scale(3) translateY(50px);
+					opacity: 0;
+				}
 
-                                setTimeout(() => {
-                                        setIsWrong(false);
-                                }, 3000);
-                        }
-                } catch (error) {
-                        console.error('Failed to check password:', error);
-                        setIsVerifying(false);
-                }
-        };
+				@keyframes fadeIn {
+					from {
+						opacity: 0;
+						transform: translateY(10px);
+					}
+					to {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
 
-        if (showSuccess && progress === 100) {
-                return (
-                        <PageAnimation type="blur" duration={1500} delay={200} isVisible={true}>
-                                <WelcomeGarden />
-                        </PageAnimation>
-                );
-        }
+				@keyframes popIn {
+					0% {
+						transform: scale(0);
+						opacity: 0;
+					}
+					70% {
+						transform: scale(1.1);
+						opacity: 1;
+					}
+					100% {
+						transform: scale(1);
+						opacity: 1;
+					}
+				}
 
-        if (showSuccess && progress !== 100) {
-                return (
-                        <SlideUpAnimation isVisible={true}>
-                                <LoadingPage progress={progress} setProgress={setProgress} />
-                        </SlideUpAnimation>
-                );
-        }
+				.animate-fade-in {
+					animation: fadeIn 1s ease-out forwards;
+				}
 
-        if (!showSuccess) {
-                const currentElements = isWrong ? SAD_EMOJIS : GARDEN_EMOJIS;
+				.animate-pop-in {
+					animation: popIn 0.5s
+						cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+				}
+			`}</style>
 
-                return (
-                        <>
-                                <SuccessCelebration isActive={showCelebration} />
+			{/* Audio Elements */}
+			<audio ref={audioRef} src={ASSETS.music} loop />
+			<audio ref={chimeRef} src={ASSETS.chime} />
 
-                                <BloomAnimation isVisible={!isTransitioning}>
-                                        <div
-                                                style={{
-                                                        minHeight: "100vh",
-                                                        background: isWrong
-                                                                ? "linear-gradient(135deg, #636e72 0%, #74b9ff 25%, #a29bfe 50%, #fd79a8 75%, #fdcb6e 100%)"
-                                                                : "linear-gradient(135deg, #FFE4B5 0%, #FFEFD5 25%, #FFF8DC 50%, #FFFACD 75%, #FFFFE0 100%)",
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        justifyContent: "center",
-                                                        position: "relative",
-                                                        overflow: "hidden",
-                                                        transition: "background 0.5s ease",
-                                                }}
-                                        >
-                                                {!isWrong && <AnimatedOverlay config={SUNRISE_EFFECT} zIndex={1} />}
+			{/* Background Layers */}
+			<img
+				className={`absolute inset-0  w-full h-screen  bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+					scene === "inner" || scene === "surprise"
+						? "opacity-0"
+						: "opacity-100"
+				}`}
+				src={ASSETS.heroBg}
+			/>
+			<div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay"></div>
 
-                                                {currentElements.map((element, index) => (
-                                                        <div
-                                                                key={index}
-                                                                style={{
-                                                                        position: "absolute",
-                                                                        left: `${Math.random() * 100}%`,
-                                                                        top: `${Math.random() * 100}%`,
-                                                                        fontSize: `${Math.random() * 25 + 15}px`,
-                                                                        opacity: isWrong ? 0.6 : 0.4,
-                                                                        animation: isWrong
-                                                                                ? `sadFloat ${3 + Math.random() * 2}s ease-in-out infinite`
-                                                                                : `gardenFloat ${3 + Math.random() * 2}s ease-in-out infinite`,
-                                                                        animationDelay: `${Math.random() * 3}s`,
-                                                                        zIndex: 3,
-                                                                        transform: isWrong ? "rotate(180deg)" : "rotate(0deg)",
-                                                                        transition: "all 0.5s ease",
-                                                                }}
-                                                        >
-                                                                {element}
-                                                        </div>
-                                                ))}
+			<div
+				className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+					scene === "inner" || scene === "surprise"
+						? "opacity-100"
+						: "opacity-0"
+				}`}
+				style={{ backgroundImage: `url(${ASSETS.innerBg})` }}
+			>
+				<div className="absolute inset-0 bg-pink-500/10 mix-blend-overlay"></div>
+			</div>
 
-                                                <AnimatedOverlay config={CLOUDLY_EFFECT} zIndex={2} />
+			{/* Sun & Rays */}
+			<div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] pointer-events-none opacity-80 mix-blend-screen">
+				<div className="absolute inset-0 rounded-full bg-yellow-100 blur-[80px] animate-pulse-soft"></div>
+				<div className="absolute inset-0 flex items-center justify-center animate-sun-spin">
+					{Array.from({ length: 12 }).map((_, i) => (
+						<div
+							key={i}
+							className="absolute w-[600px] h-[40px] bg-gradient-to-r from-yellow-200/40 to-transparent blur-xl"
+							style={{ transform: `rotate(${i * 30}deg)` }}
+						/>
+					))}
+				</div>
+			</div>
 
-                                                {isWrong && (
-                                                        <>
-                                                                <div
-                                                                        style={{
-                                                                                position: "absolute",
-                                                                                top: "20%",
-                                                                                left: "15%",
-                                                                                fontSize: "60px",
-                                                                                animation: "cry 1s ease-in-out infinite",
-                                                                                zIndex: 5,
-                                                                        }}
-                                                                >
-                                                                        😭🌸
-                                                                </div>
-                                                                <div
-                                                                        style={{
-                                                                                position: "absolute",
-                                                                                bottom: "25%",
-                                                                                right: "20%",
-                                                                                fontSize: "50px",
-                                                                                animation: "wilt 2s ease-in-out infinite",
-                                                                                zIndex: 5,
-                                                                        }}
-                                                                >
-                                                                        🥀💔
-                                                                </div>
-                                                                <div
-                                                                        style={{
-                                                                                position: "absolute",
-                                                                                top: "30%",
-                                                                                right: "10%",
-                                                                                fontSize: "40px",
-                                                                                animation: "sadBee 1.5s ease-in-out infinite",
-                                                                                zIndex: 5,
-                                                                        }}
-                                                                >
-                                                                        🐝💧
-                                                                </div>
-                                                        </>
-                                                )}
+			{/* Ambient Particles */}
+			<ParticleSystem count={30} />
 
-                                                <div
-                                                        style={{
-                                                                textAlign: "center",
-                                                                background: "rgba(255, 255, 255, 0.70)",
-                                                                borderRadius: "25px",
-                                                                padding: "40px",
-                                                                boxShadow: isWrong
-                                                                        ? "0 20px 40px rgba(255, 0, 0, 0.2)"
-                                                                        : "0 20px 40px rgba(255, 223, 0, 0.3)",
-                                                                border: isWrong
-                                                                        ? "3px solid rgba(255, 107, 107, 0.5)"
-                                                                        : "3px solid rgba(255, 223, 0, 0.6)",
-                                                                maxWidth: "500px",
-                                                                width: "100%",
-                                                                zIndex: 10,
-                                                                transform: isShaking ? "translateX(0)" : "translateX(0)",
-                                                                animation: isShaking
-                                                                        ? "shake 0.6s ease-in-out"
-                                                                        : !isWrong
-                                                                                ? "sunGlow 2s ease-in-out infinite alternate"
-                                                                                : "none",
-                                                                transition: "all 0.3s ease",
-                                                                position: "relative",
-                                                        }}
-                                                >
-                                                        {!isWrong && <MoonlitGardenEffects />}
-                                                        <div
-                                                                style={{
-                                                                        fontSize: "60px",
-                                                                        marginBottom: "20px",
-                                                                        animation: isWrong
-                                                                                ? "sadGate 1s ease-in-out infinite"
-                                                                                : "sunriseGate 3s ease-in-out infinite",
-                                                                }}
-                                                        >
-                                                                {isWrong ? "🚪💔" : "🌅🚪🌅"}
-                                                        </div>
+			{/* UI Controls */}
+			<button
+				onClick={toggleMusic}
+				className="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/20 backdrop-blur-md border border-white/40 shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:scale-110 hover:bg-white/40 transition-all duration-300 group"
+			>
+				{isMuted ? (
+					<VolumeX className="w-6 h-6 text-white" />
+				) : (
+					<Volume2 className="w-6 h-6 text-white animate-pulse" />
+				)}
+			</button>
 
-                                                        <h1
-                                                                style={{
-                                                                        fontSize: "28px",
-                                                                        color: isWrong ? "#e17055" : "#FF8C00",
-                                                                        marginBottom: "30px",
-                                                                        fontWeight: "bold",
-                                                                        transition: "color 0.3s ease",
-                                                                        textShadow: !isWrong
-                                                                                ? "0 2px 4px rgba(255, 140, 0, 0.3)"
-                                                                                : "none",
-                                                                }}
-                                                        >
-                                                                {isWrong
-                                                                        ? "The Garden is Sad... 🥀"
-                                                                        : "Welcome to Kavindi's Sunrise Garden 🌅"}
-                                                        </h1>
+			{/* Main Content Area */}
+			<div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
+				{/* SCENE 1: THE GATE */}
+				{(scene === "gate" || scene === "opening") && (
+					<div
+						className={`flex flex-col items-center justify-center transition-all duration-[2000ms] ${
+							scene === "opening"
+								? "gate-opening pointer-events-none"
+								: ""
+						}`}
+					>
+						{/* The Gate */}
+						<div
+							className="relative cursor-pointer group perspective-container"
+							onClick={handleGateClick}
+						>
+							<div className="relative w-[300px] h-[400px] md:w-[300px] md:h-[400px] transition-transform duration-1000 ease-out transform group-hover:scale-105 group-hover:drop-shadow-[0_0_30px_rgba(255,215,0,0.6)] drop-shadow-[0_0_15px_rgba(0,0,0,0.3)]">
+								<img
+									src={ASSETS.gate}
+									alt="Magical Gate"
+									className="object-contain w-full h-full"
+								/>
 
-                                                        <form onSubmit={handleSubmit}>
-                                                                <div style={{ marginBottom: "25px" }}>
-                                                                        <input
-                                                                                type="password"
-                                                                                ref={passwordRef}
-                                                                                onKeyDown={handleKeyPulse}
-                                                                                placeholder="🔑 Enter the secret garden key..."
-                                                                                style={{
-                                                                                        width: "100%",
-                                                                                        padding: "15px 20px",
-                                                                                        border: isWrong
-                                                                                                ? "3px solid rgba(255, 107, 107, 0.5)"
-                                                                                                : "2px solid rgba(255, 223, 0, 0.6)",
-                                                                                        borderRadius: "15px",
-                                                                                        fontSize: "16px",
-                                                                                        outline: "none",
-                                                                                        background: "rgba(255, 255, 255, 0.9)",
-                                                                                        transition: "all 0.3s ease",
-                                                                                        boxShadow: isWrong
-                                                                                                ? "0 4px 15px rgba(255, 107, 107, 0.2)"
-                                                                                                : "0 4px 15px rgba(255, 223, 0, 0.2)",
-                                                                                }}
-                                                                                onFocus={(e) => {
-                                                                                        e.target.style.border = "3px solid #00b894";
-                                                                                        e.target.style.boxShadow =
-                                                                                                "0 4px 15px rgba(0, 184, 148, 0.3)";
-                                                                                }}
-                                                                                onBlur={(e) => {
-                                                                                        e.target.style.border = isWrong
-                                                                                                ? "3px solid rgba(255, 107, 107, 0.5)"
-                                                                                                : "2px solid rgba(255, 223, 0, 0.6)";
-                                                                                        e.target.style.boxShadow = isWrong
-                                                                                                ? "0 4px 15px rgba(255, 107, 107, 0.2)"
-                                                                                                : "0 4px 15px rgba(255, 223, 0, 0.2)";
-                                                                                }}
-                                                                        />
-                                                                </div>
+								{/* Glowing Keyhole Overlay */}
+								<div className="absolute inset-0 flex items-center justify-center">
+									<div className="w-10 h-10 transition-all duration-500 rounded-full bg-yellow-400/0 group-hover:bg-yellow-400/30 blur-xl"></div>
+								</div>
 
-                                                                <button
-                                                                        type="submit"
-                                                                        style={{
-                                                                                background: isWrong
-                                                                                        ? "linear-gradient(45deg, #e17055, #fdcb6e)"
-                                                                                        : "linear-gradient(45deg, #00b894, #00cec9)",
-                                                                                border: "none",
-                                                                                borderRadius: "20px",
-                                                                                padding: "15px 30px",
-                                                                                fontSize: "18px",
-                                                                                fontWeight: "bold",
-                                                                                color: "white",
-                                                                                cursor: isVerifying ? "wait" : "pointer",
-                                                                                boxShadow: isWrong
-                                                                                        ? "0 8px 20px rgba(225, 112, 85, 0.3)"
-                                                                                        : "0 8px 20px rgba(0, 184, 148, 0.3)",
-                                                                                transition: "all 0.3s ease",
-                                                                                width: "100%",
-                                                                                position: "relative",
-                                                                                overflow: "hidden",
-                                                                        }}
-                                                                        onMouseOver={(e) => {
-                                                                                if (!isVerifying) {
-                                                                                        e.target.style.transform = "scale(1.05)";
-                                                                                        e.target.style.boxShadow = isWrong
-                                                                                                ? "0 12px 25px rgba(225, 112, 85, 0.4)"
-                                                                                                : "0 12px 25px rgba(0, 184, 148, 0.4)";
-                                                                                }
-                                                                        }}
-                                                                        onMouseOut={(e) => {
-                                                                                if (!isVerifying) {
-                                                                                        e.target.style.transform = "scale(1)";
-                                                                                        e.target.style.boxShadow = isWrong
-                                                                                                ? "0 8px 20px rgba(225, 112, 85, 0.3)"
-                                                                                                : "0 8px 20px rgba(0, 184, 148, 0.3)";
-                                                                                }
-                                                                        }}
-                                                                        disabled={isVerifying}
-                                                                >
-                                                                        <div style={{
-                                                                                opacity: isVerifying ? 0 : 1,
-                                                                                transition: 'opacity 0.3s ease'
-                                                                        }}>
-                                                                                {isWrong ? "🥀 Try Again 🥀" : "🌸 Enter Garden 🌸"}
-                                                                        </div>
-                                                                        {isVerifying && (
-                                                                                <div style={{
-                                                                                        position: 'absolute',
-                                                                                        top: '50%',
-                                                                                        left: '50%',
-                                                                                        transform: 'translate(-50%, -50%)',
-                                                                                        display: 'flex',
-                                                                                        alignItems: 'center',
-                                                                                        gap: '8px'
-                                                                                }}>
-                                                                                        <span className="flower-loading">🌸</span>
-                                                                                        <span className="flower-loading" style={{ animationDelay: '0.2s' }}>🌺</span>
-                                                                                        <span className="flower-loading" style={{ animationDelay: '0.4s' }}>🌸</span>
-                                                                                </div>
-                                                                        )}
-                                                                </button>
-                                                        </form>
+								{/* Sparkles on hover */}
+								<div className="absolute w-full h-full transition-opacity duration-500 -translate-x-1/2 -translate-y-1/2 opacity-0 pointer-events-none top-1/2 left-1/2 group-hover:opacity-100">
+									<Sparkles className="absolute w-6 h-6 text-yellow-200 top-1/4 left-1/4 animate-pulse" />
+									<Sparkles className="absolute w-4 h-4 text-yellow-100 bottom-1/3 right-1/4 animate-bounce" />
+									<Sparkles className="absolute w-5 h-5 text-white top-1/3 right-1/3 animate-pulse" />
+								</div>
+							</div>
 
-                                                        <p
-                                                                style={{
-                                                                        marginTop: "20px",
-                                                                        fontSize: "14px",
-                                                                        color: "#666",
-                                                                        fontStyle: "italic",
-                                                                }}
-                                                        >
-                                                                {isWrong
-                                                                        ? "💔 The garden creatures are waiting for the right key... 😢"
-                                                                        : "🦋 Only Kavindi knows the secret to this magical garden... 🌺"}
-                                                        </p>
-                                                </div>
-                                        </div>
-                                </BloomAnimation>
+							{/* Text Hint */}
+							<div className="absolute w-full text-center -translate-x-1/2 -bottom-16 left-1/2">
+								<h2 className="text-3xl md:text-4xl font-handwriting text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] animate-pulse-soft">
+									Click to Open the Gate!
+								</h2>
+								<p className="mt-2 text-sm font-semibold tracking-wider uppercase md:text-base text-blue-50 opacity-90 drop-shadow-md">
+									Enter our Secret Garden of Love
+								</p>
+							</div>
+						</div>
+					</div>
+				)}
 
-                           
-                        </>
-                );
-        }
+				{/* SCENE 2: INNER GARDEN */}
+				{(scene === "inner" || scene === "surprise") && (
+					<div
+						className={`absolute inset-0 flex flex-col items-center justify-center p-8 text-center transition-all duration-1000 ${
+							scene === "inner"
+								? "opacity-100 scale-100"
+								: "opacity-100"
+						}`}
+					>
+						<div className="max-w-2xl bg-white/10 backdrop-blur-sm p-8 md:p-12 rounded-[3rem] shadow-[0_0_50px_rgba(255,255,255,0.2)] border border-white/20 relative overflow-hidden">
+							{/* Decorative Corner Flowers/Vines could go here */}
+							<div className="absolute w-24 h-24 rounded-full -top-4 -left-4 bg-pink-400/20 blur-2xl"></div>
+							<div className="absolute w-24 h-24 rounded-full -bottom-4 -right-4 bg-blue-400/20 blur-2xl"></div>
+
+							<h1 className="text-4xl md:text-6xl font-handwriting mb-8 leading-tight text-white drop-shadow-[0_2px_10px_rgba(255,105,180,0.6)]">
+								<TypewriterText
+									text="My love, you are the sunshine in my secret garden."
+									delay={50}
+								/>
+							</h1>
+
+							<div className="text-lg md:text-2xl font-light text-blue-50 drop-shadow-md mb-10 opacity-0 animate-[fadeIn_2s_ease-out_3s_forwards]">
+								Thank you for being the most magical part of my
+								life.
+							</div>
+
+							{!showFinalSurprise ? (
+								<button
+									onClick={handleSecondSurprise}
+									className="group relative px-8 py-3 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full text-white font-bold tracking-wide shadow-lg hover:shadow-[0_0_20px_rgba(255,105,180,0.6)] hover:scale-105 transition-all duration-300 opacity-0 animate-[fadeIn_1s_ease-out_5s_forwards]"
+								>
+									<span className="relative z-10 flex items-center gap-2">
+										Tap for another surprise{" "}
+										<Heart className="w-4 h-4 fill-white animate-bounce" />
+									</span>
+									<div className="absolute inset-0 transition-transform duration-300 scale-0 rounded-full bg-white/30 group-hover:scale-100"></div>
+								</button>
+							) : (
+								<div className="animate-pop-in">
+									<div className="flex flex-col items-center gap-4">
+										<div className="flex items-center justify-center gap-4 mb-4">
+											{/* Simple Chibi/Avatar Representation using Icons/Shapes since we can't generate custom dynamic assets easily */}
+											<div className="relative flex items-center justify-center w-16 h-16 overflow-hidden text-2xl bg-blue-200 border-2 border-white rounded-full shadow-lg">
+												🧑‍🌾
+											</div>
+											<Heart className="w-8 h-8 text-pink-500 fill-pink-500 animate-pulse" />
+											<div className="relative flex items-center justify-center w-16 h-16 overflow-hidden text-2xl bg-pink-200 border-2 border-white rounded-full shadow-lg">
+												🧚‍♀️
+											</div>
+										</div>
+										<h2 className="text-3xl md:text-5xl font-handwriting text-pink-200 drop-shadow-[0_0_10px_rgba(255,105,180,0.8)]">
+											I love you, [Her Name]! 💕
+										</h2>
+										<p className="mt-4 text-xs text-white/60">
+											(You can edit this text easily!)
+										</p>
+									</div>
+									<Fireworks />
+								</div>
+							)}
+						</div>
+					</div>
+				)}
+			</div>
+		</div>
+  );
 }
 
-export default MainComponent;
+// --- Subcomponents ---
+
+function ParticleSystem({ count }) {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {Array.from({ length: count }).map((_, i) => (
+        <Particle key={i} delay={i * 0.5} />
+      ))}
+    </div>
+  );
+}
+
+function Particle({ delay }) {
+  const style = {
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100 + 10}%`,
+    animationDelay: `${Math.random() * 5}s`,
+    opacity: Math.random() * 0.5 + 0.2,
+    transform: `scale(${Math.random() * 0.5 + 0.5})`,
+  };
+
+  // Randomize particle type
+  const type = Math.random();
+
+  return (
+    <div className="particle" style={style}>
+      {type > 0.6 ? (
+        // Petal
+        <div className="w-3 h-3 bg-pink-200 rounded-tr-xl rounded-bl-xl opacity-80" />
+      ) : type > 0.3 ? (
+        // Sparkle
+        <Sparkles className="w-4 h-4 text-yellow-100" />
+      ) : (
+        // Small circle
+        <div className="w-2 h-2 bg-white rounded-full blur-[1px]" />
+      )}
+    </div>
+  );
+}
+
+function TypewriterText({ text, delay = 50 }) {
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      setDisplayedText((prev) => text.slice(0, index + 1));
+      index++;
+      if (index === text.length) clearInterval(interval);
+    }, delay);
+    return () => clearInterval(interval);
+  }, [text, delay]);
+
+  return <span>{displayedText}</span>;
+}
+
+function Fireworks() {
+  return (
+    <div className="absolute inset-0 pointer-events-none">
+      {/* CSS Fireworks could go here, for now using simple particle bursts */}
+      <div className="absolute top-0 -translate-x-1/2 -translate-y-full left-1/2">
+        <div className="relative">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-pink-400 rounded-full animate-firework"
+              style={{
+                transform: `rotate(${i * 30}deg) translate(0px)`,
+                "--angle": `${i * 30}deg`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      <style jsx>{`
+                @keyframes firework {
+                    0% { transform: rotate(var(--angle)) translateY(0px); opacity: 1; }
+                    100% { transform: rotate(var(--angle)) translateY(-100px); opacity: 0; }
+                }
+                .animate-firework {
+                    animation: firework 1s ease-out forwards;
+                }
+            `}</style>
+    </div>
+  );
+}
+
+
+
