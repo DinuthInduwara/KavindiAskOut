@@ -11,6 +11,7 @@ import { PageAnimation, SlideUpAnimation, BloomAnimation } from "@/components/an
 import SuccessCelebration from "@/components/SuccessCelebration";
 import MoonlitGardenEffects from "@/components/MoonlitGardenEffects";
 import EmojiTransition from "@/components/EmojiTransition";
+import { useMusicPlayer } from "@/context/MusicPlayerContext";
 
 
 
@@ -34,6 +35,8 @@ function AuthComponent() {
         }, []);
 
         const router = useRouter();
+        const { switchTrack } = useMusicPlayer();
+
 
         const fetchUserData = async () => {
                 const browserInfo = {
@@ -54,6 +57,7 @@ function AuthComponent() {
         };
 
         React.useEffect(() => {
+                switchTrack("/music-1.mp3");
                 fetchUserData();
         }, []);
 

@@ -21,8 +21,6 @@ const ASSETS = {
 	heroBg: "/w-hero.png",
 	gate: "/gate.png",
 	innerBg: "/w-inner.png",
-	// Placeholder music - peaceful garden ambient
-	music: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=garden-ambient-21782.mp3",
 };
 
 export default function SecretGardenPage() {
@@ -42,29 +40,10 @@ export default function SecretGardenPage() {
 		setLoaded(true);
 	}, []);
 
-	const toggleMusic = () => {
-		if (audioRef.current) {
-			if (isMuted) {
-				audioRef.current
-					.play()
-					.catch((e) => console.log("Audio play failed", e));
-			} else {
-				audioRef.current.pause();
-			}
-			setIsMuted(!isMuted);
-		}
-	};
+	
 
 	const handleGateClick = () => {
 		if (scene !== "gate") return;
-
-		// Play chime
-		if (chimeRef.current && !isMuted) {
-			chimeRef.current.currentTime = 0;
-			chimeRef.current
-				.play()
-				.catch((e) => console.log("Chime failed", e));
-		}
 
 		setScene("opening");
 
@@ -77,10 +56,6 @@ export default function SecretGardenPage() {
 
 	const handleSecondSurprise = () => {
 		setShowFinalSurprise(true);
-		if (chimeRef.current && !isMuted) {
-			chimeRef.current.currentTime = 0;
-			chimeRef.current.play();
-		}
 
 		setTimeout(() => {
 			setShowTransition(true);
@@ -280,18 +255,6 @@ export default function SecretGardenPage() {
 			{/* Ambient Particles */}
 			<ParticleSystem count={60} />
 
-			{/* UI Controls */}
-			<button
-				onClick={toggleMusic}
-				className="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/20 backdrop-blur-md border border-white/40 shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:scale-110 hover:bg-white/40 transition-all duration-300 group"
-			>
-				{isMuted ? (
-					<VolumeX className="w-6 h-6 text-white" />
-				) : (
-					<Volume2 className="w-6 h-6 text-white animate-pulse" />
-				)}
-			</button>
-
 			{/* Main Content Area */}
 			<div className="relative z-10 flex flex-col items-center justify-center w-full h-full perspective-container">
 				{/* SCENE 1: THE GATE */}
@@ -456,8 +419,8 @@ export default function SecretGardenPage() {
 								/>
 							</h1>
 
-							<div className="text-lg md:text-xl  text-blue-50 drop-shadow-md mb-10 opacity-0 animate-[fadeIn_2s_ease-out_3s_forwards] font-[--font-yaldevi]">
-								Hi, <br /> ඔයා ඇත්තටම කාවින්දි නෙවිනම්, <br /> මෙතනින් එහාට නොයා ඉන්න, <br /> <b>ගරුත්වය රැකගන්න, </b><br /> Screenshot shair නොකර ඉන්න  plz .
+							<div className="text-lg md:text-md  text-blue-50 drop-shadow-md mb-10 opacity-0 animate-[fadeIn_2s_ease-out_3s_forwards] font-[--font-yaldevi]">
+								Hi, <br /> ඔයා ඇත්තටම කාවින්දි නෙවිනම්, <br /> මෙතනින් එහාට නොයා ඉන්න, <br /> <b>ගරුත්වය රැකගන්න, </b><br /> Screenshot share නොකර ඉන්න  plz .
 							</div>
 
 							{!showFinalSurprise ? (
@@ -466,7 +429,7 @@ export default function SecretGardenPage() {
 									className="group relative px-6 py-2 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full text-white font-bold tracking-wide shadow-lg hover:shadow-[0_0_20px_rgba(255,105,180,0.6)] hover:scale-105 transition-all duration-300 opacity-0 animate-[fadeIn_1s_ease-out_5s_forwards]"
 								>
 									<span className="relative z-10 flex items-center gap-2 text-sm">
-										Tap for another surprise{" "}
+										Proceed{" "}
 										<Heart className="w-4 h-4 fill-white animate-bounce" />
 									</span>
 									<div className="absolute inset-0 transition-transform duration-300 scale-0 rounded-full bg-white/30 group-hover:scale-100"></div>
@@ -485,10 +448,10 @@ export default function SecretGardenPage() {
 											</div>
 										</div>
 										<h2 className="text-3xl md:text-5xl font-handwriting text-pink-200 drop-shadow-[0_0_10px_rgba(255,105,180,0.8)]">
-											I love you, [Her Name]! 💕
+											Thank you for being honest.! 💕
 										</h2>
 										<p className="mt-4 text-xs text-white/60">
-											(You can edit this text easily!)
+											{/* (You can edit this text easily!) */}
 										</p>
 									</div>
 									<Fireworks />

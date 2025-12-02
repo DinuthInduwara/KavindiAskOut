@@ -26,6 +26,7 @@ export const AUDIO_CONFIG = {
   
   // Track list (can be extended)
   AVAILABLE_TRACKS: [
+    '/main-theme.mp3',
     '/music-1.mp3',
     '/music-2.mp3',
     '/music-3.mp3',
