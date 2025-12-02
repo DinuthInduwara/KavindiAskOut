@@ -88,7 +88,7 @@ export function ButterflyProvider({ children }) {
 			{children}
 			{/* Cursor Following Butterflies */}
 			<div
-				className="absolute text-2xl pointer-events-none butterfly-follower cursor-butterfly"
+				className="absolute text-2xl pointer-events-none butterfly-follower  z-[99999] cursor-butterfly"
 				style={{
 					left: `${cursorPos.x - 50}px`,
 					top: `${cursorPos.y - 50}px`,
@@ -99,7 +99,7 @@ export function ButterflyProvider({ children }) {
 			</div>
 
 			<div
-				className="absolute text-xl pointer-events-none butterfly-follower cursor-butterfly"
+				className="absolute text-xl pointer-events-none  z-[99999] butterfly-follower cursor-butterfly"
 				style={{
 					left: `${cursorPos.x - 80}px`,
 					top: `${cursorPos.y - 30}px`,

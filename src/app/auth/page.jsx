@@ -10,6 +10,9 @@ import { GARDEN_EMOJIS, SAD_EMOJIS } from "@/constants/emojis";
 import { PageAnimation, SlideUpAnimation, BloomAnimation } from "@/components/animations";
 import SuccessCelebration from "@/components/SuccessCelebration";
 import MoonlitGardenEffects from "@/components/MoonlitGardenEffects";
+import EmojiTransition from "@/components/EmojiTransition";
+
+
 
 function AuthComponent() {
         const passwordRef = React.useRef(null);
@@ -21,6 +24,7 @@ function AuthComponent() {
         const [isTransitioning, setIsTransitioning] = React.useState(false);
         const [showCelebration, setShowCelebration] = React.useState(false);
         const [isVerifying, setIsVerifying] = React.useState(false);
+        const [showEntrance, setShowEntrance] = React.useState(true);
 
         const handleKeyPulse = React.useCallback((e) => {
                 const el = e.currentTarget;
@@ -159,266 +163,276 @@ function AuthComponent() {
 
                 return (
                         <motion.div
-                                initial={{ x: "100%" }}
-                                animate={{ x: "0%" }}
-                                transition={{ duration: 1.5, ease: "easeOut" }}
+                                // initial={{ x: "100%" }}
+                                // animate={{ x: "0%" }}
+                                // transition={{ duration: 1.5, ease: "easeOut" }}
                                 className="w-full min-h-screen"
                         >
+                                {showEntrance && (
+                                        <EmojiTransition
+                                                type="in"
+                                                onComplete={() => setShowEntrance(false)}
+                                        />
+                                )}
                                 <SuccessCelebration isActive={showCelebration} />
 
-                                <BloomAnimation isVisible={!isTransitioning}>
-                                        <div
-                                                style={{
-                                                        minHeight: "100vh",
-                                                        background: isWrong
-                                                                ? "linear-gradient(135deg, #636e72 0%, #74b9ff 25%, #a29bfe 50%, #fd79a8 75%, #fdcb6e 100%)"
-                                                                : "linear-gradient(135deg, #FFE4B5 0%, #FFEFD5 25%, #FFF8DC 50%, #FFFACD 75%, #FFFFE0 100%)",
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        justifyContent: "center",
-                                                        position: "relative",
-                                                        overflow: "hidden",
-                                                        transition: "background 0.5s ease",
-                                                }}
-                                        >
-                                                {!isWrong && <AnimatedOverlay config={SUNRISE_EFFECT} zIndex={1} />}
-
-                                                {currentElements.map((element, index) => (
-                                                        <div
-                                                                key={index}
-                                                                style={{
-                                                                        position: "absolute",
-                                                                        left: `${Math.random() * 100}%`,
-                                                                        top: `${Math.random() * 100}%`,
-                                                                        fontSize: `${Math.random() * 25 + 15}px`,
-                                                                        opacity: isWrong ? 0.6 : 0.4,
-                                                                        animation: isWrong
-                                                                                ? `sadFloat ${3 + Math.random() * 2}s ease-in-out infinite`
-                                                                                : `gardenFloat ${3 + Math.random() * 2}s ease-in-out infinite`,
-                                                                        animationDelay: `${Math.random() * 3}s`,
-                                                                        zIndex: 3,
-                                                                        transform: isWrong ? "rotate(180deg)" : "rotate(0deg)",
-                                                                        transition: "all 0.5s ease",
-                                                                }}
-                                                        >
-                                                                {element}
-                                                        </div>
-                                                ))}
-
-                                                <AnimatedOverlay config={CLOUDLY_EFFECT} zIndex={2} />
-
-                                                {isWrong && (
-                                                        <>
-                                                                <div
-                                                                        style={{
-                                                                                position: "absolute",
-                                                                                top: "20%",
-                                                                                left: "15%",
-                                                                                fontSize: "60px",
-                                                                                animation: "cry 1s ease-in-out infinite",
-                                                                                zIndex: 5,
-                                                                        }}
-                                                                >
-                                                                        😭🌸
-                                                                </div>
-                                                                <div
-                                                                        style={{
-                                                                                position: "absolute",
-                                                                                bottom: "25%",
-                                                                                right: "20%",
-                                                                                fontSize: "50px",
-                                                                                animation: "wilt 2s ease-in-out infinite",
-                                                                                zIndex: 5,
-                                                                        }}
-                                                                >
-                                                                        🥀💔
-                                                                </div>
-                                                                <div
-                                                                        style={{
-                                                                                position: "absolute",
-                                                                                top: "30%",
-                                                                                right: "10%",
-                                                                                fontSize: "40px",
-                                                                                animation: "sadBee 1.5s ease-in-out infinite",
-                                                                                zIndex: 5,
-                                                                        }}
-                                                                >
-                                                                        🐝💧
-                                                                </div>
-                                                        </>
-                                                )}
-
-                                                <div
-                                                        style={{
-                                                                textAlign: "center",
-                                                                background: "rgba(255, 255, 255, 0.70)",
-                                                                borderRadius: "25px",
-                                                                padding: "40px",
-                                                                boxShadow: isWrong
-                                                                        ? "0 20px 40px rgba(255, 0, 0, 0.2)"
-                                                                        : "0 20px 40px rgba(255, 223, 0, 0.3)",
-                                                                border: isWrong
-                                                                        ? "3px solid rgba(255, 107, 107, 0.5)"
-                                                                        : "3px solid rgba(255, 223, 0, 0.6)",
-                                                                maxWidth: "500px",
-                                                                width: "100%",
-                                                                zIndex: 10,
-                                                                transform: isShaking ? "translateX(0)" : "translateX(0)",
-                                                                animation: isShaking
-                                                                        ? "shake 0.6s ease-in-out"
-                                                                        : !isWrong
-                                                                                ? "sunGlow 2s ease-in-out infinite alternate"
-                                                                                : "none",
-                                                                transition: "all 0.3s ease",
-                                                                position: "relative",
-                                                        }}
-                                                >
-                                                        {!isWrong && <MoonlitGardenEffects />}
+                                {!showEntrance && (
+                                        <div>
+                                                <BloomAnimation isVisible={!isTransitioning}>
                                                         <div
                                                                 style={{
-                                                                        fontSize: "60px",
-                                                                        marginBottom: "20px",
-                                                                        animation: isWrong
-                                                                                ? "sadGate 1s ease-in-out infinite"
-                                                                                : "sunriseGate 3s ease-in-out infinite",
+                                                                        minHeight: "100vh",
+                                                                        background: isWrong
+                                                                                ? "linear-gradient(135deg, #636e72 0%, #74b9ff 25%, #a29bfe 50%, #fd79a8 75%, #fdcb6e 100%)"
+                                                                                : "linear-gradient(135deg, #FFE4B5 0%, #FFEFD5 25%, #FFF8DC 50%, #FFFACD 75%, #FFFFE0 100%)",
+                                                                        display: "flex",
+                                                                        alignItems: "center",
+                                                                        justifyContent: "center",
+                                                                        position: "relative",
+                                                                        overflow: "hidden",
+                                                                        transition: "background 0.5s ease",
                                                                 }}
                                                         >
-                                                                {isWrong ? "🚪💔" : "🌅🚪🌅"}
-                                                        </div>
+                                                                {!isWrong && <AnimatedOverlay config={SUNRISE_EFFECT} zIndex={1} />}
 
-                                                        <h1
-                                                                style={{
-                                                                        fontSize: "28px",
-                                                                        color: isWrong ? "#e17055" : "#FF8C00",
-                                                                        marginBottom: "30px",
-                                                                        fontWeight: "bold",
-                                                                        transition: "color 0.3s ease",
-                                                                        textShadow: !isWrong
-                                                                                ? "0 2px 4px rgba(255, 140, 0, 0.3)"
-                                                                                : "none",
-                                                                }}
-                                                        >
-                                                                {isWrong
-                                                                        ? "The Garden is Sad... 🥀"
-                                                                        : "Welcome to Kavindi's Sunrise Garden 🌅"}
-                                                        </h1>
-
-                                                        <form onSubmit={handleSubmit}>
-                                                                <div style={{ marginBottom: "25px" }}>
-                                                                        <input
-                                                                                type="password"
-                                                                                ref={passwordRef}
-                                                                                onKeyDown={handleKeyPulse}
-                                                                                placeholder="🔑 Enter the secret garden key..."
+                                                                {currentElements.map((element, index) => (
+                                                                        <div
+                                                                                key={index}
                                                                                 style={{
-                                                                                        width: "100%",
-                                                                                        padding: "15px 20px",
-                                                                                        border: isWrong
-                                                                                                ? "3px solid rgba(255, 107, 107, 0.5)"
-                                                                                                : "2px solid rgba(255, 223, 0, 0.6)",
-                                                                                        borderRadius: "15px",
-                                                                                        fontSize: "16px",
-                                                                                        outline: "none",
-                                                                                        background: "rgba(255, 255, 255, 0.9)",
-                                                                                        transition: "all 0.3s ease",
-                                                                                        boxShadow: isWrong
-                                                                                                ? "0 4px 15px rgba(255, 107, 107, 0.2)"
-                                                                                                : "0 4px 15px rgba(255, 223, 0, 0.2)",
+                                                                                        position: "absolute",
+                                                                                        left: `${Math.random() * 100}%`,
+                                                                                        top: `${Math.random() * 100}%`,
+                                                                                        fontSize: `${Math.random() * 25 + 15}px`,
+                                                                                        opacity: isWrong ? 0.6 : 0.4,
+                                                                                        animation: isWrong
+                                                                                                ? `sadFloat ${3 + Math.random() * 2}s ease-in-out infinite`
+                                                                                                : `gardenFloat ${3 + Math.random() * 2}s ease-in-out infinite`,
+                                                                                        animationDelay: `${Math.random() * 3}s`,
+                                                                                        zIndex: 3,
+                                                                                        transform: isWrong ? "rotate(180deg)" : "rotate(0deg)",
+                                                                                        transition: "all 0.5s ease",
                                                                                 }}
-                                                                                onFocus={(e) => {
-                                                                                        e.target.style.border = "3px solid #00b894";
-                                                                                        e.target.style.boxShadow =
-                                                                                                "0 4px 15px rgba(0, 184, 148, 0.3)";
-                                                                                }}
-                                                                                onBlur={(e) => {
-                                                                                        e.target.style.border = isWrong
-                                                                                                ? "3px solid rgba(255, 107, 107, 0.5)"
-                                                                                                : "2px solid rgba(255, 223, 0, 0.6)";
-                                                                                        e.target.style.boxShadow = isWrong
-                                                                                                ? "0 4px 15px rgba(255, 107, 107, 0.2)"
-                                                                                                : "0 4px 15px rgba(255, 223, 0, 0.2)";
-                                                                                }}
-                                                                        />
-                                                                </div>
-
-                                                                <button
-                                                                        type="submit"
-                                                                        style={{
-                                                                                background: isWrong
-                                                                                        ? "linear-gradient(45deg, #e17055, #fdcb6e)"
-                                                                                        : "linear-gradient(45deg, #00b894, #00cec9)",
-                                                                                border: "none",
-                                                                                borderRadius: "20px",
-                                                                                padding: "15px 30px",
-                                                                                fontSize: "18px",
-                                                                                fontWeight: "bold",
-                                                                                color: "white",
-                                                                                cursor: isVerifying ? "wait" : "pointer",
-                                                                                boxShadow: isWrong
-                                                                                        ? "0 8px 20px rgba(225, 112, 85, 0.3)"
-                                                                                        : "0 8px 20px rgba(0, 184, 148, 0.3)",
-                                                                                transition: "all 0.3s ease",
-                                                                                width: "100%",
-                                                                                position: "relative",
-                                                                                overflow: "hidden",
-                                                                        }}
-                                                                        onMouseOver={(e) => {
-                                                                                if (!isVerifying) {
-                                                                                        e.target.style.transform = "scale(1.05)";
-                                                                                        e.target.style.boxShadow = isWrong
-                                                                                                ? "0 12px 25px rgba(225, 112, 85, 0.4)"
-                                                                                                : "0 12px 25px rgba(0, 184, 148, 0.4)";
-                                                                                }
-                                                                        }}
-                                                                        onMouseOut={(e) => {
-                                                                                if (!isVerifying) {
-                                                                                        e.target.style.transform = "scale(1)";
-                                                                                        e.target.style.boxShadow = isWrong
-                                                                                                ? "0 8px 20px rgba(225, 112, 85, 0.3)"
-                                                                                                : "0 8px 20px rgba(0, 184, 148, 0.3)";
-                                                                                }
-                                                                        }}
-                                                                        disabled={isVerifying}
-                                                                >
-                                                                        <div style={{
-                                                                                opacity: isVerifying ? 0 : 1,
-                                                                                transition: 'opacity 0.3s ease'
-                                                                        }}>
-                                                                                {isWrong ? "🥀 Try Again 🥀" : "🌸 Enter Garden 🌸"}
+                                                                        >
+                                                                                {element}
                                                                         </div>
-                                                                        {isVerifying && (
-                                                                                <div style={{
-                                                                                        position: 'absolute',
-                                                                                        top: '50%',
-                                                                                        left: '50%',
-                                                                                        transform: 'translate(-50%, -50%)',
-                                                                                        display: 'flex',
-                                                                                        alignItems: 'center',
-                                                                                        gap: '8px'
-                                                                                }}>
-                                                                                        <span className="flower-loading">🌸</span>
-                                                                                        <span className="flower-loading" style={{ animationDelay: '0.2s' }}>🌺</span>
-                                                                                        <span className="flower-loading" style={{ animationDelay: '0.4s' }}>🌸</span>
-                                                                                </div>
-                                                                        )}
-                                                                </button>
-                                                        </form>
+                                                                ))}
 
-                                                        <p
-                                                                style={{
-                                                                        marginTop: "20px",
-                                                                        fontSize: "14px",
-                                                                        color: "#666",
-                                                                        fontStyle: "italic",
-                                                                }}
-                                                        >
-                                                                {isWrong
-                                                                        ? "💔 The garden creatures are waiting for the right key... 😢"
-                                                                        : "🦋 Only Kavindi knows the secret to this magical garden... 🌺"}
-                                                        </p>
-                                                </div>
+                                                                <AnimatedOverlay config={CLOUDLY_EFFECT} zIndex={2} />
+
+                                                                {isWrong && (
+                                                                        <>
+                                                                                <div
+                                                                                        style={{
+                                                                                                position: "absolute",
+                                                                                                top: "20%",
+                                                                                                left: "15%",
+                                                                                                fontSize: "60px",
+                                                                                                animation: "cry 1s ease-in-out infinite",
+                                                                                                zIndex: 5,
+                                                                                        }}
+                                                                                >
+                                                                                        😭🌸
+                                                                                </div>
+                                                                                <div
+                                                                                        style={{
+                                                                                                position: "absolute",
+                                                                                                bottom: "25%",
+                                                                                                right: "20%",
+                                                                                                fontSize: "50px",
+                                                                                                animation: "wilt 2s ease-in-out infinite",
+                                                                                                zIndex: 5,
+                                                                                        }}
+                                                                                >
+                                                                                        🥀💔
+                                                                                </div>
+                                                                                <div
+                                                                                        style={{
+                                                                                                position: "absolute",
+                                                                                                top: "30%",
+                                                                                                right: "10%",
+                                                                                                fontSize: "40px",
+                                                                                                animation: "sadBee 1.5s ease-in-out infinite",
+                                                                                                zIndex: 5,
+                                                                                        }}
+                                                                                >
+                                                                                        🐝💧
+                                                                                </div>
+                                                                        </>
+                                                                )}
+
+                                                                <div
+                                                                        style={{
+                                                                                textAlign: "center",
+                                                                                background: "rgba(255, 255, 255, 0.70)",
+                                                                                borderRadius: "25px",
+                                                                                padding: "40px",
+                                                                                boxShadow: isWrong
+                                                                                        ? "0 20px 40px rgba(255, 0, 0, 0.2)"
+                                                                                        : "0 20px 40px rgba(255, 223, 0, 0.3)",
+                                                                                border: isWrong
+                                                                                        ? "3px solid rgba(255, 107, 107, 0.5)"
+                                                                                        : "3px solid rgba(255, 223, 0, 0.6)",
+                                                                                maxWidth: "500px",
+                                                                                width: "100%",
+                                                                                zIndex: 10,
+                                                                                transform: isShaking ? "translateX(0)" : "translateX(0)",
+                                                                                animation: isShaking
+                                                                                        ? "shake 0.6s ease-in-out"
+                                                                                        : !isWrong
+                                                                                                ? "sunGlow 2s ease-in-out infinite alternate"
+                                                                                                : "none",
+                                                                                transition: "all 0.3s ease",
+                                                                                position: "relative",
+                                                                        }}
+                                                                >
+                                                                        {!isWrong && <MoonlitGardenEffects />}
+                                                                        <div
+                                                                                style={{
+                                                                                        fontSize: "60px",
+                                                                                        marginBottom: "20px",
+                                                                                        animation: isWrong
+                                                                                                ? "sadGate 1s ease-in-out infinite"
+                                                                                                : "sunriseGate 3s ease-in-out infinite",
+                                                                                }}
+                                                                        >
+                                                                                {isWrong ? "🚪💔" : "🌅🚪🌅"}
+                                                                        </div>
+
+                                                                        <h1
+                                                                                style={{
+                                                                                        fontSize: "28px",
+                                                                                        color: isWrong ? "#e17055" : "#FF8C00",
+                                                                                        marginBottom: "30px",
+                                                                                        fontWeight: "bold",
+                                                                                        transition: "color 0.3s ease",
+                                                                                        textShadow: !isWrong
+                                                                                                ? "0 2px 4px rgba(255, 140, 0, 0.3)"
+                                                                                                : "none",
+                                                                                }}
+                                                                        >
+                                                                                {isWrong
+                                                                                        ? "The Garden is Sad... 🥀"
+                                                                                        : "Welcome to Kavindi's Sunrise Garden 🌅"}
+                                                                        </h1>
+
+                                                                        <form onSubmit={handleSubmit}>
+                                                                                <div style={{ marginBottom: "25px" }}>
+                                                                                        <input
+                                                                                                type="password"
+                                                                                                ref={passwordRef}
+                                                                                                onKeyDown={handleKeyPulse}
+                                                                                                placeholder="🔑 Enter the secret garden key..."
+                                                                                                style={{
+                                                                                                        width: "100%",
+                                                                                                        padding: "15px 20px",
+                                                                                                        border: isWrong
+                                                                                                                ? "3px solid rgba(255, 107, 107, 0.5)"
+                                                                                                                : "2px solid rgba(255, 223, 0, 0.6)",
+                                                                                                        borderRadius: "15px",
+                                                                                                        fontSize: "16px",
+                                                                                                        outline: "none",
+                                                                                                        background: "rgba(255, 255, 255, 0.9)",
+                                                                                                        transition: "all 0.3s ease",
+                                                                                                        boxShadow: isWrong
+                                                                                                                ? "0 4px 15px rgba(255, 107, 107, 0.2)"
+                                                                                                                : "0 4px 15px rgba(255, 223, 0, 0.2)",
+                                                                                                }}
+                                                                                                onFocus={(e) => {
+                                                                                                        e.target.style.border = "3px solid #00b894";
+                                                                                                        e.target.style.boxShadow =
+                                                                                                                "0 4px 15px rgba(0, 184, 148, 0.3)";
+                                                                                                }}
+                                                                                                onBlur={(e) => {
+                                                                                                        e.target.style.border = isWrong
+                                                                                                                ? "3px solid rgba(255, 107, 107, 0.5)"
+                                                                                                                : "2px solid rgba(255, 223, 0, 0.6)";
+                                                                                                        e.target.style.boxShadow = isWrong
+                                                                                                                ? "0 4px 15px rgba(255, 107, 107, 0.2)"
+                                                                                                                : "0 4px 15px rgba(255, 223, 0, 0.2)";
+                                                                                                }}
+                                                                                        />
+                                                                                </div>
+
+                                                                                <button
+                                                                                        type="submit"
+                                                                                        style={{
+                                                                                                background: isWrong
+                                                                                                        ? "linear-gradient(45deg, #e17055, #fdcb6e)"
+                                                                                                        : "linear-gradient(45deg, #00b894, #00cec9)",
+                                                                                                border: "none",
+                                                                                                borderRadius: "20px",
+                                                                                                padding: "15px 30px",
+                                                                                                fontSize: "18px",
+                                                                                                fontWeight: "bold",
+                                                                                                color: "white",
+                                                                                                cursor: isVerifying ? "wait" : "pointer",
+                                                                                                boxShadow: isWrong
+                                                                                                        ? "0 8px 20px rgba(225, 112, 85, 0.3)"
+                                                                                                        : "0 8px 20px rgba(0, 184, 148, 0.3)",
+                                                                                                transition: "all 0.3s ease",
+                                                                                                width: "100%",
+                                                                                                position: "relative",
+                                                                                                overflow: "hidden",
+                                                                                        }}
+                                                                                        onMouseOver={(e) => {
+                                                                                                if (!isVerifying) {
+                                                                                                        e.target.style.transform = "scale(1.05)";
+                                                                                                        e.target.style.boxShadow = isWrong
+                                                                                                                ? "0 12px 25px rgba(225, 112, 85, 0.4)"
+                                                                                                                : "0 12px 25px rgba(0, 184, 148, 0.4)";
+                                                                                                }
+                                                                                        }}
+                                                                                        onMouseOut={(e) => {
+                                                                                                if (!isVerifying) {
+                                                                                                        e.target.style.transform = "scale(1)";
+                                                                                                        e.target.style.boxShadow = isWrong
+                                                                                                                ? "0 8px 20px rgba(225, 112, 85, 0.3)"
+                                                                                                                : "0 8px 20px rgba(0, 184, 148, 0.3)";
+                                                                                                }
+                                                                                        }}
+                                                                                        disabled={isVerifying}
+                                                                                >
+                                                                                        <div style={{
+                                                                                                opacity: isVerifying ? 0 : 1,
+                                                                                                transition: 'opacity 0.3s ease'
+                                                                                        }}>
+                                                                                                {isWrong ? "🥀 Try Again 🥀" : "🌸 Enter Garden 🌸"}
+                                                                                        </div>
+                                                                                        {isVerifying && (
+                                                                                                <div style={{
+                                                                                                        position: 'absolute',
+                                                                                                        top: '50%',
+                                                                                                        left: '50%',
+                                                                                                        transform: 'translate(-50%, -50%)',
+                                                                                                        display: 'flex',
+                                                                                                        alignItems: 'center',
+                                                                                                        gap: '8px'
+                                                                                                }}>
+                                                                                                        <span className="flower-loading">🌸</span>
+                                                                                                        <span className="flower-loading" style={{ animationDelay: '0.2s' }}>🌺</span>
+                                                                                                        <span className="flower-loading" style={{ animationDelay: '0.4s' }}>🌸</span>
+                                                                                                </div>
+                                                                                        )}
+                                                                                </button>
+                                                                        </form>
+
+                                                                        <p
+                                                                                style={{
+                                                                                        marginTop: "20px",
+                                                                                        fontSize: "14px",
+                                                                                        color: "#666",
+                                                                                        fontStyle: "italic",
+                                                                                }}
+                                                                        >
+                                                                                {isWrong
+                                                                                        ? "💔 The garden creatures are waiting for the right key... 😢"
+                                                                                        : "🦋 Only Kavindi knows the secret to this magical garden... 🌺"}
+                                                                        </p>
+                                                                </div>
+                                                        </div>
+                                                </BloomAnimation>
                                         </div>
-                                </BloomAnimation>
+                                )}
                         </motion.div>
                 );
         }

@@ -3,6 +3,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { Music, Volume2, VolumeX, Sparkles, Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import EmojiTransition from "../components/EmojiTransition";
+import { Margarine, Yaldevi } from "next/font/google"
+const margarine = Margarine({
+	subsets: ["latin"],
+	weight: ["400"],
+	variable: "--font-margarine",
+});
+
+const yaldevi = Yaldevi({
+	subsets: ["sinhala"],
+	weight: ["600"],
+	variable: "--font-yaldevi",
+});
+
 
 const ASSETS = {
 	heroBg: "/w-hero.png",
@@ -10,8 +23,6 @@ const ASSETS = {
 	innerBg: "/w-inner.png",
 	// Placeholder music - peaceful garden ambient
 	music: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=garden-ambient-21782.mp3",
-	// Placeholder chime
-	chime: "https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=magic-chime-01-6134.mp3",
 };
 
 export default function SecretGardenPage() {
@@ -66,16 +77,14 @@ export default function SecretGardenPage() {
 
 	const handleSecondSurprise = () => {
 		setShowFinalSurprise(true);
-		// Maybe play chime again
 		if (chimeRef.current && !isMuted) {
 			chimeRef.current.currentTime = 0;
 			chimeRef.current.play();
 		}
 
-		// Trigger transition after 3 seconds
 		setTimeout(() => {
 			setShowTransition(true);
-		}, 3000);
+		}, 2500);
 	};
 
 	return (
@@ -269,7 +278,7 @@ export default function SecretGardenPage() {
 			</div>
 
 			{/* Ambient Particles */}
-			<ParticleSystem count={30} />
+			<ParticleSystem count={60} />
 
 			{/* UI Controls */}
 			<button
@@ -435,29 +444,28 @@ export default function SecretGardenPage() {
 							: "opacity-100"
 							}`}
 					>
-						<div className="max-w-2xl bg-white/10 backdrop-blur-sm p-8 md:p-12 rounded-[3rem] shadow-[0_0_50px_rgba(255,255,255,0.2)] border border-white/20 relative overflow-hidden">
+						<div className="max-w-md max-h-[600px] bg-white/10 backdrop-blur-sm p-8 md:p-12 rounded-[3rem] shadow-[0_0_50px_rgba(255,255,255,0.2)] border border-white/20 relative overflow-hidden">
 							{/* Decorative Corner Flowers/Vines could go here */}
-							<div className="absolute w-24 h-24 rounded-full -top-4 -left-4 bg-pink-400/20 blur-2xl"></div>
-							<div className="absolute w-24 h-24 rounded-full -bottom-4 -right-4 bg-blue-400/20 blur-2xl"></div>
+							<div className="absolute w-12 h-12 rounded-full -top-4 -left-4 bg-pink-400/20 blur-2xl"></div>
+							<div className="absolute w-12 h-12 rounded-full -bottom-4 -right-4 bg-blue-400/20 blur-2xl"></div>
 
-							<h1 className="text-4xl md:text-6xl font-handwriting mb-8 leading-tight text-white drop-shadow-[0_2px_10px_rgba(255,105,180,0.6)]">
+							<h1 className="text-4xl md:text-4xl font-[var(--font-margarine)] mb-8 leading-tight text-white drop-shadow-[0_2px_10px_rgba(255,105,180,0.6)]">
 								<TypewriterText
 									text="My love, you are the sunshine in my secret garden."
 									delay={50}
 								/>
 							</h1>
 
-							<div className="text-lg md:text-2xl font-light text-blue-50 drop-shadow-md mb-10 opacity-0 animate-[fadeIn_2s_ease-out_3s_forwards]">
-								Thank you for being the most magical part of my
-								life.
+							<div className="text-lg md:text-xl  text-blue-50 drop-shadow-md mb-10 opacity-0 animate-[fadeIn_2s_ease-out_3s_forwards] font-[--font-yaldevi]">
+								Hi, <br /> ඔයා ඇත්තටම කාවින්දි නෙවිනම්, <br /> මෙතනින් එහාට නොයා ඉන්න, <br /> <b>ගරුත්වය රැකගන්න, </b><br /> Screenshot shair නොකර ඉන්න  plz .
 							</div>
 
 							{!showFinalSurprise ? (
 								<button
 									onClick={handleSecondSurprise}
-									className="group relative px-8 py-3 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full text-white font-bold tracking-wide shadow-lg hover:shadow-[0_0_20px_rgba(255,105,180,0.6)] hover:scale-105 transition-all duration-300 opacity-0 animate-[fadeIn_1s_ease-out_5s_forwards]"
+									className="group relative px-6 py-2 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full text-white font-bold tracking-wide shadow-lg hover:shadow-[0_0_20px_rgba(255,105,180,0.6)] hover:scale-105 transition-all duration-300 opacity-0 animate-[fadeIn_1s_ease-out_5s_forwards]"
 								>
-									<span className="relative z-10 flex items-center gap-2">
+									<span className="relative z-10 flex items-center gap-2 text-sm">
 										Tap for another surprise{" "}
 										<Heart className="w-4 h-4 fill-white animate-bounce" />
 									</span>
@@ -491,7 +499,10 @@ export default function SecretGardenPage() {
 				)}
 			</div>
 			{showTransition && (
-				<EmojiTransition onCovered={() => router.push("/auth")} />
+				<EmojiTransition
+					type="out"
+					onComplete={() => router.push("/auth")}
+				/>
 			)}
 		</div>
 	);
