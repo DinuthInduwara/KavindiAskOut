@@ -299,21 +299,14 @@ function MainComponent() {
 		sendMessageTelegram(message || "Yes Clicked! 💖");
 	};
 
-	const getYesLabel = (node) =>{
-		sendMessageTelegram("AskOut "+ node.yesLabel);
-
+	const getYesLabel = (node) =>
 		node?.yesLabel && node.yesLabel.trim()
 			? node.yesLabel.trim()
 			: loveFlow.yesLabel?.trim() || "Yes! 💚";
-	}
-		
 	const getNoLabel = (node) =>
-	{
-		sendMessageTelegram("AskOut "+ node.noLabel);
 		node?.noLabel && node.noLabel.trim()
 			? node.noLabel.trim()
 			: loveFlow.noLabel?.trim() || null;
-	}
 
 	const handleBranchClick = (branch) => {
 		const nextNode = currentNode?.[branch];
