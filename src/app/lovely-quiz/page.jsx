@@ -286,6 +286,8 @@ function MainComponent() {
 	}
 
 	if (isComplete) {
+		const { switchTrack } = useMusicPlayer();
+			switchTrack("/music-3.mp3");
 		return (
 			<div
 				style={{

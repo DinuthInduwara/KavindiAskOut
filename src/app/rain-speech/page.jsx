@@ -32,9 +32,8 @@ const RainyEffects = () => (
                                         fontSize: `${50 + Math.random() * 40}px`,
                                         opacity: 0.8,
                                         filter: "brightness(0.6)",
-                                        animation: `stormCloudMove ${
-                                                6 + Math.random() * 3
-                                        }s linear infinite ${i * 0.3}s`,
+                                        animation: `stormCloudMove ${6 + Math.random() * 3
+                                                }s linear infinite ${i * 0.3}s`,
                                 }}
                         >
                                 ☁️
@@ -54,9 +53,8 @@ const RainyEffects = () => (
                                         background:
                                                 "linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(135, 206, 235, 0.4))",
                                         borderRadius: "1px",
-                                        animation: `rainFall ${
-                                                0.5 + Math.random() * 1
-                                        }s linear infinite ${Math.random() * 2}s`,
+                                        animation: `rainFall ${0.5 + Math.random() * 1
+                                                }s linear infinite ${Math.random() * 2}s`,
                                 }}
                         />
                 ))}
@@ -71,9 +69,8 @@ const RainyEffects = () => (
                                         left: `${20 + Math.random() * 60}%`,
                                         fontSize: "60px",
                                         opacity: 0,
-                                        animation: `lightningFlash ${
-                                                3 + Math.random() * 4
-                                        }s ease-in-out infinite ${i * 2}s`,
+                                        animation: `lightningFlash ${3 + Math.random() * 4
+                                                }s ease-in-out infinite ${i * 2}s`,
                                 }}
                         >
                                 ⚡
@@ -92,9 +89,8 @@ const RainyEffects = () => (
                                         height: "20px",
                                         border: "2px solid rgba(135, 206, 235, 0.6)",
                                         borderRadius: "50%",
-                                        animation: `rippleEffect ${
-                                                2 + Math.random() * 1
-                                        }s ease-out infinite ${Math.random() * 3}s`,
+                                        animation: `rippleEffect ${2 + Math.random() * 1
+                                                }s ease-out infinite ${Math.random() * 3}s`,
                                 }}
                         />
                 ))}
@@ -108,9 +104,8 @@ const RainyEffects = () => (
                                         left: `${Math.random() * 100}%`,
                                         top: `${60 + Math.random() * 30}%`,
                                         fontSize: "32px",
-                                        animation: `umbrellaFloat ${
-                                                4 + Math.random() * 2
-                                        }s ease-in-out infinite ${Math.random() * 2}s`,
+                                        animation: `umbrellaFloat ${4 + Math.random() * 2
+                                                }s ease-in-out infinite ${Math.random() * 2}s`,
                                 }}
                         >
                                 ☂️
@@ -122,11 +117,8 @@ const RainyEffects = () => (
 function RainTransition() {
         const router = useRouter();
 
-        const { switchTrack } = useMusicPlayer();
-        
-                React.useEffect(() => {
-                        switchTrack("/music-3.mp3");
-                }, []);
+
+
 
         React.useEffect(() => {
                 router.prefetch("/about");

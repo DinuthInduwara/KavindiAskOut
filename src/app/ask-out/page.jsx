@@ -188,7 +188,7 @@ function MainComponent() {
 	const { switchTrack } = useMusicPlayer();
 	const loveFlow = React.useMemo(
 		() => ({
-			text: "කාවින්දි, ඔයා දන්නවා නේද මම ඔයාට ආදරෙයි කියල, ඔය කැමතිද එකට 💕",
+			text: "කාවින්දි, ඔයා දන්නවා නේද මම ඔයාට ආදරෙයි කියල, 💕",
 			yesLabel: "දන්නවා",
 			noLabel: "නැ",
 			yes: {
@@ -299,14 +299,21 @@ function MainComponent() {
 		sendMessageTelegram(message || "Yes Clicked! 💖");
 	};
 
-	const getYesLabel = (node) =>
+	const getYesLabel = (node) =>{
+		sendMessageTelegram("AskOut "+ node.yesLabel);
+
 		node?.yesLabel && node.yesLabel.trim()
 			? node.yesLabel.trim()
 			: loveFlow.yesLabel?.trim() || "Yes! 💚";
+	}
+		
 	const getNoLabel = (node) =>
+	{
+		sendMessageTelegram("AskOut "+ node.noLabel);
 		node?.noLabel && node.noLabel.trim()
 			? node.noLabel.trim()
 			: loveFlow.noLabel?.trim() || null;
+	}
 
 	const handleBranchClick = (branch) => {
 		const nextNode = currentNode?.[branch];

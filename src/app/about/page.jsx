@@ -195,8 +195,8 @@ function MainComponent() {
                                         <div
                                                 id="hero"
                                                 className={`text-center transform transition-all duration-1000 ease-out ${isVisible.hero
-                                                                ? "translate-y-0 opacity-100"
-                                                                : "translate-y-20 opacity-0"
+                                                        ? "translate-y-0 opacity-100"
+                                                        : "translate-y-20 opacity-0"
                                                         }`}
                                         >
                                                 <div className="p-10 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
@@ -217,8 +217,8 @@ function MainComponent() {
                                         <div
                                                 id="intro"
                                                 className={`transform transition-all duration-1000 delay-200 ease-out ${isVisible.intro
-                                                                ? "translate-y-0 opacity-100"
-                                                                : "translate-y-20 opacity-0"
+                                                        ? "translate-y-0 opacity-100"
+                                                        : "translate-y-20 opacity-0"
                                                         }`}
                                         >
                                                 <div className="p-10 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
@@ -238,8 +238,8 @@ function MainComponent() {
                                         <div
                                                 id="gallery"
                                                 className={`transform transition-all duration-1000 delay-400 ease-out ${isVisible.gallery
-                                                                ? "translate-y-0 opacity-100"
-                                                                : "translate-y-20 opacity-0"
+                                                        ? "translate-y-0 opacity-100"
+                                                        : "translate-y-20 opacity-0"
                                                         }`}
                                         >
                                                 <div className="p-10 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
@@ -313,8 +313,8 @@ function MainComponent() {
                                         <div
                                                 id="videos"
                                                 className={`transform transition-all duration-1500 delay-700 ease-out ${isVisible.videos
-                                                                ? "translate-y-0 opacity-100"
-                                                                : "translate-y-20 opacity-0"
+                                                        ? "translate-y-0 opacity-100"
+                                                        : "translate-y-20 opacity-0"
                                                         }`}
                                         >
                                                 <div className="p-10 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
@@ -353,8 +353,8 @@ function MainComponent() {
                                         <div
                                                 id="enhanced-gallery"
                                                 className={`transform transition-all duration-1500 delay-300 ease-out ${isVisible["enhanced-gallery"]
-                                                                ? "translate-y-0 opacity-100"
-                                                                : "translate-y-20 opacity-0"
+                                                        ? "translate-y-0 opacity-100"
+                                                        : "translate-y-20 opacity-0"
                                                         }`}
                                         >
                                                 <div className="backdrop-blur-lg bg-white/15 rounded-3xl p-10 border border-white/30 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:bg-white/20 hover:scale-[1.02]">
@@ -365,62 +365,62 @@ function MainComponent() {
                                                                 {[
                                                                         {
                                                                                 src: "/3rdStep.jpg",
-                                                                                title: "Gift of Love — Left Unfolded",
+                                                                                caption: "Gift of Love — Left Unfolded",
                                                                                 emoji: "💌",
                                                                         },
                                                                         {
                                                                                 src: "/4rdStep.jpg",
-                                                                                title: "Gift of Love — Right Whisper",
+                                                                                caption: "Gift of Love — Right Whisper",
                                                                                 emoji: "🪽",
                                                                         },
                                                                         {
                                                                                 src: "/2ndStep.jpg",
-                                                                                title: "Moments Before the Magic",
+                                                                                caption: "Moments Before the Magic",
                                                                                 emoji: "🌠",
                                                                         },
                                                                         {
                                                                                 src: "/5thStep.jpg",
-                                                                                title: "Final Touch of Love",
+                                                                                caption: "Final Touch of Love",
                                                                                 emoji: "☕💭",
                                                                         },
                                                                         {
                                                                                 src: "/Readingdocs.png",
-                                                                                title: "Learning to Build Us",
+                                                                                caption: "Learning to Build Us",
                                                                                 emoji: "📖💡",
                                                                         },
                                                                         {
                                                                                 src: "/failedProject (1).png",
-                                                                                title: "Where Ideas Took Flight",
+                                                                                caption: "Where Ideas Took Flight",
                                                                                 emoji: "🎨🌈",
                                                                         },
                                                                         {
                                                                                 src: "/failedProject (2).png",
-                                                                                title: "Lessons from the Quiet Breakdowns",
+                                                                                caption: "Lessons from the Quiet Breakdowns",
                                                                                 emoji: "💔🌸",
                                                                         },
                                                                         {
                                                                                 src: "/failedProject (3).png",
-                                                                                title: "The Welcome That Never Happened",
+                                                                                caption: "The Welcome That Never Happened",
                                                                                 emoji: "🚪✨",
                                                                         },
                                                                         {
                                                                                 src: "/failedProject (4).png",
-                                                                                title: "Dreams Lost in Blue",
+                                                                                caption: "Dreams Lost in Blue",
                                                                                 emoji: "🌊🌧️",
                                                                         },
                                                                         {
                                                                                 src: "/failedProject (5).png",
-                                                                                title: "Paths That Didn't Lead to You",
+                                                                                caption: "Paths That Didn't Lead to You",
                                                                                 emoji: "🛤️💫",
                                                                         },
                                                                         {
                                                                                 src: "/failedProject (7).png",
-                                                                                title: "Things I wanted to show you",
+                                                                                caption: "Things I wanted to show you",
                                                                                 emoji: "⭐🧷",
                                                                         },
                                                                         {
                                                                                 src: "/med.jpg",
-                                                                                title: "Healing Through All the Storms(Much Much More medicines than you think)",
+                                                                                caption: "Healing Through All the Storms(Much Much More medicines than you think)",
                                                                                 emoji: "💊🌸",
                                                                         },
                                                                 ].map((photo, index) => (
@@ -440,9 +440,12 @@ function MainComponent() {
                                                                                 <div className="relative overflow-hidden rounded-xl">
                                                                                         <img
                                                                                                 src={photo.src}
-                                                                                                alt={photo.title}
+                                                                                                alt={photo.caption}
                                                                                                 className="object-cover w-full h-48 transition-all duration-700 group-hover:scale-125 group-hover:brightness-110"
                                                                                         />
+                                                                                        <p className="text-sm text-center text-white/90 drop-shadow-md">
+                                                                                                {photo.caption}
+                                                                                        </p>
                                                                                         <div className="absolute inset-0 transition-all duration-500 opacity-0 bg-gradient-to-t from-black/50 to-transparent group-hover:opacity-100"></div>
                                                                                         <div className="absolute text-2xl transition-all duration-300 top-2 right-2 opacity-70 group-hover:opacity-100 group-hover:scale-125">
                                                                                                 {photo.emoji}
@@ -469,8 +472,8 @@ function MainComponent() {
                                         <div
                                                 id="letter"
                                                 className={`transform transition-all duration-1500 delay-900 ease-out ${isVisible.letter
-                                                                ? "translate-y-0 opacity-100"
-                                                                : "translate-y-20 opacity-0"
+                                                        ? "translate-y-0 opacity-100"
+                                                        : "translate-y-20 opacity-0"
                                                         }`}
                                         >
                                                 <div className="letter-paper relative bg-gradient-to-b from-[#fefefe] to-[#f8f8f8] rounded-2xl p-12 shadow-2xl border border-gray-200 max-w-3xl mx-auto">
@@ -768,8 +771,8 @@ function MainComponent() {
                                         <div
                                                 id="footer"
                                                 className={`text-center transform transition-all duration-1500 delay-500 ease-out ${isVisible.footer
-                                                                ? "translate-y-0 opacity-100"
-                                                                : "translate-y-20 opacity-0"
+                                                        ? "translate-y-0 opacity-100"
+                                                        : "translate-y-20 opacity-0"
                                                         }`}
                                         >
                                                 <div className="p-8 transition-all duration-700 border shadow-2xl backdrop-blur-lg bg-white/15 rounded-3xl border-white/30 hover:shadow-3xl hover:bg-white/20">
