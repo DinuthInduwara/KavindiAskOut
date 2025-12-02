@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import React from "react";
 import WelcomeGarden from "../../components/welcome-garden";
 import LoadingPage from "../../components/loading-page";
@@ -157,7 +158,12 @@ function AuthComponent() {
                 const currentElements = isWrong ? SAD_EMOJIS : GARDEN_EMOJIS;
 
                 return (
-                        <>
+                        <motion.div
+                                initial={{ x: "100%" }}
+                                animate={{ x: "0%" }}
+                                transition={{ duration: 1.5, ease: "easeOut" }}
+                                className="w-full min-h-screen"
+                        >
                                 <SuccessCelebration isActive={showCelebration} />
 
                                 <BloomAnimation isVisible={!isTransitioning}>
@@ -413,11 +419,9 @@ function AuthComponent() {
                                                 </div>
                                         </div>
                                 </BloomAnimation>
-
-                           
-                        </>
+                        </motion.div>
                 );
         }
 }
 
-export default MainComponent;
+export default AuthComponent;
