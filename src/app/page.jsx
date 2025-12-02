@@ -1,76 +1,75 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Music, Volume2, VolumeX, Sparkles, Heart } from "lucide-react";
 
 const ASSETS = {
-  heroBg:
-    "/w-hero.png",
-  gate: "/gate.png",
-  innerBg:
-    "/w-inner.png",
-  // Placeholder music - peaceful garden ambient
-  music:
-    "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=garden-ambient-21782.mp3",
-  // Placeholder chime
-  chime:
-    "https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=magic-chime-01-6134.mp3",
+	heroBg: "/w-hero.png",
+	gate: "/gate.png",
+	innerBg: "/w-inner.png",
+	// Placeholder music - peaceful garden ambient
+	music: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=garden-ambient-21782.mp3",
+	// Placeholder chime
+	chime: "https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=magic-chime-01-6134.mp3",
 };
 
 export default function SecretGardenPage() {
-  const [scene, setScene] = useState("gate"); // gate, opening, inner, surprise
-  const [isMuted, setIsMuted] = useState(true);
-  const [messageIndex, setMessageIndex] = useState(0);
-  const [showFinalSurprise, setShowFinalSurprise] = useState(false);
+	const [scene, setScene] = useState("gate"); // gate, opening, inner, surprise
+	const [isMuted, setIsMuted] = useState(true);
+	const [messageIndex, setMessageIndex] = useState(0);
+	const [showFinalSurprise, setShowFinalSurprise] = useState(false);
 
-  const audioRef = useRef(null);
-  const chimeRef = useRef(null);
+	const audioRef = useRef(null);
+	const chimeRef = useRef(null);
 
-  // Initial fade in
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
+	// Initial fade in
+	const [loaded, setLoaded] = useState(false);
+	useEffect(() => {
+		setLoaded(true);
+	}, []);
 
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isMuted) {
-        audioRef.current
-          .play()
-          .catch((e) => console.log("Audio play failed", e));
-      } else {
-        audioRef.current.pause();
-      }
-      setIsMuted(!isMuted);
-    }
-  };
+	const toggleMusic = () => {
+		if (audioRef.current) {
+			if (isMuted) {
+				audioRef.current
+					.play()
+					.catch((e) => console.log("Audio play failed", e));
+			} else {
+				audioRef.current.pause();
+			}
+			setIsMuted(!isMuted);
+		}
+	};
 
-  const handleGateClick = () => {
-    if (scene !== "gate") return;
+	const handleGateClick = () => {
+		if (scene !== "gate") return;
 
-    // Play chime
-    if (chimeRef.current && !isMuted) {
-      chimeRef.current.currentTime = 0;
-      chimeRef.current.play().catch((e) => console.log("Chime failed", e));
-    }
+		// Play chime
+		if (chimeRef.current && !isMuted) {
+			chimeRef.current.currentTime = 0;
+			chimeRef.current
+				.play()
+				.catch((e) => console.log("Chime failed", e));
+		}
 
-    setScene("opening");
+		setScene("opening");
 
-    // Transition to inner scene after animation
-    setTimeout(() => {
-      setScene("inner");
-    }, 2000);
-  };
+		// Transition to inner scene after animation
+		// Increased delay to allow the door opening animation to finish before switching scenes
+		setTimeout(() => {
+			setScene("inner");
+		}, 2500);
+	};
 
-  const handleSecondSurprise = () => {
-    setShowFinalSurprise(true);
-    // Maybe play chime again
-    if (chimeRef.current && !isMuted) {
-      chimeRef.current.currentTime = 0;
-      chimeRef.current.play();
-    }
-  };
+	const handleSecondSurprise = () => {
+		setShowFinalSurprise(true);
+		// Maybe play chime again
+		if (chimeRef.current && !isMuted) {
+			chimeRef.current.currentTime = 0;
+			chimeRef.current.play();
+		}
+	};
 
-  return (
+	return (
 		<div className="relative w-full h-screen overflow-hidden text-white select-none font-quicksand">
 			{/* Fonts */}
 			<style jsx global>{`
@@ -158,7 +157,8 @@ export default function SecretGardenPage() {
 				}
 
 				.perspective-container {
-					perspective: 1000px;
+					perspective: 1200px;
+					transform-style: preserve-3d;
 				}
 
 				.gate-door {
@@ -218,29 +218,37 @@ export default function SecretGardenPage() {
 			<audio ref={chimeRef} src={ASSETS.chime} />
 
 			{/* Background Layers */}
+			{/* Inner BG (Destination) - Fade in during opening so we see it through the door? 
+          Actually, simpler: Crossfade the whole background slowly. 
+      */}
 			<img
-				className={`absolute inset-0  w-full h-screen  bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
-					scene === "inner" || scene === "surprise"
-						? "opacity-0"
-						: "opacity-100"
-				}`}
-				src={ASSETS.heroBg}
-			/>
-			<div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay"></div>
-
-			<div
-				className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+				className={`absolute inset-0 w-screen min-h-screen bg-cover bg-center transition-opacity ease-in-out z-0 ${
 					scene === "inner" || scene === "surprise"
 						? "opacity-100"
 						: "opacity-0"
 				}`}
-				style={{ backgroundImage: `url(${ASSETS.innerBg})` }}
+				style={{ transitionDuration: "5000ms" }}
+				src={ASSETS.innerBg}
+			/>
+			<div className="absolute inset-0 bg-pink-500/10 mix-blend-overlay"></div>
+
+			{/* Hero BG (Current) - Fade out slowly */}
+			<div
+				className={`absolute inset-0 bg-cover bg-center transition-opacity ease-in-out z-0 ${
+					scene === "inner" || scene === "surprise"
+						? "opacity-0"
+						: "opacity-100"
+				}`}
+				style={{
+					backgroundImage: `url(${ASSETS.heroBg})`,
+					transitionDuration: "5000ms",
+				}}
 			>
-				<div className="absolute inset-0 bg-pink-500/10 mix-blend-overlay"></div>
+				<div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay"></div>
 			</div>
 
 			{/* Sun & Rays */}
-			<div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] pointer-events-none opacity-80 mix-blend-screen">
+			<div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] pointer-events-none opacity-80 mix-blend-screen z-0">
 				<div className="absolute inset-0 rounded-full bg-yellow-100 blur-[80px] animate-pulse-soft"></div>
 				<div className="absolute inset-0 flex items-center justify-center animate-sun-spin">
 					{Array.from({ length: 12 }).map((_, i) => (
@@ -269,43 +277,147 @@ export default function SecretGardenPage() {
 			</button>
 
 			{/* Main Content Area */}
-			<div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
+			<div className="relative z-10 flex flex-col items-center justify-center w-full h-full perspective-container">
 				{/* SCENE 1: THE GATE */}
-				{(scene === "gate" || scene === "opening") && (
-					<div
-						className={`flex flex-col items-center justify-center transition-all duration-[2000ms] ${
-							scene === "opening"
-								? "gate-opening pointer-events-none"
-								: ""
-						}`}
-					>
-						{/* The Gate */}
+				{/* We keep the gate in the DOM during 'opening' so we can animate it leaving */}
+					{(scene === "gate" || scene === "opening") && (
 						<div
-							className="relative cursor-pointer group perspective-container"
+							className={`flex flex-col items-center justify-center gate-wrapper transition-all ease-in ${
+								scene === "opening"
+									? "scale-[4] opacity-0"
+									: "scale-100 opacity-100"
+							}`}
+							// Delay the fade out/scale slightly so we see the door open first?
+							// Actually we want to "fly through" the door as it opens.
+							// Let's add a delay to the transform so the doors open a bit first.
+							style={{
+								transitionDuration: "2000ms",
+								transitionDelay:
+									scene === "opening" ? "400ms" : "0ms",
+								pointerEvents:
+									scene === "opening" ? "none" : "auto",
+							}}
+					>
+						{/* The Gate Container */}
+						<div
+							className="relative cursor-pointer group"
 							onClick={handleGateClick}
+							style={{ transformStyle: "preserve-3d" }}
 						>
-							<div className="relative w-[300px] h-[400px] md:w-[300px] md:h-[400px] transition-transform duration-1000 ease-out transform group-hover:scale-105 group-hover:drop-shadow-[0_0_30px_rgba(255,215,0,0.6)] drop-shadow-[0_0_15px_rgba(0,0,0,0.3)]">
-								<img
-									src={ASSETS.gate}
-									alt="Magical Gate"
-									className="object-contain w-full h-full"
-								/>
+								<div
+									className={`relative w-[300px] h-[400px] md:w-[400px] md:h-[500px] transition-transform duration-500
+	                ${
+						scene !== "opening"
+							? "group-hover:scale-105 group-hover:drop-shadow-[0_0_30px_rgba(255,215,0,0.6)]"
+						: ""
+				} 
+                drop-shadow-[0_0_15px_rgba(0,0,0,0.3)]`}
+								style={{ transformStyle: "preserve-3d" }}
+								>
+									{/* Left Door Panel */}
+									<div
+										className={`absolute top-0 left-0 w-1/2 h-full overflow-hidden origin-left transition-transform ease-in-out bg-transparent z-20 
+	                  ${
+							scene === "opening"
+								? "[transform:rotateY(-100deg)]"
+								: "[transform:rotateY(0deg)]"
+						}`}
+										style={{
+											backfaceVisibility: "visible", // Changed to visible so we don't lose it at extreme angles
+											transformStyle: "preserve-3d",
+											transitionDuration: "1500ms",
+										}}
+									>
+										{/* Inner container to hold image and shift it right to counteract the crop */}
+										<div className="w-[200%] h-full absolute top-0 left-0">
+											<img
+											src={ASSETS.gate}
+											alt="Magical Gate Left"
+											className="object-contain object-left w-full h-full"
+										/>
+									</div>
+									{/* Door Glow/Shadow Overlay */}
+									<div
+										className={`absolute inset-0 bg-black/0 transition-colors duration-1000 ${
+											scene === "opening"
+												? "bg-black/10"
+												: ""
+										}`}
+									></div>
+								</div>
 
-								{/* Glowing Keyhole Overlay */}
-								<div className="absolute inset-0 flex items-center justify-center">
+									{/* Right Door Panel */}
+									<div
+										className={`absolute top-0 right-0 w-1/2 h-full overflow-hidden origin-right transition-transform ease-in-out bg-transparent z-20 
+	                  ${
+							scene === "opening"
+								? "[transform:rotateY(100deg)]"
+								: "[transform:rotateY(0deg)]"
+						}`}
+										style={{
+											backfaceVisibility: "visible",
+											transformStyle: "preserve-3d",
+											transitionDuration: "1500ms",
+										}}
+									>
+									<div className="w-[200%] h-full absolute top-0 right-0">
+										<img
+											src={ASSETS.gate}
+											alt="Magical Gate Right"
+											className="object-contain object-right w-full h-full"
+										/>
+									</div>
+									{/* Door Glow/Shadow Overlay */}
+									<div
+										className={`absolute inset-0 bg-black/0 transition-colors duration-1000 ${
+											scene === "opening"
+												? "bg-black/10"
+												: ""
+										}`}
+									></div>
+								</div>
+
+								{/* Glowing Keyhole Overlay - Fades out on open */}
+								<div
+									className={`absolute inset-0 flex items-center justify-center transition-all duration-500 z-30 pointer-events-none ${
+										scene === "opening"
+											? "opacity-0 scale-150"
+											: "opacity-100"
+									}`}
+									style={{ transform: "translateZ(20px)" }} // Push it forward in 3D
+								>
 									<div className="w-10 h-10 transition-all duration-500 rounded-full bg-yellow-400/0 group-hover:bg-yellow-400/30 blur-xl"></div>
 								</div>
 
-								{/* Sparkles on hover */}
-								<div className="absolute w-full h-full transition-opacity duration-500 -translate-x-1/2 -translate-y-1/2 opacity-0 pointer-events-none top-1/2 left-1/2 group-hover:opacity-100">
+								{/* Sparkles on hover - Fades out on open */}
+								<div
+									className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none transition-opacity duration-500 z-30 ${
+										scene === "opening"
+											? "opacity-0"
+											: "opacity-0 group-hover:opacity-100"
+									}`}
+									style={{ transform: "translateZ(30px)" }}
+								>
 									<Sparkles className="absolute w-6 h-6 text-yellow-200 top-1/4 left-1/4 animate-pulse" />
 									<Sparkles className="absolute w-4 h-4 text-yellow-100 bottom-1/3 right-1/4 animate-bounce" />
 									<Sparkles className="absolute w-5 h-5 text-white top-1/3 right-1/3 animate-pulse" />
 								</div>
 							</div>
 
-							{/* Text Hint */}
-							<div className="absolute w-full text-center -translate-x-1/2 -bottom-16 left-1/2">
+							{/* Text Hint - Fades out quickly */}
+							<div
+								className={`absolute -bottom-24 left-1/2 -translate-x-1/2 text-center w-full transition-all duration-500 ${
+									scene === "opening"
+										? "opacity-0 translate-y-10"
+										: "opacity-100"
+								}`}
+								style={{
+									transform:
+										scene === "opening"
+											? "translate(-50%, 50px)"
+											: "translate(-50%, 0) translateZ(10px)",
+								}}
+							>
 								<h2 className="text-3xl md:text-4xl font-handwriting text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] animate-pulse-soft">
 									Click to Open the Gate!
 								</h2>
@@ -382,95 +494,100 @@ export default function SecretGardenPage() {
 				)}
 			</div>
 		</div>
-  );
+	);
 }
 
 // --- Subcomponents ---
 
 function ParticleSystem({ count }) {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {Array.from({ length: count }).map((_, i) => (
-        <Particle key={i} delay={i * 0.5} />
-      ))}
-    </div>
-  );
+	return (
+		<div className="absolute inset-0 overflow-hidden pointer-events-none">
+			{Array.from({ length: count }).map((_, i) => (
+				<Particle key={i} delay={i * 0.5} />
+			))}
+		</div>
+	);
 }
 
 function Particle({ delay }) {
-  const style = {
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100 + 10}%`,
-    animationDelay: `${Math.random() * 5}s`,
-    opacity: Math.random() * 0.5 + 0.2,
-    transform: `scale(${Math.random() * 0.5 + 0.5})`,
-  };
+	const style = {
+		left: `${Math.random() * 100}%`,
+		top: `${Math.random() * 100 + 10}%`,
+		animationDelay: `${Math.random() * 5}s`,
+		opacity: Math.random() * 0.5 + 0.2,
+		transform: `scale(${Math.random() * 0.5 + 0.5})`,
+	};
 
-  // Randomize particle type
-  const type = Math.random();
+	// Randomize particle type
+	const type = Math.random();
 
-  return (
-    <div className="particle" style={style}>
-      {type > 0.6 ? (
-        // Petal
-        <div className="w-3 h-3 bg-pink-200 rounded-tr-xl rounded-bl-xl opacity-80" />
-      ) : type > 0.3 ? (
-        // Sparkle
-        <Sparkles className="w-4 h-4 text-yellow-100" />
-      ) : (
-        // Small circle
-        <div className="w-2 h-2 bg-white rounded-full blur-[1px]" />
-      )}
-    </div>
-  );
+	return (
+		<div className="particle" style={style}>
+			{type > 0.6 ? (
+				// Petal
+				<div className="w-3 h-3 bg-pink-200 rounded-tr-xl rounded-bl-xl opacity-80" />
+			) : type > 0.3 ? (
+				// Sparkle
+				<Sparkles className="w-4 h-4 text-yellow-100" />
+			) : (
+				// Small circle
+				<div className="w-2 h-2 bg-white rounded-full blur-[1px]" />
+			)}
+		</div>
+	);
 }
 
 function TypewriterText({ text, delay = 50 }) {
-  const [displayedText, setDisplayedText] = useState("");
+	const [displayedText, setDisplayedText] = useState("");
 
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      setDisplayedText((prev) => text.slice(0, index + 1));
-      index++;
-      if (index === text.length) clearInterval(interval);
-    }, delay);
-    return () => clearInterval(interval);
-  }, [text, delay]);
+	useEffect(() => {
+		let index = 0;
+		const interval = setInterval(() => {
+			setDisplayedText((prev) => text.slice(0, index + 1));
+			index++;
+			if (index === text.length) clearInterval(interval);
+		}, delay);
+		return () => clearInterval(interval);
+	}, [text, delay]);
 
-  return <span>{displayedText}</span>;
+	return <span>{displayedText}</span>;
 }
 
 function Fireworks() {
-  return (
-    <div className="absolute inset-0 pointer-events-none">
-      {/* CSS Fireworks could go here, for now using simple particle bursts */}
-      <div className="absolute top-0 -translate-x-1/2 -translate-y-full left-1/2">
-        <div className="relative">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-pink-400 rounded-full animate-firework"
-              style={{
-                transform: `rotate(${i * 30}deg) translate(0px)`,
-                "--angle": `${i * 30}deg`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-      <style jsx>{`
-                @keyframes firework {
-                    0% { transform: rotate(var(--angle)) translateY(0px); opacity: 1; }
-                    100% { transform: rotate(var(--angle)) translateY(-100px); opacity: 0; }
-                }
-                .animate-firework {
-                    animation: firework 1s ease-out forwards;
-                }
-            `}</style>
-    </div>
-  );
+	return (
+		<div className="absolute inset-0 pointer-events-none">
+			{/* CSS Fireworks could go here, for now using simple particle bursts */}
+			<div className="absolute top-0 -translate-x-1/2 -translate-y-full left-1/2">
+				<div className="relative">
+					{Array.from({ length: 12 }).map((_, i) => (
+						<div
+							key={i}
+							className="absolute w-2 h-2 bg-pink-400 rounded-full animate-firework"
+							style={{
+								transform: `rotate(${
+									i * 30
+								}deg) translate(0px)`,
+								"--angle": `${i * 30}deg`,
+							}}
+						/>
+					))}
+				</div>
+			</div>
+			<style jsx>{`
+				@keyframes firework {
+					0% {
+						transform: rotate(var(--angle)) translateY(0px);
+						opacity: 1;
+					}
+					100% {
+						transform: rotate(var(--angle)) translateY(-100px);
+						opacity: 0;
+					}
+				}
+				.animate-firework {
+					animation: firework 1s ease-out forwards;
+				}
+			`}</style>
+		</div>
+	);
 }
-
-
-

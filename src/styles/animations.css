@@ -1,14 +1,9 @@
-/* consolidated.css - Single source of truth for all animations and styles */
-/* Generated: November 27, 2025 */
-/* All duplicate declaration blocks removed */
-/* Canonical names chosen for conflicting keyframes (different bodies, same name) */
-/* Comments indicate original sources and replaced names where applicable */
-@import "animations/welcome-garden-page.css";
-@import "animations/star-rain-page.css";
-@import "animations/main-page.css";
-@import "animations/garden-scroll.css";
-@import "animations/for-components.css";
-@import "animations/about-page.css";
+@import "./animations/welcome-garden-page.css";
+@import "./animations/star-rain-page.css";
+@import "./animations/main-page.css";
+@import "./animations/garden-scroll.css";
+@import "./animations/for-components.css";
+@import "./animations/about-page.css";
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 
 /* ============================================================

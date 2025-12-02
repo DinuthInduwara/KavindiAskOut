@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* Hide system cursor completely */
 html,
 body,
@@ -85,8 +86,9 @@ textarea::selection {
 @layer base {
   * {
     @apply border-border;
-    }
+  }
+
   body {
     @apply bg-background text-foreground;
-    }
+  }
 }
